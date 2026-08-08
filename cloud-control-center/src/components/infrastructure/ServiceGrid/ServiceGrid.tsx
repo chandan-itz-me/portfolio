@@ -1,26 +1,24 @@
 import { useEffect, useState } from "react";
 
-import type { InfrastructureService } from "@/data/infrastructure";
+import type {
+    InfrastructureService,
+} from "@/types/infrastructure";
 
 import ServiceDetails from "../ServiceDetails";
 
 import styles from "./ServiceGrid.module.css";
 
 type ServiceGridProps = {
-    services: readonly InfrastructureService[];
+    services: InfrastructureService[];
 };
 
 export default function ServiceGrid({
     services,
 }: ServiceGridProps) {
-    const [selected, setSelected] = useState<InfrastructureService>({
-        ...services[0],
-    });
+    const [selected, setSelected] = useState<InfrastructureService>(services[0]);
 
 useEffect(() => {
-    setSelected({
-        ...services[0],
-    });
+    setSelected(services[0]);
 }, [services]);
 
     return (
@@ -35,9 +33,7 @@ useEffect(() => {
                                 : ""
                         }`}
                         onClick={() =>
-                        setSelected({
-                        ...service,
-                        })
+                        setSelected(service)
                     }
                     >
                         <h3>{service.name}</h3>

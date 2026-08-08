@@ -1,3 +1,5 @@
+import type { InfrastructureData } from "@/types/infrastructure";
+
 export type InfrastructureService = {
     id: string;
     name: string;
@@ -8,7 +10,7 @@ export type InfrastructureService = {
     experience: readonly string[];
 };
 
-export const infrastructure = {
+export const infrastructure: InfrastructureData = {
     aws: [
         {
             id: "ec2",
@@ -117,4 +119,4 @@ export const infrastructure = {
             ],
         },
     ],
-} as const;
+}

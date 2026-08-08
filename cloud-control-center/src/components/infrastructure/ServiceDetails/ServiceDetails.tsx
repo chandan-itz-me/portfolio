@@ -5,9 +5,9 @@ type Props = {
 
     description: string;
 
-    projects: readonly string[];
+    projects: string[];
 
-    experience: readonly string[];
+    experience: string[];
 
     level: string;
 };
