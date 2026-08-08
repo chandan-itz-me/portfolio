@@ -107,3 +107,10 @@ p {
 
     min-height: 100vh;
 }
+
+/* ------------------------------------------------ */
+
+section {
+
+    padding-block: var(--section-padding);
+}

@@ -110,4 +110,10 @@
     --transition-normal: .35s ease;
 
     --transition-slow: .5s ease;
+
+    /* ===== CONTENT ===== */
+    
+    --section-padding: 6rem;
+    
+    --section-gap: 4rem;
 }
