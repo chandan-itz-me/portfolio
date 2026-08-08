@@ -10,7 +10,14 @@ export default function Container({
     className = "",
 }: ContainerProps) {
     return (
-        <div className={`${styles.container} ${className}`}>
+        <div
+    className={[
+        styles.container,
+        className,
+    ]
+        .filter(Boolean)
+        .join(" ")}
+>
             {children}
         </div>
     );

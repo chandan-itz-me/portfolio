@@ -116,4 +116,8 @@
     --section-padding: 6rem;
     
     --section-gap: 4rem;
+
+    /* ===== Z INDEX ===== */
+    
+    --z-navbar: 1000;
 }
