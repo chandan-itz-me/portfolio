@@ -1,0 +1,77 @@
+.boot {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--color-background);
+
+    z-index: 9999;
+}
+
+.window {
+    width: min(720px, 90vw);
+}
+
+.title {
+    margin-bottom: 2rem;
+
+    color: var(--color-primary);
+
+    font-size: 2rem;
+
+    font-family: var(--font-code);
+}
+
+.logs {
+    display: flex;
+    flex-direction: column;
+
+    gap: .75rem;
+}
+
+.log {
+    color: var(--color-text-muted);
+
+    font-family: var(--font-code);
+
+    animation: fadeIn .25s ease;
+}
+
+.welcome {
+    margin-top: 2rem;
+
+    animation: fadeIn .4s ease;
+}
+
+.welcome h2 {
+    margin-top: .5rem;
+
+    color: var(--color-primary);
+
+    font-size: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeOut {
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .7s ease,
+        visibility .7s ease;
+}

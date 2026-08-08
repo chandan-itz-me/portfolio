@@ -5,7 +5,11 @@ export const profile = {
 
     location: "India",
 
-    company: "",
+    github: "https://github.com/chandan-itz-me",
+
+    linkedin: "",
+
+    email: "",
 
     resume: "/resume.pdf",
 } as const;
