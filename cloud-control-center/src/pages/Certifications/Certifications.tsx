@@ -1,9 +1,10 @@
-import Container from "@/components/layout/Container/Container";
+// import Container from "@/components/layout/Container/Container";
+import Page from "@/components/layout/Page";  
 
 export default function Certifications() {
     return (
-        <Container>
+        <Page>
             <h1>Certifications</h1>
-        </Container>
+        </Page>
     );
 }

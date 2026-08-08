@@ -25,3 +25,43 @@
 
     margin-bottom:4rem;
 }
+
+.operationsGrid {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 1.5rem;
+
+    margin-top: 3rem;
+}
+
+@media (max-width: 960px) {
+
+    .operationsGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+.bottomGrid {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 1.5rem;
+
+    margin-top: 3rem;
+}
+
+@media (max-width: 960px) {
+
+    .bottomGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

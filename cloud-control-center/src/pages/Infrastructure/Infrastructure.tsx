@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import Container from "@/components/layout/Container";
+// import Container from "@/components/layout/Container";
+import Page from "@/components/layout/Page";  
 
 import { infrastructure } from "@/data/infrastructure";
 
@@ -19,7 +20,7 @@ export default function Infrastructure() {
         useState<CloudProvider>("aws");
 
     return (
-        <Container>
+        <Page>
 
             <InfrastructureHero />
 
@@ -32,6 +33,6 @@ export default function Infrastructure() {
                 services={infrastructure[cloud]}
             />
 
-        </Container>
+        </Page>
     );
 }

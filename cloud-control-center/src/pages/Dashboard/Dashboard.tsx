@@ -1,28 +1,42 @@
 import DashboardHero from "@/components/dashboard/DashboardHero/DashboardHero";
 import MetricsGrid from "@/components/dashboard/Metrics/MetricsGrid";
 import NavigationCard from "@/components/dashboard/NavigationCard/NavigationCard";
-import StatusCard from "@/components/dashboard/StatusCard/StatusCard";
-import Container from "@/components/layout/Container/Container";
+
+import OperationsOverview from "@/components/dashboard/OperationsOverview";
+import InfrastructureHealth from "@/components/dashboard/InfrastructureHealth";
+import CloudStatus from "@/components/dashboard/CloudStatus";
+import RecentActivity from "@/components/dashboard/RecentActivity";
+import QuickActions from "@/components/dashboard/QuickActions";
+
+import Page from "@/components/layout/Page";
 
 import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
     return (
-        <Container>
-
+        <Page>
             <DashboardHero />
+
+            <OperationsOverview />
 
             <MetricsGrid />
 
-            <section className={styles.grid}>
-                <StatusCard title="AWS" status="Online" />
-                <StatusCard title="Azure" status="Ready" />
-                <StatusCard title="Terraform" status="Active" />
-                <StatusCard title="CI/CD" status="Healthy" />
+            <section className={styles.operationsGrid}>
+                <InfrastructureHealth />
+
+                <CloudStatus />
+            </section>
+
+            <section className={styles.bottomGrid}>
+                <RecentActivity />
+
+                <QuickActions />
             </section>
 
             <section>
-                <h2 className={styles.heading}>Explore</h2>
+                <h2 className={styles.heading}>
+                    Explore
+                </h2>
 
                 <div className={styles.navigationGrid}>
                     <NavigationCard
@@ -44,13 +58,24 @@ export default function Dashboard() {
                     />
 
                     <NavigationCard
+                        title="Professional"
+                        description="Skills, certifications and continuous learning."
+                        to="/professional"
+                    />
+
+                    <NavigationCard
                         title="Command Center"
-                        description="Interactive console and deployment timeline."
+                        description="Interactive terminal and developer tools."
                         to="/terminal"
+                    />
+
+                    <NavigationCard
+                        title="Contact"
+                        description="Get in touch and connect with me."
+                        to="/contact"
                     />
                 </div>
             </section>
-
-        </Container>
+        </Page>
     );
 }

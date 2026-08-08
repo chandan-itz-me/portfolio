@@ -1,0 +1,57 @@
+.section {
+    height: 100%;
+}
+
+.heading {
+    margin-bottom: 1.5rem;
+
+    font-size: 1.25rem;
+
+    font-weight: 600;
+
+    color: var(--color-text-primary);
+}
+
+.card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .8rem;
+
+    height: 100%;
+
+    padding: 1.5rem;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: rgba(18,25,36,.70);
+
+    backdrop-filter: blur(14px);
+}
+
+.action {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 1rem;
+
+    border-radius: 10px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    transition: .25s;
+}
+
+.action:hover {
+    background: rgba(34,211,238,.10);
+
+    transform: translateX(6px);
+}

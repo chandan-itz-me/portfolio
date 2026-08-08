@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import {
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 
 type AnimatedCounterProps = {
     end: number;
@@ -15,35 +19,95 @@ export default function AnimatedCounter({
 }: AnimatedCounterProps) {
     const [value, setValue] = useState(0);
 
-    useEffect(() => {
-        let startTime: number | null = null;
+    const [started, setStarted] =
+        useState(false);
 
-        function animate(timestamp: number) {
+    const elementRef =
+        useRef<HTMLSpanElement>(null);
+
+    useEffect(() => {
+        const observer =
+            new IntersectionObserver(
+                ([entry]) => {
+                    if (
+                        entry.isIntersecting
+                    ) {
+                        setStarted(true);
+
+                        observer.disconnect();
+                    }
+                },
+                {
+                    threshold: 0.35,
+                }
+            );
+
+        if (elementRef.current) {
+            observer.observe(
+                elementRef.current
+            );
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!started) return;
+
+        let animationId = 0;
+
+        let startTime: number | null =
+            null;
+
+        function animate(
+            timestamp: number
+        ) {
             if (!startTime) {
                 startTime = timestamp;
             }
 
-            const progress = Math.min(
-                (timestamp - startTime) / duration,
-                1
-            );
+            const linearProgress = Math.min(
+            (timestamp - startTime) /
+            duration,
+            1
+        );
 
-            const current = end * progress;
+    const progress =
+    1 -
+    Math.pow(
+        1 - linearProgress,
+        3
+    );
 
-            setValue(current);
+            setValue(end * progress);
 
             if (progress < 1) {
-                requestAnimationFrame(animate);
+                animationId =
+                    requestAnimationFrame(
+                        animate
+                    );
             }
         }
 
-        requestAnimationFrame(animate);
-    }, [end, duration]);
+        animationId =
+            requestAnimationFrame(
+                animate
+            );
+
+        return () =>
+            cancelAnimationFrame(
+                animationId
+            );
+    }, [
+        started,
+        end,
+        duration,
+    ]);
 
     return (
-        <>
+        <span ref={elementRef}>
             {value.toFixed(decimals)}
             {suffix}
-        </>
+        </span>
     );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import Container from "@/components/layout/Container";
+// import Container from "@/components/layout/Container";
+import Page from "@/components/layout/Page";  
 
 import ProfessionalHero from "@/components/professional/ProfessionalHero";
 import ProfessionalTabs, {
@@ -19,7 +20,7 @@ export default function Professional() {
 
     return (
         <section className={styles.page}>
-            <Container>
+            <Page>
                 <ProfessionalHero />
 
                 <ProfessionalTabs
@@ -39,7 +40,7 @@ export default function Professional() {
                 {activeTab === "learning" && (
                     <LearningSection />
                 )}
-            </Container>
+            </Page>
         </section>
     );
 }

@@ -10,12 +10,17 @@ export default function Navbar() {
         <header className={styles.header}>
             <Container>
                 <nav className={styles.nav}>
-                    <NavLink to="/" className={styles.logo}>
-                        <div className={styles.logoMark}>
-                                &lt;/&gt;
-                            </div>
-                            
-                        <span>Cloud Control Center</span>
+                    <NavLink
+                        to="/"
+                        className={styles.logo}
+                    >
+                        <span className={styles.logoMark}>
+                            CC
+                        </span>
+
+                        <span>
+                            Cloud Control Center
+                        </span>
                     </NavLink>
 
                     <ul className={styles.links}>

@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import { slideUpVariants } from "@/animations/slide";
+
 import styles from "./NavigationCard.module.css";
 
 type NavigationCardProps = {
@@ -16,22 +18,26 @@ export default function NavigationCard({
 }: NavigationCardProps) {
     return (
         <motion.div
-    whileHover={{
-        y: -6,
-    }}
->
-    <NavLink
-            to={to}
-            className={styles.card}
+            variants={slideUpVariants}
+            whileHover={{
+                y: -6,
+            }}
+            whileTap={{
+                scale: 0.98,
+            }}
         >
-            <h3>{title}</h3>
+            <NavLink
+                to={to}
+                className={styles.card}
+            >
+                <h3>{title}</h3>
 
-            <p>{description}</p>
+                <p>{description}</p>
 
-            <span className={styles.arrow}>
-                →
-            </span>
-        </NavLink>
-    </motion.div>
+                <span className={styles.arrow}>
+                    →
+                </span>
+            </NavLink>
+        </motion.div>
     );
 }

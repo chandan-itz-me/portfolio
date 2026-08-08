@@ -1,13 +1,13 @@
-import Container from "@/components/layout/Container";
 import ProjectGrid from "@/components/projects/ProjectGrid";
 import ProjectsHero from "@/components/projects/ProjectsHero";
+import Page from "@/components/layout/Page";
 
 export default function Projects() {
     return (
-        <Container>
+        <Page>
             <ProjectsHero />
 
             <ProjectGrid />
-        </Container>
+        </Page>
     );
 }
