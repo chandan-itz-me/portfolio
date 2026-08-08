@@ -1,4 +1,5 @@
 import styles from "./StatusCard.module.css";
+import { motion } from "framer-motion";
 
 type StatusCardProps = {
     title: string;
@@ -10,12 +11,17 @@ export default function StatusCard({
     status,
 }: StatusCardProps) {
     return (
-        <article className={styles.card}>
+        <motion.article
+        className={styles.card}
+        whileHover={{
+        y: -6,
+        }}
+        >
             <span className={styles.dot} />
 
             <h3>{title}</h3>
 
             <p>{status}</p>
-        </article>
+        </motion.article>
     );
 }

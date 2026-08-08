@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import styles from "./NavigationCard.module.css";
 
@@ -14,7 +15,12 @@ export default function NavigationCard({
     to,
 }: NavigationCardProps) {
     return (
-        <NavLink
+        <motion.div
+    whileHover={{
+        y: -6,
+    }}
+>
+    <NavLink
             to={to}
             className={styles.card}
         >
@@ -26,5 +32,6 @@ export default function NavigationCard({
                 →
             </span>
         </NavLink>
+    </motion.div>
     );
 }

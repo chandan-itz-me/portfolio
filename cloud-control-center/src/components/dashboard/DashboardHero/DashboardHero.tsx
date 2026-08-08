@@ -1,14 +1,35 @@
 import { profile } from "@/config/profile";
 
+import { motion } from "framer-motion";
+import { fadeUp } from "@/constants/animations";
+
 import styles from "./DashboardHero.module.css";
 
 export default function DashboardHero() {
     return (
-        <section className={styles.hero}>
+        <motion.section
+        className={styles.hero}
+        variants={fadeUp as any}
+        initial="hidden"
+        animate="visible"
+        >
             <div>
-                <p className={styles.badge}>
+                <motion.p
+    className={styles.badge}
+    initial={{
+        opacity: 0,
+        y: -12,
+    }}
+    animate={{
+        opacity: 1,
+        y: 0,
+    }}
+    transition={{
+        delay: 0.2,
+    }}
+>
                     ● SYSTEM STATUS : OPERATIONAL
-                </p>
+                </motion.p>
 
                 <h1 className={styles.title}>
                     Cloud Control Center
@@ -24,6 +45,6 @@ export default function DashboardHero() {
                     observability and platform engineering.
                 </p>
             </div>
-        </section>
+        </motion.section>
     );
 }
