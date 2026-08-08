@@ -6,9 +6,8 @@ import Dashboard from "@/pages/Dashboard/Dashboard";
 import Experience from "@/pages/Experience/Experience";
 import Projects from "@/pages/Projects/Projects";
 import Infrastructure from "@/pages/Infrastructure/Infrastructure";
-import Skills from "@/pages/Skills/Skills";
-import Certifications from "@/pages/Certifications/Certifications";
-import Terminal from "@/pages/Command Center/Command Center";
+import Professional from "@/pages/Professional/Professional";
+import Terminal from "@/pages/CommandCenter/CommandCenter";
 import Contact from "@/pages/Contact/Contact";
 import NotFound from "@/pages/NotFound/NotFound";
 
@@ -35,12 +34,8 @@ export const router = createBrowserRouter(
                     element: <Infrastructure />,
                 },
                 {
-                    path: "skills",
-                    element: <Skills />,
-                },
-                {
-                    path: "certifications",
-                    element: <Certifications />,
+                    path: "professional",
+                    element: <Professional />,
                 },
                 {
                     path: "terminal",

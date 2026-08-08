@@ -1,5 +1,5 @@
 import MetricCard from "./MetricCard";
-import { metrics } from "./metrics";
+import { metrics } from "../../../data/metrics";
 
 import styles from "./MetricCard.module.css";
 
