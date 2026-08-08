@@ -3,18 +3,10 @@ export const siteConfig = {
 
     shortName: "CCC",
 
-    title: "Cloud Control Center | Cloud Platform Engineer",
+    title: "Cloud Control Center | Cloud Platform & DevOps Engineer",
 
     description:
-        "Interactive cloud engineering portfolio showcasing DevOps, infrastructure automation, multi-cloud architecture, and platform engineering.",
-
-    author: "Harish",
-
-    email: "",
-
-    github: "https://github.com/chandan-itz-me",
-
-    linkedin: "",
+        "Interactive cloud engineering portfolio.",
 
     version: "1.0.0",
 } as const;

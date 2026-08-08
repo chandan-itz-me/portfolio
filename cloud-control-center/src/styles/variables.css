@@ -120,4 +120,8 @@
     /* ===== Z INDEX ===== */
     
     --z-navbar: 1000;
+
+    /* ===== NAVBAR ===== */
+    
+    --color-navbar: rgba(5, 8, 22, 0.75);
 }

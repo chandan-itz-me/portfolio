@@ -3,38 +3,40 @@
     top: 0;
     z-index: var(--z-navbar);
 
+    background: var(--color-navbar);
+
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
-    background: rgba(5, 8, 22, 0.75);
-
     border-bottom: 1px solid var(--color-border);
+
+    transition:
+        background var(--transition-normal),
+        border-color var(--transition-normal);
 }
 
 .nav {
-    height: var(--header-height);
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
+
+    height: var(--header-height);
 }
 
 .logo {
     display: flex;
-
     align-items: center;
-
-    gap: .75rem;
-
-    font-family: var(--font-heading);
-
-    font-weight: 700;
+    gap: 0.75rem;
 
     color: var(--color-text);
 
-    transition: color var(--transition-fast);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
 }
 
 .logo:hover {
@@ -42,43 +44,72 @@
 }
 
 .logoMark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 2px solid var(--color-primary);
+    border-radius: 12px;
+
+    background: transparent;
+
     color: var(--color-primary);
 
-    font-size: 1.2rem;
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    transition: all var(--transition-normal);
+}
+
+.logo:hover .logoMark {
+    background: rgba(0, 229, 255, 0.08);
+    transform: rotate(-6deg);
 }
 
 .links {
     display: flex;
-
     align-items: center;
-
     gap: 2rem;
 }
 
 .link {
     position: relative;
 
+    display: inline-flex;
+    align-items: center;
+
+    padding-block: 0.25rem;
+
     color: var(--color-text-muted);
 
-    transition: color var(--transition-fast);
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
 }
 
 .link:hover {
     color: var(--color-text);
+    transform: translateY(-1px);
 }
 
 .link::after {
     content: "";
 
     position: absolute;
-
     left: 0;
-
     bottom: -6px;
 
     width: 0;
-
     height: 2px;
+
+    border-radius: 999px;
 
     background: var(--color-primary);
 
@@ -86,6 +117,14 @@
 }
 
 .link:hover::after {
+    width: 100%;
+}
+
+.active {
+    color: var(--color-primary);
+}
+
+.active::after {
     width: 100%;
 }
 

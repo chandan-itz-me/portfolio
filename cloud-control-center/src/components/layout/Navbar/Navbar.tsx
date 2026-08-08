@@ -1,34 +1,36 @@
-import Container from "../Container/Container";
-import styles from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
 
-const navigation = [
-    "Home",
-    "Experience",
-    "Projects",
-    "Skills",
-    "Certifications",
-    "Contact",
-];
+import Container from "../Container/Container";
+import { navigation } from "@/config/navigation";
+
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
     return (
         <header className={styles.header}>
             <Container>
                 <nav className={styles.nav}>
-                    <a href="/" className={styles.logo}>
-                        <span className={styles.logoMark}>⬢</span>
+                    <NavLink to="/" className={styles.logo}>
+                        <div className={styles.logoMark}>
+                                &lt;/&gt;
+                            </div>
+                            
                         <span>Cloud Control Center</span>
-                    </a>
+                    </NavLink>
 
                     <ul className={styles.links}>
                         {navigation.map((item) => (
-                            <li key={item}>
-                                <a
-                                    href={`#${item.toLowerCase()}`}
-                                    className={styles.link}
+                            <li key={item.label}>
+                                <NavLink
+                                    to={item.path}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? `${styles.link} ${styles.active}`
+                                            : styles.link
+                                    }
                                 >
-                                    {item}
-                                </a>
+                                    {item.label}
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
