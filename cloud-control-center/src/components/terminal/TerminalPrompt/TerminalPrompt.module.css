@@ -1,0 +1,33 @@
+.prompt {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.symbol {
+    color: #00e5ff;
+
+    font-weight: 700;
+}
+
+.prompt input {
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+}
+
+.prompt input::placeholder {
+    color: #6b7280;
+}

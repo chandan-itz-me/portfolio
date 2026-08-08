@@ -1,0 +1,14 @@
+.output {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    margin-bottom: 2rem;
+}
+
+.line {
+    color: var(--color-text);
+}
+
+.input {
+    color: #00e5ff;
+}

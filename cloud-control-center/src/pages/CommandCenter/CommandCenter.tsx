@@ -1,9 +1,10 @@
-import Container from "@/components/layout/Container/Container";
+import Container from "@/components/layout/Container";
+import TerminalWindow from "@/components/terminal/TerminalWindow";
 
 export default function CommandCenter() {
     return (
         <Container>
-            <h1>Command Center</h1>
+            <TerminalWindow />
         </Container>
     );
 }
