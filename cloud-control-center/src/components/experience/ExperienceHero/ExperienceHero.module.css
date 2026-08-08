@@ -1,0 +1,27 @@
+.hero {
+    padding: 4rem 0 3rem;
+}
+
+.badge {
+    margin-bottom: 1rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-code);
+
+    letter-spacing: .08rem;
+}
+
+.title {
+    margin-bottom: 1rem;
+
+    font-size: clamp(2.8rem, 6vw, 4rem);
+}
+
+.description {
+    max-width: 760px;
+
+    color: var(--color-text-muted);
+
+    line-height: 1.8;
+}
