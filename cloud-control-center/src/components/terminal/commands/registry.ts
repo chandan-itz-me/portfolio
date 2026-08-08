@@ -1,10 +1,3 @@
-export interface Command {
-    name: string;
-    aliases?: string[];
-    description: string;
-    output: string[];
-}
-
 import about from "./about";
 import contact from "./contact";
 import experience from "./experience";
@@ -13,7 +6,7 @@ import infrastructure from "./infrastructure";
 import projects from "./projects";
 import skills from "./skills";
 
-export const commandRegistry: Command[] = [
+export const commandRegistry = [
     {
         name: "help",
         description: "Show available commands",

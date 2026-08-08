@@ -1,12 +1,13 @@
-import { commandRegistry } from "./registry";
-
 export default [
     "Available Commands",
     "",
-    ...commandRegistry.map(
-        (command) =>
-            `${command.name.padEnd(16)}${command.description}`
-    ),
+    "help             Show available commands",
+    "about            About me",
+    "experience       Professional experience",
+    "projects         Project portfolio",
+    "skills           Technical skills",
+    "infrastructure   Infrastructure expertise",
+    "contact          Contact information",
     "",
     "goto <page>",
     "open <page>",

@@ -16,12 +16,8 @@ export const navigation = [
         path: "/infrastructure",
     },
     {
-        label: "Skills",
-        path: "/skills",
-    },
-    {
-        label: "Certifications",
-        path: "/certifications",
+        label: "Professional",
+        path: "/professional",
     },
     {
         label: "Terminal",

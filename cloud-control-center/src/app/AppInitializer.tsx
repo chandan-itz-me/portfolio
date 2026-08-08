@@ -25,3 +25,15 @@ export default function AppInitializer({
 
     return children;
 }
+
+// import type { ReactNode } from "react";
+
+// type AppInitializerProps = {
+//     children: ReactNode;
+// };
+
+// export default function AppInitializer({
+//     children,
+// }: AppInitializerProps) {
+//     return children;
+// }

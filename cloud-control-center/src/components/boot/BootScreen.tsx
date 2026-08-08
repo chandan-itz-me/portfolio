@@ -27,7 +27,6 @@ export default function BootScreen({
                 ]);
 
                 index++;
-
                 return;
             }
 
@@ -61,22 +60,22 @@ export default function BootScreen({
                 </h1>
 
                 <div className={styles.logs}>
-                    {visibleLogs.map((log) => (
+                    {visibleLogs.map((log, index) => (
                         <p
-                            key={log}
+                            key={index}
                             className={styles.log}
                         >
                             {log}
                         </p>
                     ))}
 
-                    {showWelcome && (
+                    {showWelcome ? (
                         <div className={styles.welcome}>
                             <p>Welcome back,</p>
 
                             <h2>{profile.name}</h2>
                         </div>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </main>
