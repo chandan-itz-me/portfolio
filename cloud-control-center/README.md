@@ -1,32 +1,112 @@
-# React + TypeScript + Vite
+# ☁️ Cloud Control Center
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> A modern, interactive portfolio built as a Cloud Operations Dashboard.
 
-Currently, two official plugins are available:
+Cloud Control Center is a production-quality portfolio that showcases cloud engineering, infrastructure automation, DevOps workflows, and platform engineering through an immersive dashboard experience instead of a traditional portfolio website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Rather than listing technologies, the application demonstrates them through interactive visualizations, dashboards, infrastructure diagrams, and realistic cloud operations.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the Oxlint configuration
+- Modern React 19 + TypeScript application
+- Interactive Cloud Operations Dashboard
+- JARVIS-inspired startup sequence
+- Responsive design
+- Infrastructure visualizations
+- Interactive project showcase
+- DevOps pipeline simulation
+- Cloud metrics dashboard
+- Animated charts
+- Three.js powered hero section
+- GitHub Pages deployment
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+---
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## 🛠 Tech Stack
+
+### Core
+
+- React 19
+- TypeScript
+- Vite 8
+
+### UI
+
+- CSS Modules
+- CSS Variables
+- Framer Motion
+- Lucide Icons
+
+### Visualization
+
+- Three.js
+- React Three Fiber
+- Drei
+- Recharts
+
+### Routing
+
+- React Router
+
+---
+
+## 📁 Documentation
+
+| Document | Description |
+|----------|-------------|
+| PROJECT_STRUCTURE.md | Project folder structure |
+| ARCHITECTURE.md | Software architecture |
+| README.md | Project overview |
+
+---
+
+## 🚀 Development
+
+```bash
+npm install
+
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Build
+
+```bash
+npm run build
+```
+
+Preview
+
+```bash
+npm run preview
+```
+
+---
+
+## 🌐 Deployment
+
+The application is designed to be deployed using GitHub Pages.
+
+---
+
+## 📌 Roadmap
+
+- [x] Project Bootstrap
+- [ ] Design System
+- [ ] Responsive Layout
+- [ ] Navigation
+- [ ] Hero Section
+- [ ] JARVIS Boot Sequence
+- [ ] Dashboard
+- [ ] Infrastructure Visualization
+- [ ] Project Explorer
+- [ ] Experience Timeline
+- [ ] Certifications
+- [ ] Contact
+
+---
+
+## 📄 License
+
+MIT License
