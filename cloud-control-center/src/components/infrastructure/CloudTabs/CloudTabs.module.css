@@ -1,0 +1,30 @@
+.tabs {
+    display: flex;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+.tabs button {
+    padding: .75rem 1.5rem;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: var(--color-text);
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.tabs button:hover,
+.active {
+    border-color: #22c55e;
+
+    color: #22c55e;
+}
