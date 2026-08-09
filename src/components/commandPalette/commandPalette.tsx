@@ -9,7 +9,7 @@ import { fadeVariants } from "@/animations/fade";
 import type { Command } from "./commands";
 import { useCommandSearch } from "./useCommandSearch";
 import CommandItem from "./CommandItem";
-import styles from "./CommandPalette.module.css";
+import styles from "./commandPalette.module.css";
 
 type CommandPaletteProps = {
     open: boolean;

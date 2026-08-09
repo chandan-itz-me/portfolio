@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer/Footer";
 import ScrollToTop from "@/components/ScrollToTop/ScrollToTop";
 import AuroraBackground from "@/components/common/AuroraBackground/AuroraBackground";
 import ScrollProgress from "@/components/common/ScrollProgress/ScrollProgress";
-import CommandPalette from "@/components/commandPalette";
+import CommandPalette from "@/components/CommandPalette";
 import { useCommandPalette } from "@/hooks/useCommandPalette";
 
 import styles from "./MainLayout.module.css";
