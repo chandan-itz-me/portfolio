@@ -1,0 +1,13 @@
+.page {
+    min-height: calc(100vh - 72px);
+
+    padding: 2rem 0 3rem;
+}
+
+.stack {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-2xl);
+}

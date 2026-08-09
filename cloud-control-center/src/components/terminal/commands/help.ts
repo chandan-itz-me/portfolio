@@ -1,0 +1,15 @@
+export default [
+    "Available Commands",
+    "",
+    "help             Show available commands",
+    "about            About me",
+    "experience       Professional experience",
+    "projects         Project portfolio",
+    "skills           Technical skills",
+    "infrastructure   Infrastructure expertise",
+    "contact          Contact information",
+    "",
+    "goto <page>",
+    "open <page>",
+    "clear",
+];

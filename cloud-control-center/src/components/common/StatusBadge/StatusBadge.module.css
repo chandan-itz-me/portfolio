@@ -1,0 +1,41 @@
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: .35rem .8rem;
+
+    border-radius: 999px;
+
+    font-size: .8rem;
+
+    font-weight: 600;
+}
+
+.healthy,
+.active,
+.ready {
+    color: #22c55e;
+
+    background: rgba(34,197,94,.12);
+}
+
+.learning {
+    color: #38bdf8;
+
+    background: rgba(56,189,248,.12);
+}
+
+.warning {
+    color: #f59e0b;
+
+    background: rgba(245,158,11,.12);
+}
+
+.offline {
+    color: #ef4444;
+
+    background: rgba(239,68,68,.12);
+}
