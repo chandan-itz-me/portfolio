@@ -1,13 +1,13 @@
 {
-  "name": "cloud-control-center",
+  "name": "Chandan Padal",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://chandan-itz-me.github.io/cloud-control-center",
+  "homepage": "https://chandan-itz-me.github.io/portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "cp dist/index.html dist/404.html",
+    "postbuild": "shx cp dist/index.html dist/404.html",
     "lint": "oxlint",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -42,6 +42,7 @@
     "oxlint": "^1.75.0",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "shx": "^0.4.0",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"
