@@ -1,15 +1,15 @@
-import { HelmetProvider } from "react-helmet-async";
 import { RouterProvider } from "react-router-dom";
 
+import Providers from "./providers";
 import AppInitializer from "./AppInitializer";
 import { router } from "./router";
 
 export default function App() {
     return (
-        <HelmetProvider>
+        <Providers>
             <AppInitializer>
                 <RouterProvider router={router} />
             </AppInitializer>
-        </HelmetProvider>
+        </Providers>
     );
 }

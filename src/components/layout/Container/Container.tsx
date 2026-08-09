@@ -1,7 +1,9 @@
+import type { ReactNode } from "react";
+
 import styles from "./Container.module.css";
 
 type ContainerProps = {
-    children: React.ReactNode;
+    children: ReactNode;
     className?: string;
 };
 
@@ -11,13 +13,10 @@ export default function Container({
 }: ContainerProps) {
     return (
         <div
-    className={[
-        styles.container,
-        className,
-    ]
-        .filter(Boolean)
-        .join(" ")}
->
+            className={[styles.container, className]
+                .filter(Boolean)
+                .join(" ")}
+        >
             {children}
         </div>
     );

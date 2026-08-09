@@ -1,3 +1,5 @@
+import type { CareerEntry } from "@/types/career";
+
 export const career = [
     {
         id: 1,
@@ -117,4 +119,4 @@ export const career = [
             "Investigated production incidents, carried out root cause analysis, and restored services within SLA targets",
         ],
     },
-] as const;
+] as const satisfies readonly CareerEntry[];

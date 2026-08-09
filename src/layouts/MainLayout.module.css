@@ -1,0 +1,13 @@
+/*
+ * Establishes its own stacking context above the fixed
+ * AuroraBackground (which sits at z-index: -1), independent of any
+ * canvas-background-propagation edge cases with <body>. Belt and
+ * suspenders: this alone is enough for correct layering even if the
+ * negative z-index trick behaves unexpectedly on some engine.
+ */
+.content {
+
+    position: relative;
+
+    z-index: 1;
+}

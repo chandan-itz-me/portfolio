@@ -1,3 +1,5 @@
+import type { NavigationItem } from "@/types/navigation";
+
 export const navigation = [
     {
         label: "Dashboard",
@@ -27,4 +29,4 @@ export const navigation = [
         label: "Contact",
         path: "/contact",
     },
-] as const;
+] as const satisfies readonly NavigationItem[];

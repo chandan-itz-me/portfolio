@@ -1,0 +1,94 @@
+.wrapper {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.grid {
+
+    position: absolute;
+
+    inset: -1px;
+
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+
+    background-size: 64px 64px;
+
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+
+    animation: grid-pulse 8s ease-in-out infinite;
+}
+
+.blob {
+
+    position: absolute;
+
+    width: 46vw;
+
+    height: 46vw;
+
+    border-radius: 50%;
+
+    filter: blur(110px);
+
+    opacity: 0.35;
+
+    will-change: transform;
+
+    animation: aurora-drift 22s ease-in-out infinite;
+}
+
+.blobOne {
+
+    top: -10%;
+
+    left: -8%;
+
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+}
+
+.blobTwo {
+
+    bottom: -14%;
+
+    right: -10%;
+
+    background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+
+    animation-delay: -11s;
+
+    animation-direction: reverse;
+}
+
+.vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: radial-gradient(
+        ellipse 90% 70% at 50% 0%,
+        transparent 0%,
+        var(--color-background) 90%
+    );
+}
+
+@media (max-width: 720px) {
+
+    .blob {
+        width: 70vw;
+        height: 70vw;
+        filter: blur(80px);
+    }
+}

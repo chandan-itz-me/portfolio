@@ -1,3 +1,5 @@
+import type { Project } from "@/types/project";
+
 export const projects = [
     {
         id: 1,
@@ -131,4 +133,4 @@ export const projects = [
             "Client-recognized cost optimization",
         ],
     },
-] as const;
+] as const satisfies readonly Project[];

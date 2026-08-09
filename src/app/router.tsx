@@ -1,15 +1,24 @@
+import { lazy, Suspense, type ReactNode } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "@/layouts/MainLayout";
+import RouteFallback from "@/components/layout/RouteFallback/RouteFallback";
 
-import Dashboard from "@/pages/Dashboard/Dashboard";
-import Experience from "@/pages/Experience/Experience";
-import Projects from "@/pages/Projects/Projects";
-import Infrastructure from "@/pages/Infrastructure/Infrastructure";
-import Professional from "@/pages/Professional/Professional";
-import Terminal from "@/pages/CommandCenter/CommandCenter";
-import Contact from "@/pages/Contact/Contact";
-import NotFound from "@/pages/NotFound/NotFound";
+// Route-level code splitting: only the active page's chunk (and its
+// chart/animation dependencies) downloads on first paint, instead of
+// every page's code shipping in one bundle up front.
+const Dashboard = lazy(() => import("@/pages/Dashboard/Dashboard"));
+const Experience = lazy(() => import("@/pages/Experience/Experience"));
+const Projects = lazy(() => import("@/pages/Projects/Projects"));
+const Infrastructure = lazy(() => import("@/pages/Infrastructure/Infrastructure"));
+const Professional = lazy(() => import("@/pages/Professional/Professional"));
+const Terminal = lazy(() => import("@/pages/CommandCenter/CommandCenter"));
+const Contact = lazy(() => import("@/pages/Contact/Contact"));
+const NotFound = lazy(() => import("@/pages/NotFound/NotFound"));
+
+const withSuspense = (element: ReactNode) => (
+    <Suspense fallback={<RouteFallback />}>{element}</Suspense>
+);
 
 export const router = createBrowserRouter(
     [
@@ -19,37 +28,37 @@ export const router = createBrowserRouter(
             children: [
                 {
                     index: true,
-                    element: <Dashboard />,
+                    element: withSuspense(<Dashboard />),
                 },
                 {
                     path: "experience",
-                    element: <Experience />,
+                    element: withSuspense(<Experience />),
                 },
                 {
                     path: "projects",
-                    element: <Projects />,
+                    element: withSuspense(<Projects />),
                 },
                 {
                     path: "infrastructure",
-                    element: <Infrastructure />,
+                    element: withSuspense(<Infrastructure />),
                 },
                 {
                     path: "professional",
-                    element: <Professional />,
+                    element: withSuspense(<Professional />),
                 },
                 {
                     path: "terminal",
-                    element: <Terminal />,
+                    element: withSuspense(<Terminal />),
                 },
                 {
                     path: "contact",
-                    element: <Contact />,
+                    element: withSuspense(<Contact />),
                 },
             ],
         },
         {
             path: "*",
-            element: <NotFound />,
+            element: withSuspense(<NotFound />),
         },
     ],
     {

@@ -24,6 +24,11 @@
 
     --color-text-muted: #94a3b8;
 
+    /* Aliases — several components reference these names directly. */
+    --color-text-primary: var(--color-text);
+
+    --color-text-secondary: var(--color-text-muted);
+
     --color-azure: #0078d4;
 
     --color-aws: #ff9900;
@@ -124,4 +129,37 @@
     /* ===== NAVBAR ===== */
     
     --color-navbar: rgba(5, 8, 22, 0.75);
+}
+
+/*
+ * Light theme — applied by ThemeContext via [data-theme="light"] on <html>.
+ * Accent colors (primary/secondary/status/provider colors) stay the same
+ * across themes so brand identity and data-viz colors don't shift; only
+ * surface and text tones invert.
+ */
+[data-theme="light"] {
+
+    --color-background: #f5f7fb;
+
+    --color-surface: #ffffff;
+
+    --color-surface-hover: #eef1f8;
+
+    --color-border: rgba(15, 23, 42, 0.1);
+
+    --color-text: #0b1120;
+
+    --color-text-muted: #47536b;
+
+    --color-text-primary: var(--color-text);
+
+    --color-text-secondary: var(--color-text-muted);
+
+    --color-navbar: rgba(255, 255, 255, 0.75);
+
+    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+
+    --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.08);
+
+    --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
 }

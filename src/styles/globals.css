@@ -1,4 +1,5 @@
 @import "./variables.css";
+@import "./animations.css";
 
 /* ------------------------------------------------ */
 /* RESET */
@@ -15,7 +16,15 @@
 /* ------------------------------------------------ */
 
 html {
-    scroll-behavior: smooth;
+
+    color-scheme: dark;
+
+}
+
+html[data-theme="light"] {
+
+    color-scheme: light;
+
 }
 
 body {
@@ -33,6 +42,32 @@ body {
     -webkit-font-smoothing: antialiased;
 
     overflow-x: hidden;
+
+    transition:
+        background-color .4s ease,
+        color .4s ease;
+}
+
+/* ------------------------------------------------ */
+/* MOTION PREFERENCES */
+/* ------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
 }
 
 /* ------------------------------------------------ */

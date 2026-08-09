@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const SESSION_KEY = "ccc_boot_completed";
 
@@ -7,15 +7,19 @@ export function useBoot() {
         return sessionStorage.getItem(SESSION_KEY) === "true";
     });
 
-    const finishBoot = () => {
+    // Stable identities: BootScreen's boot timeline takes `finishBoot`
+    // as an effect dependency, so a new function reference on every
+    // render (the previous behavior) would restart that timeline
+    // whenever AppInitializer re-rendered for any unrelated reason.
+    const finishBoot = useCallback(() => {
         sessionStorage.setItem(SESSION_KEY, "true");
         setCompleted(true);
-    };
+    }, []);
 
-    const resetBoot = () => {
+    const resetBoot = useCallback(() => {
         sessionStorage.removeItem(SESSION_KEY);
         setCompleted(false);
-    };
+    }, []);
 
     useEffect(() => {
         const handleStorage = () => {

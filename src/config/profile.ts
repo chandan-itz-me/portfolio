@@ -1,3 +1,5 @@
+import type { Profile } from "@/types/profile";
+
 export const profile = {
     name: "Chandan Padal",
 
@@ -16,4 +18,4 @@ export const profile = {
     phone: "+91 8093323137",
 
     resume: "/resume.pdf",
-} as const;
+} as const satisfies Profile;

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import type { Dispatch, FormEvent, KeyboardEvent as ReactKeyboardEvent, SetStateAction } from "react";
 
 import styles from "./TerminalPrompt.module.css";
 
@@ -9,9 +10,7 @@ type Props = {
 
     historyIndex: number;
 
-    setHistoryIndex: React.Dispatch<
-        React.SetStateAction<number>
-    >;
+    setHistoryIndex: Dispatch<SetStateAction<number>>;
 
     commands: string[];
 };
@@ -29,7 +28,7 @@ export default function TerminalPrompt({
         useRef<HTMLInputElement>(null);
 
     function submit(
-        e: React.FormEvent
+        e: FormEvent
     ) {
         e.preventDefault();
 
@@ -41,7 +40,7 @@ export default function TerminalPrompt({
     }
 
     function handleKeyDown(
-        e: React.KeyboardEvent<HTMLInputElement>
+        e: ReactKeyboardEvent<HTMLInputElement>
     ) {
         if (e.key === "ArrowUp") {
             e.preventDefault();
