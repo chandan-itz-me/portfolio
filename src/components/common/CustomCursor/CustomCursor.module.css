@@ -1,0 +1,107 @@
+.dot {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 8px;
+
+    height: 8px;
+
+    margin: -4px 0 0 -4px;
+
+    border-radius: 50%;
+
+    background: var(--color-primary);
+
+    z-index: 2000;
+
+    pointer-events: none;
+
+    transition: opacity .3s ease;
+
+    will-change: transform;
+}
+
+.orb {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 36px;
+
+    height: 36px;
+
+    margin: -18px 0 0 -18px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        var(--color-primary) 0%,
+        var(--color-secondary) 45%,
+        transparent 75%
+    );
+
+    filter: blur(6px);
+
+    mix-blend-mode: screen;
+
+    opacity: .8;
+
+    z-index: 1999;
+
+    pointer-events: none;
+
+    transition:
+        width .3s ease,
+        height .3s ease,
+        margin .3s ease,
+        opacity .3s ease;
+
+    will-change: transform;
+}
+
+.orbActive {
+
+    width: 64px;
+
+    height: 64px;
+
+    margin: -32px 0 0 -32px;
+
+    opacity: 1;
+}
+
+.orbPressed {
+
+    width: 26px;
+
+    height: 26px;
+
+    margin: -13px 0 0 -13px;
+}
+
+@media (pointer: fine) {
+
+    .dot,
+    .orb {
+        display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .orb {
+        transition: opacity .3s ease;
+    }
+}

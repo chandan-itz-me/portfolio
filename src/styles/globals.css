@@ -138,6 +138,17 @@ p {
 
 /* ------------------------------------------------ */
 
+/* CustomCursor hides the native pointer on fine-pointer devices; keep
+   the text-entry cursor visible for typing feedback. */
+input,
+textarea,
+[contenteditable="true"] {
+
+    cursor: text;
+}
+
+/* ------------------------------------------------ */
+
 #root {
 
     min-height: 100vh;
