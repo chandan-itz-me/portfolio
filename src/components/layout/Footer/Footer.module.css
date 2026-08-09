@@ -61,29 +61,6 @@
     border-color: rgba(0, 229, 255, 0.35);
 }
 
-.nav {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: .6rem;
-}
-
-.navLink {
-
-    color: var(--color-text-muted);
-
-    font-size: .9rem;
-
-    transition: color .2s ease;
-}
-
-.navLink:hover {
-
-    color: var(--color-primary);
-}
-
 .backToTopWrapper {
 
     margin-top: .5rem;

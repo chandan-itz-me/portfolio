@@ -1,0 +1,246 @@
+.section {
+}
+
+.grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-areas:
+        "kpi velocity issues"
+        "error velocity issues"
+        "error requests coverage"
+        "status requests coverage";
+
+    gap: 1.5rem;
+}
+
+.cardTitle {
+    margin-bottom: 1rem;
+
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    color: var(--color-text-primary);
+}
+
+.cardSubtitle {
+    margin-top: -.65rem;
+    margin-bottom: 1rem;
+
+    font-size: .8rem;
+
+    color: var(--color-text-secondary);
+}
+
+.chartArea {
+    height: 220px;
+}
+
+/* ----- KPI card ----- */
+
+.kpiCard {
+    grid-area: kpi;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.1rem;
+
+    justify-content: center;
+}
+
+.kpiRow {
+    display: flex;
+    align-items: center;
+
+    gap: .9rem;
+}
+
+.kpiSwatch {
+    flex-shrink: 0;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 8px;
+}
+
+.kpiText {
+    display: flex;
+    flex-direction: column;
+}
+
+.kpiValue {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.kpiLabel {
+    font-size: .85rem;
+
+    color: var(--color-text-secondary);
+}
+
+/* ----- Sprint velocity / issues per day ----- */
+
+.velocityCard {
+    grid-area: velocity;
+}
+
+.issuesCard {
+    grid-area: issues;
+}
+
+/* ----- Error rate ----- */
+
+.errorCard {
+    grid-area: error;
+}
+
+.errorList {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.1rem;
+}
+
+.errorTop {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: .5rem;
+
+    font-size: .9rem;
+
+    color: var(--color-text-primary);
+}
+
+.errorTrack {
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .08);
+}
+
+.errorFill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    transition: width .9s ease;
+}
+
+/* ----- Requests & errors / coverage ----- */
+
+.requestsCard {
+    grid-area: requests;
+}
+
+.coverageCard {
+    grid-area: coverage;
+}
+
+/* ----- Incident status donut ----- */
+
+.statusCard {
+    grid-area: status;
+}
+
+.statusBody {
+    display: flex;
+    align-items: center;
+
+    gap: 1.25rem;
+}
+
+.donutWrap {
+    position: relative;
+
+    width: 140px;
+    height: 140px;
+
+    flex-shrink: 0;
+}
+
+.donutCenter {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donutValue {
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    color: var(--color-text-primary);
+}
+
+.donutLabel {
+    max-width: 80px;
+
+    font-size: .7rem;
+    text-align: center;
+
+    color: var(--color-text-secondary);
+}
+
+.statusLegend {
+    display: flex;
+    flex-direction: column;
+
+    gap: .65rem;
+
+    list-style: none;
+}
+
+.statusLegend li {
+    display: flex;
+    align-items: center;
+
+    gap: .55rem;
+
+    font-size: .85rem;
+
+    color: var(--color-text-primary);
+}
+
+.legendDot {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+}
+
+.legendLabel {
+    flex: 1;
+
+    color: var(--color-text-secondary);
+}
+
+.legendValue {
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "kpi"
+            "velocity"
+            "issues"
+            "error"
+            "requests"
+            "coverage"
+            "status";
+    }
+}

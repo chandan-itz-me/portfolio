@@ -1,9 +1,7 @@
 import { ArrowUp, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
 
 import Container from "../Container/Container";
 import { socials } from "@/config/socials";
-import { navigation } from "@/config/navigation";
 import MagneticButton from "@/components/ui/MagneticButton/MagneticButton";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
 
@@ -58,21 +56,6 @@ export default function Footer() {
                             </a>
                         </div>
                     </div>
-
-                    <nav
-                        className={styles.nav}
-                        aria-label="Footer"
-                    >
-                        {navigation.map((item) => (
-                            <Link
-                                key={item.label}
-                                to={item.path}
-                                className={styles.navLink}
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
-                    </nav>
 
                     <div className={styles.right}>
                         <p>© {year} Chandan Padal. All rights reserved.</p>

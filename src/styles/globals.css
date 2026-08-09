@@ -149,7 +149,7 @@ p {
  * Intentionally no blanket `section { padding-block }` rule here.
  * A tag-selector rule previously applied --section-padding (6rem) to
  * the top AND bottom of every <section> element site-wide — including
- * grid wrappers like Dashboard's .metricsGrid/.operationsGrid that
+ * grid wrappers like Dashboard's .operationsGrid that
  * define no padding of their own. Stacked with Page's .stack gap
  * (--space-2xl, 4rem) between siblings, adjacent sections ended up
  * with 200px+ of empty space between them. Vertical rhythm between
