@@ -21,7 +21,7 @@ export default function Footer() {
 
                     <div className={styles.right}>
                         <p>
-                            © {year} Harish. All rights reserved.
+                            © {year} Chandan Padal. All rights reserved.
                         </p>
 
                         <p>

@@ -1,10 +1,53 @@
 export const dashboard = {
-    overview: {
-        projects: 6,
-        experience: "5+ Years",
-        infrastructure: 42,
-        status: "Operational",
-    },
+    summary: [
+        {
+            label: "Experience",
+            value: "6+",
+            suffix: "Years",
+            status: null,
+        },
+        {
+            label: "Clients",
+            value: "8",
+            suffix: null,
+            status: null,
+        },
+        {
+            label: "Certifications",
+            value: "5",
+            suffix: null,
+            status: null,
+        },
+        {
+            label: "Status",
+            value: "Operational",
+            suffix: null,
+            status: "Healthy",
+        },
+    ],
+
+    metrics: [
+        {
+            label: "Production Availability",
+            value: 99.9,
+            suffix: "%",
+        },
+        {
+            label: "CI/CD Pipelines Built",
+            value: 150,
+            suffix: "+",
+        },
+        {
+            label: "Cloud Resources Managed",
+            value: 300,
+            suffix: "+",
+        },
+        {
+            label: "Tools & Technologies",
+            value: 30,
+            suffix: "+",
+        },
+    ],
 
     health: [
         {
@@ -32,41 +75,41 @@ export const dashboard = {
     cloudProviders: [
         {
             provider: "AWS",
-            services: 18,
+            services: 30,
             status: "Healthy",
         },
         {
             provider: "Azure",
-            services: 14,
+            services: 50,
             status: "Healthy",
         },
         {
             provider: "Google Cloud",
-            services: 6,
+            services: 10,
             status: "Learning",
         },
     ],
 
     activity: [
         {
-            time: "11:42",
-            title: "Terraform modules updated",
+            title: "Migration of Production Applications to AWS",
+            category: "Cloud Migration",
         },
         {
-            time: "11:18",
-            title: "Azure DevOps pipeline completed",
+            title: "Azure Disaster Recovery Implementation",
+            category: "Business Continuity",
         },
         {
-            time: "10:51",
-            title: "CloudWatch dashboard configured",
+            title: "Infrastructure Vulnerability Assessment",
+            category: "Security",
         },
         {
-            time: "09:37",
-            title: "Infrastructure documentation updated",
+            title: "Terraform Module Standardization",
+            category: "Infrastructure as Code",
         },
         {
-            time: "08:54",
-            title: "Portfolio deployment completed",
+            title: "Multi-Stage CI/CD Pipeline Optimization",
+            category: "DevOps",
         },
     ],
 } as const;

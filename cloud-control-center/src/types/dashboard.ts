@@ -1,7 +1,7 @@
 export interface DashboardOverview {
-    projects: number;
     experience: string;
-    infrastructure: number;
+    clients: string;
+    infrastructure: string;
     status: string;
 }
 
@@ -12,12 +12,12 @@ export interface HealthMetric {
 
 export interface CloudProviderStatus {
     provider: string;
-    services: number;
+    services: string;
     status: string;
 }
 
 export interface ActivityItem {
-    time: string;
+    category: string;
     title: string;
 }
 

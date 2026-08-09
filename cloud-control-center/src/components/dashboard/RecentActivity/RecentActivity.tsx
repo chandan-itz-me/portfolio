@@ -12,11 +12,11 @@ export default function RecentActivity() {
             <div className={styles.card}>
                 {dashboard.activity.map((activity) => (
                     <article
-                        key={`${activity.time}-${activity.title}`}
+                        key={`${activity.category}-${activity.title}`}
                         className={styles.item}
                     >
-                        <div className={styles.time}>
-                            {activity.time}
+                        <div className={styles.category}>
+                            {activity.category}
                         </div>
 
                         <div className={styles.content}>

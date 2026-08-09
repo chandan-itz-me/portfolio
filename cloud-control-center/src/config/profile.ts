@@ -1,15 +1,19 @@
 export const profile = {
-    name: "Chandan",
+    name: "Chandan Padal",
 
-    title: "Cloud Platform & DevOps Engineer",
+    title: "DevOps & Multi-Cloud Engineer",
 
-    location: "India",
+    tagline: "Cloud Platform & DevOps Engineer",
+
+    location: "Bhubaneswar, Odisha, India",
 
     github: "https://github.com/chandan-itz-me",
 
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/chandan-itz-me/",
 
-    email: "",
+    email: "chandan.itzme@gmail.com",
+
+    phone: "+91 8093323137",
 
     resume: "/resume.pdf",
 } as const;

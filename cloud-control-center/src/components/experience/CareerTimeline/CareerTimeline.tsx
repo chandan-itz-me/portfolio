@@ -45,6 +45,17 @@ export default function CareerTimeline() {
                             {job.summary}
                         </p>
 
+                        <div className={styles.clients}>
+                            {job.clients.map((client) => (
+                                <span
+                                    key={client}
+                                    className={styles.clientBadge}
+                                >
+                                    {client}
+                                </span>
+                            ))}
+                        </div>
+
                         <div className={styles.techGrid}>
                             {job.technologies.map((tech) => (
                                 <span

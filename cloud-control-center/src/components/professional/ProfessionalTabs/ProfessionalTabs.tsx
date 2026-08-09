@@ -23,7 +23,7 @@ const tabs = [
     },
     {
         id: "learning",
-        label: "Learning",
+        label: "Education",
     },
 ] as const;
 

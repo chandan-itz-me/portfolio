@@ -3,8 +3,6 @@
     flex-direction: column;
 
     gap: 2rem;
-
-    margin-bottom: 5rem;
 }
 
 .card {
@@ -53,6 +51,34 @@
     color: var(--color-text-muted);
 
     line-height: 1.8;
+}
+
+.clients {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .6rem;
+
+    margin-bottom: 1.5rem;
+}
+
+.clientBadge {
+    padding: .4rem .9rem;
+
+    border: 1px solid rgba(0, 229, 255, .25);
+
+    border-radius: 999px;
+
+    background: rgba(0, 229, 255, .08);
+
+    color: var(--color-primary);
+
+    font-size: .8rem;
+
+    font-weight: 600;
+
+    letter-spacing: .02em;
 }
 
 .techGrid {

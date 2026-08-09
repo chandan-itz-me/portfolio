@@ -27,7 +27,9 @@ export default function Page({
             {fluid ? (
                 children
             ) : (
-                <Container>{children}</Container>
+                <Container>
+                    <div className={styles.stack}>{children}</div>
+                </Container>
             )}
         </motion.main>
     );

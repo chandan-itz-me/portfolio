@@ -27,11 +27,11 @@
 }
 
 .item {
-    display: grid;
+    display: flex;
 
-    grid-template-columns: 70px 1fr;
+    flex-direction: column;
 
-    gap: 1rem;
+    gap: .35rem;
 
     padding: .9rem 0;
 }
@@ -40,10 +40,16 @@
     border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
-.time {
+.category {
     color: var(--color-text-secondary);
 
-    font-size: .85rem;
+    font-size: .7rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: .04em;
 }
 
 .content {

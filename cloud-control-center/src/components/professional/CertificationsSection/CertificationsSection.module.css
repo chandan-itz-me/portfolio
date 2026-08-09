@@ -1,5 +1,5 @@
 .section {
-    margin: 4rem 0;
+    margin: 0;
 }
 
 .heading {
@@ -58,9 +58,7 @@
     color: var(--color-text-muted);
 }
 
-.progress,
-.planned,
-.future {
+.earned {
     padding: .35rem .85rem;
 
     border-radius: 999px;
@@ -68,24 +66,12 @@
     font-size: .75rem;
 
     font-weight: 600;
-}
 
-.progress {
     background: rgba(34,197,94,.15);
 
     color: #22c55e;
-}
 
-.planned {
-    background: rgba(245,158,11,.15);
-
-    color: #f59e0b;
-}
-
-.future {
-    background: rgba(59,130,246,.15);
-
-    color: #3b82f6;
+    white-space: nowrap;
 }
 
 .year {

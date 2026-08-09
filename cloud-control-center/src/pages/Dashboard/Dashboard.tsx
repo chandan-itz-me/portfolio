@@ -1,14 +1,16 @@
-import DashboardHero from "@/components/dashboard/DashboardHero/DashboardHero";
-import MetricsGrid from "@/components/dashboard/Metrics/MetricsGrid";
-import NavigationCard from "@/components/dashboard/NavigationCard/NavigationCard";
-
+import DashboardHero from "@/components/dashboard/DashboardHero";
 import OperationsOverview from "@/components/dashboard/OperationsOverview";
+import ExploreSection from "@/components/dashboard/ExploreSection";
 import InfrastructureHealth from "@/components/dashboard/InfrastructureHealth";
 import CloudStatus from "@/components/dashboard/CloudStatus";
 import RecentActivity from "@/components/dashboard/RecentActivity";
-import QuickActions from "@/components/dashboard/QuickActions";
 
 import Page from "@/components/layout/Page";
+
+import { dashboard } from "@/data/dashboard";
+
+import Card from "@/components/common/Card";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 import styles from "./Dashboard.module.css";
 
@@ -17,9 +19,29 @@ export default function Dashboard() {
         <Page>
             <DashboardHero />
 
+            <ExploreSection />
+
             <OperationsOverview />
 
-            <MetricsGrid />
+            <section className={styles.metricsGrid}>
+                {dashboard.metrics.map((metric) => (
+                    <Card key={metric.label}>
+                        <div className={styles.metricValue}>
+                            <AnimatedCounter
+                                end={metric.value}
+                                suffix={metric.suffix}
+                                decimals={
+                                    metric.value % 1 !== 0 ? 1 : 0
+                                }
+                            />
+                        </div>
+
+                        <div className={styles.metricLabel}>
+                            {metric.label}
+                        </div>
+                    </Card>
+                ))}
+            </section>
 
             <section className={styles.operationsGrid}>
                 <InfrastructureHealth />
@@ -29,52 +51,6 @@ export default function Dashboard() {
 
             <section className={styles.bottomGrid}>
                 <RecentActivity />
-
-                <QuickActions />
-            </section>
-
-            <section>
-                <h2 className={styles.heading}>
-                    Explore
-                </h2>
-
-                <div className={styles.navigationGrid}>
-                    <NavigationCard
-                        title="Experience"
-                        description="Professional journey and cloud engineering experience."
-                        to="/experience"
-                    />
-
-                    <NavigationCard
-                        title="Projects"
-                        description="Production infrastructure and DevOps implementations."
-                        to="/projects"
-                    />
-
-                    <NavigationCard
-                        title="Infrastructure"
-                        description="Architecture diagrams and cloud platforms."
-                        to="/infrastructure"
-                    />
-
-                    <NavigationCard
-                        title="Professional"
-                        description="Skills, certifications and continuous learning."
-                        to="/professional"
-                    />
-
-                    <NavigationCard
-                        title="Command Center"
-                        description="Interactive terminal and developer tools."
-                        to="/terminal"
-                    />
-
-                    <NavigationCard
-                        title="Contact"
-                        description="Get in touch and connect with me."
-                        to="/contact"
-                    />
-                </div>
             </section>
         </Page>
     );

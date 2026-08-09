@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import Card from "@/components/common/Card";
 import SectionHeader from "@/components/common/SectionHeader";
 
@@ -31,71 +30,34 @@ export default function OperationsOverview() {
                     amount: 0.25,
                 }}
             >
-                <motion.article variants={staggerItem}>
-                    <Card>
-                        <span className={styles.label}>
-                            Projects
-                        </span>
+                {dashboard.summary.map((item) => (
+                    <motion.article
+                        key={item.label}
+                        variants={staggerItem}
+                    >
+                        <Card>
+                            <span className={styles.label}>
+                                {item.label.toUpperCase()}
+                            </span>
 
-                        <div className={styles.value}>
-                            <AnimatedCounter
-                                end={
-                                    dashboard.overview.projects
-                                }
-                            />
-                        </div>
-                    </Card>
-                </motion.article>
+                            <div
+                                className={`${styles.value} ${
+                                    item.status
+                                        ? styles.status
+                                        : ""
+                                }`}
+                            >
+                                {item.status && "● "}
 
-                <motion.article variants={staggerItem}>
-                    <Card>
-                        <span className={styles.label}>
-                            Experience
-                        </span>
+                                {item.value}
 
-                        <div className={styles.value}>
-                            {
-                                dashboard.overview
-                                    .experience
-                            }
-                        </div>
-                    </Card>
-                </motion.article>
-
-                <motion.article variants={staggerItem}>
-                    <Card>
-                        <span className={styles.label}>
-                            Infrastructure
-                        </span>
-
-                        <div className={styles.value}>
-                            <AnimatedCounter
-                                end={
-                                    dashboard.overview
-                                        .infrastructure
-                                }
-                            />
-                        </div>
-                    </Card>
-                </motion.article>
-
-                <motion.article variants={staggerItem}>
-                    <Card>
-                        <span className={styles.label}>
-                            Status
-                        </span>
-
-                        <div
-                            className={`${styles.value} ${styles.status}`}
-                        >
-                            ●{" "}
-                            {
-                                dashboard.overview
-                                    .status
-                            }
-                        </div>
-                    </Card>
-                </motion.article>
+                                {item.suffix
+                                    ? ` ${item.suffix}`
+                                    : ""}
+                            </div>
+                        </Card>
+                    </motion.article>
+                ))}
             </motion.div>
         </section>
     );

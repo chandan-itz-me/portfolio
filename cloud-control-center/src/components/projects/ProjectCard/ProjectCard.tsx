@@ -58,10 +58,6 @@ export default function ProjectCard({
                     ))}
                 </div>
             </div>
-
-            <button className={styles.button}>
-                View Architecture →
-            </button>
         </article>
     );
 }
