@@ -1,0 +1,52 @@
+.metricsGrid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1.5rem;
+}
+
+.metricValue {
+    margin-bottom: .75rem;
+
+    font-size: 2.5rem;
+
+    font-weight: 700;
+
+    color: var(--color-primary);
+}
+
+.metricLabel {
+    color: var(--color-text-secondary);
+
+    line-height: 1.5;
+}
+
+.operationsGrid {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 2rem;
+}
+
+.bottomGrid {
+}
+
+@media (max-width: 1024px) {
+
+    .metricsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .operationsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .metricsGrid {
+        grid-template-columns: 1fr;
+    }
+}
