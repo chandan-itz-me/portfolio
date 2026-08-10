@@ -20,6 +20,12 @@
     border-color: var(--color-primary);
 }
 
+/* Light theme: warm accent on hover */
+[data-theme="light"] .card:hover {
+    border-color: var(--color-accent-warm);
+    box-shadow: var(--shadow-md);
+}
+
 .dot {
     width: 10px;
     height: 10px;

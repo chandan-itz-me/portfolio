@@ -34,6 +34,12 @@
     transform: translateY(-4px);
 }
 
+/* Light theme: warm accent on hover */
+[data-theme="light"] .card:hover {
+    border-color: var(--color-accent-warm);
+    box-shadow: 0 8px 24px var(--color-accent-warm-glow);
+}
+
 .header {
     display: flex;
 

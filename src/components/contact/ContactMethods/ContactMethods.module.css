@@ -26,6 +26,18 @@
     box-shadow: 0 10px 30px rgba(34, 211, 238, 0.12);
 }
 
+/* Light theme: warm, soft card styling */
+[data-theme="light"] .card {
+    border: 1px solid rgba(43, 36, 22, 0.12);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .card:hover {
+    border-color: rgba(232, 166, 8, 0.3);
+    box-shadow: 0 10px 30px rgba(232, 166, 8, 0.1);
+}
+
 .link {
     display: flex;
 

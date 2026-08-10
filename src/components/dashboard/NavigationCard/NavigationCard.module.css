@@ -38,6 +38,20 @@
         0 0 18px rgba(34,211,238,.08);
 }
 
+/* Light theme: warm card styling */
+[data-theme="light"] .card {
+    border: 1px solid rgba(43, 36, 22, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .card:hover {
+    background: rgba(245, 242, 237, 0.7);
+    border-color: rgba(232, 166, 8, 0.3);
+    box-shadow:
+        0 18px 45px rgba(26, 24, 20, 0.1),
+        0 0 18px rgba(232, 166, 8, 0.08);
+}
+
 .card:focus-visible {
 
     outline: 2px solid var(--color-primary);

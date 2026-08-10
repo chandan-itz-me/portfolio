@@ -126,6 +126,11 @@
     background: rgba(255, 255, 255, .08);
 }
 
+/* Light theme: softer progress bar */
+[data-theme="light"] .barTrack {
+    background: rgba(43, 36, 22, 0.1);
+}
+
 .errorFill {
     height: 100%;
 

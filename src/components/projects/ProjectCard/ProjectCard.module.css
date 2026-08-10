@@ -19,6 +19,12 @@
     border-color: var(--color-primary);
 }
 
+/* Light theme: warm accent on hover */
+[data-theme="light"] .card:hover {
+    border-color: var(--color-accent-warm);
+    box-shadow: 0 12px 32px var(--color-accent-warm-glow);
+}
+
 .provider {
     display: inline-block;
 
@@ -83,6 +89,12 @@
     color: var(--color-primary);
 }
 
+/* Light theme: warm accent for badges */
+[data-theme="light"] .badge:hover {
+    border-color: var(--color-accent-warm);
+    color: var(--color-accent-warm);
+}
+
 .impact {
     display: flex;
 
@@ -123,4 +135,15 @@
     background: var(--color-primary);
 
     color: #000;
+}
+
+/* Light theme: warm accent for button */
+[data-theme="light"] .button {
+    border-color: var(--color-accent-warm);
+    color: var(--color-accent-warm);
+}
+
+[data-theme="light"] .button:hover {
+    background: var(--color-accent-warm);
+    color: #fff;
 }

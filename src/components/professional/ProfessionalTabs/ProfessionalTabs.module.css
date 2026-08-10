@@ -34,6 +34,11 @@
     transition: color .25s ease;
 }
 
+/* Light theme: soft background for inactive buttons */
+[data-theme="light"] .button {
+    background: rgba(232, 166, 8, 0.04);
+}
+
 .button span {
     position: relative;
 
@@ -49,14 +54,24 @@
 
     background: linear-gradient(
         135deg,
-        #00e5ff,
-        #0099ff
+        #D97706,
+        #F59E0B
     );
 
     box-shadow:
-        0 0 20px rgba(0,229,255,.25);
+        0 0 20px rgba(217,119,6,.25);
 
     z-index: 1;
+}
+
+/* Light theme: warm active button background */
+[data-theme="light"] .active {
+    background: linear-gradient(
+        135deg,
+        #D97706,
+        #F59E0B
+    );
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.3);
 }
 
 .activeText {

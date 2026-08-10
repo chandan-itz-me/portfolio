@@ -12,3 +12,8 @@
 .input {
     color: #00e5ff;
 }
+
+/* Light theme: warm orange terminal input */
+[data-theme="light"] .input {
+    color: #D97706;
+}

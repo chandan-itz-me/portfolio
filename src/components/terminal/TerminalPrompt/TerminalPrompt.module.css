@@ -12,6 +12,11 @@
     font-weight: 700;
 }
 
+/* Light theme: warm orange prompt symbol */
+[data-theme="light"] .symbol {
+    color: #D97706;
+}
+
 .prompt input {
     flex: 1;
 

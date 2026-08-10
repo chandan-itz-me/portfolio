@@ -48,6 +48,76 @@ body {
         color .4s ease;
 }
 
+/* ===== FOCUS & SELECTION ===== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Light theme: warm accent for focus states */
+[data-theme="light"] a:focus-visible,
+[data-theme="light"] button:focus-visible,
+[data-theme="light"] input:focus-visible {
+    outline: 2px solid var(--color-accent-warm);
+}
+
+::selection {
+    background: rgba(0, 229, 255, 0.2);
+    color: var(--color-text);
+}
+
+/* Light theme: warm selection color */
+[data-theme="light"] ::selection {
+    background: var(--color-accent-warm-muted);
+    color: var(--color-text);
+}
+
+::-moz-selection {
+    background: rgba(0, 229, 255, 0.2);
+    color: var(--color-text);
+}
+
+[data-theme="light"] ::-moz-selection {
+    background: var(--color-accent-warm-muted);
+    color: var(--color-text);
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 229, 255, 0.5);
+}
+
+/* Light theme: warm scrollbar colors */
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background: rgba(232, 166, 8, 0.05);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(232, 166, 8, 0.3);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(232, 166, 8, 0.5);
+}
+
 /* ------------------------------------------------ */
 /* MOTION PREFERENCES */
 /* ------------------------------------------------ */

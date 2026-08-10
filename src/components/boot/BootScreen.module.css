@@ -164,6 +164,11 @@
     background: #000000;
 }
 
+/* Light theme: warm terminal text */
+[data-theme="light"] .terminalContent {
+    color: #D97706;
+}
+
 .prompt {
     color: #1e88ff;
     margin-bottom: 0.3rem;
@@ -171,6 +176,11 @@
 
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+/* Light theme: warm prompt text */
+[data-theme="light"] .prompt {
+    color: #D97706;
 }
 
 .output {
@@ -181,6 +191,11 @@
 
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+/* Light theme: warm output text */
+[data-theme="light"] .output {
+    color: #D97706;
 }
 
 .logLine {

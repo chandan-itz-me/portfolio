@@ -17,6 +17,12 @@
         border-color .3s ease;
 }
 
+/* Light theme: warm navbar styling */
+[data-theme="light"] .header {
+    background: rgba(254, 253, 251, 0.85);
+    border-bottom: 1px solid rgba(43, 36, 22, 0.12);
+}
+
 .nav {
     display: flex;
 
@@ -69,9 +75,9 @@
 
     border-radius: 12px;
 
-    border: 2px solid rgba(34,211,238,.35);
+    border: 2px solid rgba(217, 119, 6, .35);
 
-    background: rgba(34,211,238,.05);
+    background: rgba(217, 119, 6, .05);
 
     color: var(--color-primary);
 
@@ -82,18 +88,31 @@
     transition:
         transform .3s ease,
         background .3s ease,
-        border-color .3s ease;
-
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 .logo:hover .logoMark {
 
     transform: rotate(-6deg) scale(1.05);
 
-    background: rgba(34,211,238,.12);
+    background: rgba(217, 119, 6, .12);
 
-    border-color: rgba(34,211,238,.55);
+    border-color: rgba(217, 119, 6, .55);
 
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.2);
+}
+
+/* Light theme: warm accent styling */
+[data-theme="light"] .logoMark {
+    border-color: rgba(217, 119, 6, .25);
+    background: rgba(217, 119, 6, .08);
+}
+
+[data-theme="light"] .logo:hover .logoMark {
+    border-color: rgba(217, 119, 6, .5);
+    background: rgba(217, 119, 6, .15);
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.15);
 }
 
 /* ---------------------------------- */
@@ -229,7 +248,13 @@
 
     color: var(--color-primary);
 
-    border-color: rgba(0, 229, 255, 0.35);
+    border-color: rgba(217, 119, 6, 0.35);
+}
+
+/* Light theme: warm accent on hover */
+[data-theme="light"] .iconButton:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary-glow);
 }
 
 .kbd {

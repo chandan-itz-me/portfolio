@@ -30,6 +30,12 @@
     transform: translateY(-4px);
 }
 
+/* Light theme: warm accent on hover */
+[data-theme="light"] .card:hover {
+    border-color: var(--color-accent-warm);
+    box-shadow: 0 8px 24px var(--color-accent-warm-glow);
+}
+
 .category{
     margin-top:.75rem;
 
@@ -44,4 +50,10 @@
     background:rgba(34,197,94,.08);
 
     transform:translateY(-4px);
+}
+
+/* Light theme: warm accent for active state */
+[data-theme="light"] .active {
+    border-color: var(--color-accent-warm);
+    background: var(--color-accent-warm-muted);
 }

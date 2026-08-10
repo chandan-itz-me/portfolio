@@ -137,33 +137,93 @@
 
 /*
  * Light theme — applied by ThemeContext via [data-theme="light"] on <html>.
+ * Warm "morning" palette with sunrise/daybreak colors: soft cream backgrounds,
+ * warm golden accents, coral/peach secondary, and earthy text colors.
  * Accent colors (primary/secondary/status/provider colors) stay the same
  * across themes so brand identity and data-viz colors don't shift; only
  * surface and text tones invert.
  */
 [data-theme="light"] {
 
-    --color-background: #f5f7fb;
+    /* === BACKGROUNDS === */
+    /* Warm cream/ivory background with subtle gradient potential */
+    --color-background: #faf8f4;
 
-    --color-surface: #ffffff;
+    /* Clean white surface with warm undertone for cards/sections */
+    --color-surface: #fefdfb;
 
-    --color-surface-hover: #eef1f8;
+    /* Subtle warm gray for hover states */
+    --color-surface-hover: #f5f2ed;
 
-    --color-border: rgba(15, 23, 42, 0.1);
+    /* Darker warm surface for elevated/pressed states */
+    --color-surface-active: #ede9e1;
 
-    --color-text: #0b1120;
+    /* === BORDERS === */
+    /* Warm brown border - subtle (default) */
+    --color-border: rgba(43, 36, 22, 0.08);
 
-    --color-text-muted: #47536b;
+    /* Stronger border for more prominent division */
+    --color-border-strong: rgba(43, 36, 22, 0.16);
+
+    /* Weakest border for very subtle lines */
+    --color-border-weak: rgba(43, 36, 22, 0.04);
+
+    /* === TEXT === */
+    /* Deep warm brown/charcoal for primary text */
+    --color-text: #1a1814;
+
+    /* Warm gray for secondary/muted text */
+    --color-text-muted: #6b6b5e;
+
+    /* Light text for use over dark backgrounds within light theme */
+    --color-text-inverted: #fefdfb;
 
     --color-text-primary: var(--color-text);
 
     --color-text-secondary: var(--color-text-muted);
 
-    --color-navbar: rgba(255, 255, 255, 0.75);
+    /* === INTERACTIVE ACCENTS === */
+    /* Warm orange as primary interactive color (replaces cyan #00e5ff) */
+    --color-primary: #D97706;
+    --color-primary-muted: rgba(217, 119, 6, 0.12);
+    --color-primary-glow: rgba(217, 119, 6, 0.2);
 
-    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+    /* Warm amber as secondary color (replaces blue #38bdf8) */
+    --color-secondary: #F59E0B;
+    --color-secondary-muted: rgba(245, 158, 11, 0.12);
+    --color-secondary-glow: rgba(245, 158, 11, 0.15);
 
-    --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.08);
+    /* Warm golden for interactive hover states */
+    --color-accent-warm: #e8a608;
+    --color-accent-warm-muted: rgba(232, 166, 8, 0.12);
+    --color-accent-warm-glow: rgba(232, 166, 8, 0.2);
 
-    --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
+    /* Warm coral for secondary interactive accents */
+    --color-accent-coral: #ff9770;
+    --color-accent-coral-muted: rgba(255, 151, 112, 0.12);
+
+    /* Warm orange-accent for links and special highlights */
+    --color-link: #B45309;
+    --color-link-hover: #92400E;
+
+    /* === OVERLAYS & BACKDROPS === */
+    /* Overlay for modals/dialogs */
+    --color-overlay: rgba(26, 24, 20, 0.4);
+
+    /* Subtle backdrop tint */
+    --color-backdrop: rgba(250, 248, 244, 0.75);
+
+    /* === NAVBAR === */
+    /* Warm white navbar with soft shadow */
+    --color-navbar: rgba(254, 253, 251, 0.8);
+
+    /* === SHADOWS (Warm-toned for morning aesthetic) === */
+    --shadow-sm: 0 2px 8px rgba(26, 24, 20, 0.04), 0 1px 3px rgba(232, 166, 8, 0.03);
+
+    --shadow-md: 0 8px 20px rgba(26, 24, 20, 0.06), 0 4px 10px rgba(232, 166, 8, 0.04);
+
+    --shadow-lg: 0 16px 40px rgba(26, 24, 20, 0.08), 0 8px 20px rgba(232, 166, 8, 0.05);
+
+    /* Elevation shadow for lifted elements */
+    --shadow-xl: 0 20px 50px rgba(26, 24, 20, 0.12), 0 10px 25px rgba(232, 166, 8, 0.06);
 }

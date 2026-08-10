@@ -12,6 +12,12 @@
     background: rgba(255,255,255,.03);
 }
 
+/* Light theme: warm header styling */
+[data-theme="light"] .header {
+    background: rgba(232, 166, 8, 0.03);
+    border-bottom: 1px solid rgba(43, 36, 22, 0.1);
+}
+
 .controls {
     display: flex;
     gap: .5rem;
@@ -38,6 +44,11 @@
 .title {
     font-family: var(--font-code);
     color: var(--color-text-muted);
+}
+
+/* Light theme: warm text color */
+[data-theme="light"] .title {
+    color: var(--color-accent-warm);
 }
 
 .status {

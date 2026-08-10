@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Command, Menu, Moon, Sun, X } from "lucide-react";
 
 import Container from "../Container/Container";
+import TwinCloudLogo from "./TwinCloudLogo/TwinCloudLogo";
 import { navigation } from "@/config/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import MagneticButton from "@/components/ui/MagneticButton/MagneticButton";
@@ -40,7 +41,9 @@ export default function Navbar({ onOpenPalette }: NavbarProps) {
                         to="/"
                         className={styles.logo}
                     >
-                        <span className={styles.logoMark}>CC</span>
+                        <div className={styles.logoMark}>
+                            <TwinCloudLogo />
+                        </div>
 
                         <span>Cloud Control Center</span>
                     </NavLink>

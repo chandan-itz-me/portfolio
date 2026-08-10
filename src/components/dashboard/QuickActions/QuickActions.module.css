@@ -32,6 +32,12 @@
     backdrop-filter: blur(14px);
 }
 
+/* Light theme: warm card styling */
+[data-theme="light"] .card {
+    border: 1px solid rgba(43, 36, 22, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+}
+
 .action {
     display: flex;
 
@@ -54,4 +60,10 @@
     background: rgba(34,211,238,.10);
 
     transform: translateX(6px);
+}
+
+/* Light theme: warm accent on hover */
+[data-theme="light"] .action:hover {
+    background: var(--color-accent-warm-muted);
+    color: var(--color-text);
 }

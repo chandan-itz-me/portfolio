@@ -30,6 +30,14 @@
     animation: grid-pulse 8s ease-in-out infinite;
 }
 
+/* Light theme: adjust grid colors for morning atmosphere */
+[data-theme="light"] .grid {
+    background-image:
+        linear-gradient(rgba(200, 150, 80, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 150, 80, 0.04) 1px, transparent 1px);
+    animation: grid-pulse 12s ease-in-out infinite;
+}
+
 .blob {
 
     position: absolute;
@@ -71,6 +79,21 @@
     animation-direction: reverse;
 }
 
+/* Light theme: warm sunrise colors for aurora blobs */
+[data-theme="light"] .blobOne {
+    /* Warm golden/amber sunrise glow */
+    background: radial-gradient(circle, #e8a608 0%, #d4a017 40%, transparent 70%);
+    opacity: 0.25;
+    filter: blur(120px);
+}
+
+[data-theme="light"] .blobTwo {
+    /* Warm coral/peach for complementary glow */
+    background: radial-gradient(circle, #ff9770 0%, #f89968 40%, transparent 70%);
+    opacity: 0.2;
+    filter: blur(120px);
+}
+
 .vignette {
 
     position: absolute;
@@ -84,11 +107,58 @@
     );
 }
 
+/* Light theme: add subtle sunrise gradient overlay at top */
+[data-theme="light"] .vignette {
+    background: 
+        linear-gradient(180deg, 
+            rgba(232, 166, 8, 0.03) 0%,
+            rgba(255, 152, 112, 0.02) 20%,
+            transparent 50%,
+            var(--color-background) 90%
+        );
+}
+
+/* Floating dust particles for light theme */
+[data-theme="light"] .wrapper::before,
+[data-theme="light"] .wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+[data-theme="light"] .wrapper::before {
+    background-image: 
+        radial-gradient(circle, rgba(232, 166, 8, 0.1) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 152, 112, 0.08) 1.5px, transparent 1.5px),
+        radial-gradient(circle, rgba(255, 179, 140, 0.06) 1px, transparent 1px);
+    background-size: 200px 200px, 300px 300px, 250px 250px;
+    background-position: 0 0, 100px 100px, 50px 150px;
+    animation: dust-drift 60s linear infinite;
+}
+
+@keyframes dust-drift {
+    0% {
+        background-position: 0 0, 100px 100px, 50px 150px;
+    }
+    100% {
+        background-position: 100px 100px, 200px 200px, 150px 250px;
+    }
+}
+
 @media (max-width: 720px) {
 
     .blob {
         width: 70vw;
         height: 70vw;
         filter: blur(80px);
+    }
+
+    [data-theme="light"] .blobOne {
+        filter: blur(90px);
+    }
+
+    [data-theme="light"] .blobTwo {
+        filter: blur(90px);
     }
 }

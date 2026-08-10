@@ -25,6 +25,12 @@
     height: 100%;
 }
 
+/* Light theme: warm card styling */
+[data-theme="light"] .card {
+    border: 1px solid rgba(43, 36, 22, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+}
+
 .metric + .metric {
     margin-top: 1.5rem;
 }
@@ -49,6 +55,11 @@
     border-radius: 999px;
 
     background: rgba(255,255,255,.08);
+}
+
+/* Light theme: softer progress bar */
+[data-theme="light"] .progress {
+    background: rgba(43, 36, 22, 0.1);
 }
 
 .fill {

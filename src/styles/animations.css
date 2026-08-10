@@ -90,3 +90,14 @@
         box-shadow: 0 0 0 8px rgba(0, 229, 255, 0);
     }
 }
+
+@keyframes dust-drift {
+
+    0% {
+        background-position: 0 0, 100px 100px, 50px 150px;
+    }
+
+    100% {
+        background-position: 100px 100px, 200px 200px, 150px 250px;
+    }
+}

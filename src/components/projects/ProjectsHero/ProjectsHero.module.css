@@ -10,6 +10,11 @@
     margin-bottom:1rem;
 }
 
+/* Light theme: warm accent for badge */
+[data-theme="light"] .badge {
+    color: var(--color-accent-warm);
+}
+
 .title{
 
     font-size:clamp(3rem,6vw,4rem);

@@ -31,6 +31,12 @@
     height: 100%;
 }
 
+/* Light theme: warm card styling */
+[data-theme="light"] .card {
+    border: 1px solid rgba(43, 36, 22, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+}
+
 .provider {
     display: flex;
 
@@ -43,6 +49,11 @@
 
 .provider:not(:last-child) {
     border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* Light theme: warm border color */
+[data-theme="light"] .provider:not(:last-child) {
+    border-bottom: 1px solid rgba(43, 36, 22, 0.1);
 }
 
 .left {

@@ -28,3 +28,10 @@
 
     color: #22c55e;
 }
+
+/* Light theme: warm accent for active/hover */
+[data-theme="light"] .tabs button:hover,
+[data-theme="light"] .active {
+    border-color: var(--color-accent-warm);
+    color: var(--color-accent-warm);
+}

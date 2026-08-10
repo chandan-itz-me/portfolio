@@ -25,6 +25,12 @@
     border-color: var(--color-primary);
 }
 
+/* Light theme: warm accent on hover */
+[data-theme="light"] .card:hover {
+    border-color: var(--color-accent-warm);
+    box-shadow: 0 12px 32px var(--color-accent-warm-glow);
+}
+
 .duration {
     display: inline-block;
 
@@ -66,11 +72,11 @@
 .clientBadge {
     padding: .4rem .9rem;
 
-    border: 1px solid rgba(0, 229, 255, .25);
+    border: 1px solid rgba(217, 119, 6, .25);
 
     border-radius: 999px;
 
-    background: rgba(0, 229, 255, .08);
+    background: rgba(217, 119, 6, .08);
 
     color: var(--color-primary);
 
@@ -79,6 +85,13 @@
     font-weight: 600;
 
     letter-spacing: .02em;
+}
+
+/* Light theme: warm accent for client badges */
+[data-theme="light"] .clientBadge {
+    border: 1px solid var(--color-accent-warm-glow);
+    background: var(--color-accent-warm-muted);
+    color: var(--color-accent-warm);
 }
 
 .techGrid {
