@@ -92,6 +92,20 @@ export default function DevOpsDashboard() {
                             height="100%"
                         >
                             <BarChart data={[...devops.sprintVelocity]}>
+                                <defs>
+                                    <linearGradient id="gradient-planned" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="var(--color-status-info)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-info)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-commitment" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="var(--color-status-analytics)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-analytics)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-delivered" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="var(--color-status-success)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-success)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                </defs>
                                 <CartesianGrid
                                     strokeDasharray="3 3"
                                     stroke="var(--color-border)"
@@ -112,7 +126,7 @@ export default function DevOpsDashboard() {
 
                                 <Tooltip
                                     content={<ChartTooltip />}
-                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.08)" }}
                                 />
 
                                 <Legend
@@ -125,21 +139,21 @@ export default function DevOpsDashboard() {
                                 <Bar
                                     dataKey="planned"
                                     name="Planned"
-                                    fill="var(--color-status-info)"
+                                    fill="url(#gradient-planned)"
                                     radius={[4, 4, 0, 0]}
                                 />
 
                                 <Bar
                                     dataKey="commitment"
                                     name="Commitment"
-                                    fill="var(--color-status-analytics)"
+                                    fill="url(#gradient-commitment)"
                                     radius={[4, 4, 0, 0]}
                                 />
 
                                 <Bar
                                     dataKey="delivered"
                                     name="Delivered"
-                                    fill="var(--color-status-success)"
+                                    fill="url(#gradient-delivered)"
                                     radius={[4, 4, 0, 0]}
                                 />
                             </BarChart>
@@ -185,7 +199,7 @@ export default function DevOpsDashboard() {
 
                                 <Tooltip
                                     content={<ChartTooltip />}
-                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.08)" }}
                                 />
 
                                 <Bar
@@ -266,6 +280,12 @@ export default function DevOpsDashboard() {
                             height="100%"
                         >
                             <BarChart data={[...devops.requestsToday]}>
+                                <defs>
+                                    <linearGradient id="gradient-errors" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="var(--color-status-warning)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-warning)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                </defs>
                                 <CartesianGrid
                                     strokeDasharray="3 3"
                                     stroke="var(--color-border)"
@@ -286,13 +306,13 @@ export default function DevOpsDashboard() {
 
                                 <Tooltip
                                     content={<ChartTooltip />}
-                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.08)" }}
                                 />
 
                                 <Bar
                                     dataKey="errors"
                                     name="Errors"
-                                    fill="var(--color-status-warning)"
+                                    fill="url(#gradient-errors)"
                                     radius={[4, 4, 0, 0]}
                                 />
                             </BarChart>
@@ -315,6 +335,28 @@ export default function DevOpsDashboard() {
                                 layout="vertical"
                                 margin={{ left: 8 }}
                             >
+                                <defs>
+                                    <linearGradient id="gradient-passed" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stopColor="var(--color-status-success)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-success)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-notRun" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stopColor="var(--color-status-analytics)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-analytics)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-failed" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stopColor="var(--color-status-warning)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-warning)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-blocked" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stopColor="var(--color-status-critical)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-critical)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                    <linearGradient id="gradient-notApplicable" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stopColor="var(--color-status-info)" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="var(--color-status-info)" stopOpacity={0.6} />
+                                    </linearGradient>
+                                </defs>
                                 <CartesianGrid
                                     strokeDasharray="3 3"
                                     stroke="var(--color-border)"
@@ -338,7 +380,7 @@ export default function DevOpsDashboard() {
 
                                 <Tooltip
                                     content={<ChartTooltip />}
-                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.08)" }}
                                 />
 
                                 <Legend
@@ -354,7 +396,7 @@ export default function DevOpsDashboard() {
                                         dataKey={series.key}
                                         name={series.label}
                                         stackId="coverage"
-                                        fill={series.color}
+                                        fill={`url(#gradient-${series.key})`}
                                     />
                                 ))}
                             </BarChart>
@@ -374,6 +416,11 @@ export default function DevOpsDashboard() {
                                 height="100%"
                             >
                                 <PieChart>
+                                    <defs>
+                                        <filter id="pieShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                            <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.15" />
+                                        </filter>
+                                    </defs>
                                     <Pie
                                         data={[
                                             ...devops.incidentStatus,
@@ -396,7 +443,7 @@ export default function DevOpsDashboard() {
 
                                     <Tooltip
                                         content={<ChartTooltip />}
-                                        cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
+                                        cursor={{ fill: "rgba(34, 211, 238, 0.08)" }}
                                     />
                                 </PieChart>
                             </ResponsiveContainer>

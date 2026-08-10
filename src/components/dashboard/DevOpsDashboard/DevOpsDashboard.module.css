@@ -18,10 +18,11 @@
 .cardTitle {
     margin-bottom: 1rem;
 
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
 
     color: var(--color-text-primary);
+    letter-spacing: 0.5px;
 }
 
 .cardSubtitle {
@@ -31,10 +32,61 @@
     font-size: .8rem;
 
     color: var(--color-text-secondary);
+    font-weight: 500;
 }
 
 .chartArea {
     height: 220px;
+    position: relative;
+    animation: chartFadeIn 0.6s ease-out;
+}
+
+@keyframes chartFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chart styling: Improve recharts default appearance */
+.chartArea :global(.recharts-cartesian-axis-tick) {
+    font-weight: 500;
+}
+
+.chartArea :global(.recharts-legend-wrapper) {
+    padding-top: 0.75rem !important;
+}
+
+.chartArea :global(.recharts-legend-item) {
+    font-weight: 500 !important;
+    margin-right: 1.5rem !important;
+}
+
+.chartArea :global(.recharts-bar-rectangles) {
+    animation: barsSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes barsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chartArea :global(.recharts-bar) {
+    transition: all 0.3s ease;
+}
+
+.chartArea :global(.recharts-bar:hover) {
+    filter: brightness(1.15);
 }
 
 /* ----- KPI card ----- */
@@ -55,6 +107,11 @@
     align-items: center;
 
     gap: .9rem;
+    transition: transform 0.2s ease;
+}
+
+.kpiRow:hover {
+    transform: translateX(4px);
 }
 
 .kpiSwatch {
@@ -64,6 +121,17 @@
     height: 34px;
 
     border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: swatchPulse 2s ease-in-out infinite;
+}
+
+@keyframes swatchPulse {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .kpiText {
@@ -72,14 +140,17 @@
 }
 
 .kpiValue {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .kpiLabel {
     font-size: .85rem;
 
     color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-top: 0.25rem;
 }
 
 /* ----- Sprint velocity / issues per day ----- */
