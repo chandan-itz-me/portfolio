@@ -93,17 +93,17 @@ The application is designed to be deployed using GitHub Pages.
 ## 📌 Roadmap
 
 - [x] Project Bootstrap
-- [ ] Design System
-- [ ] Responsive Layout
-- [ ] Navigation
-- [ ] Hero Section
-- [ ] JARVIS Boot Sequence
-- [ ] Dashboard
-- [ ] Infrastructure Visualization
-- [ ] Project Explorer
-- [ ] Experience Timeline
-- [ ] Certifications
-- [ ] Contact
+- [x] Design System (Dark/Light theme with semantic colors)
+- [x] Responsive Layout (Mobile, tablet, desktop)
+- [x] Navigation (With glass morphism navbar)
+- [x] Hero Section (Three.js powered with aurora effects)
+- [x] JARVIS Boot Sequence (Retro terminal with blue accents)
+- [x] Dashboard (Live metrics, charts, KPIs with micro-interactions)
+- [x] Infrastructure Visualization (Cloud provider status)
+- [x] Project Explorer (Interactive project showcase)
+- [x] Experience Timeline (Career history with badges)
+- [x] Certifications (Certification grid)
+- [x] Contact (Contact methods and form)
 
 ---
 
