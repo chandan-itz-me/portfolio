@@ -1,0 +1,45 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+    padding-top: 0.35rem;
+    position: relative;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1.5rem;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.18),
+        transparent
+    );
+    pointer-events: none;
+}
+
+.section:last-child::after {
+    display: none;
+}
+
+.homeHero {
+    padding-top: var(--space-lg);
+}
+
+.sectionDescription {
+    margin: 0;
+    max-width: 72ch;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+    .section {
+        scroll-margin-top: calc(var(--header-height) + 0.5rem);
+    }
+}

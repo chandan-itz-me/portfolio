@@ -5,23 +5,19 @@ import styles from "./QuickActions.module.css";
 const actions = [
     {
         title: "Projects",
-        path: "/projects",
+        path: "/#projects",
     },
     {
         title: "Infrastructure",
-        path: "/infrastructure",
+        path: "/#infrastructure",
     },
     {
         title: "Professional",
-        path: "/professional",
-    },
-    {
-        title: "Terminal",
-        path: "/terminal",
+        path: "/#professional",
     },
     {
         title: "Contact",
-        path: "/contact",
+        path: "/#contact",
     },
 ];
 

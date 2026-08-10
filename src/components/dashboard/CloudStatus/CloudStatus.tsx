@@ -3,55 +3,34 @@ import { dashboard } from "@/data/dashboard";
 import styles from "./CloudStatus.module.css";
 
 export default function CloudStatus() {
+    const { costByProvider } = dashboard.multicloud;
+
     return (
         <section className={styles.section}>
             <h2 className={styles.heading}>
-                Cloud Providers
+                Cloud Provider Distribution
             </h2>
 
             <div className={styles.card}>
-                {dashboard.cloudProviders.map(
-                    (provider) => (
-                        <article
-                            key={provider.provider}
-                            className={styles.provider}
-                        >
-                            <div className={styles.left}>
-                                <span
-                                    className={`${styles.dot} ${
-                                        provider.status ===
-                                        "Healthy"
-                                            ? styles.healthy
-                                            : styles.learning
-                                    }`}
-                                />
-
-                                <div>
-                                    <h3>
-                                        {
-                                            provider.provider
-                                        }
-                                    </h3>
-
-                                    <p>
-                                        {
-                                            provider.services
-                                        }{" "}
-                                        Services
-                                    </p>
-                                </div>
+                {costByProvider.map((provider) => (
+                    <article
+                        key={provider.provider}
+                        className={styles.provider}
+                    >
+                        <div className={styles.left}>
+                            <div className={styles.providerName}>
+                                <h3>{provider.provider}</h3>
+                                <p>{provider.percentage}% Resource Allocation</p>
                             </div>
+                        </div>
 
-                            <span
-                                className={
-                                    styles.status
-                                }
-                            >
-                                {provider.status}
+                        <div className={styles.trend}>
+                            <span className={styles.trendValue}>
+                                {provider.trend}
                             </span>
-                        </article>
-                    )
-                )}
+                        </div>
+                    </article>
+                ))}
             </div>
         </section>
     );

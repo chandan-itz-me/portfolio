@@ -7,13 +7,9 @@ import RouteFallback from "@/components/layout/RouteFallback/RouteFallback";
 // Route-level code splitting: only the active page's chunk (and its
 // chart/animation dependencies) downloads on first paint, instead of
 // every page's code shipping in one bundle up front.
-const Dashboard = lazy(() => import("@/pages/Dashboard/Dashboard"));
-const Experience = lazy(() => import("@/pages/Experience/Experience"));
-const Projects = lazy(() => import("@/pages/Projects/Projects"));
-const Infrastructure = lazy(() => import("@/pages/Infrastructure/Infrastructure"));
-const Professional = lazy(() => import("@/pages/Professional/Professional"));
-const Terminal = lazy(() => import("@/pages/CommandCenter/CommandCenter"));
-const Contact = lazy(() => import("@/pages/Contact/Contact"));
+const Home = lazy(() => import("@/pages/Home/Home"));
+const ProjectDetails = lazy(() => import("@/pages/ProjectDetails/ProjectDetails"));
+const CloudProvider = lazy(() => import("@/pages/CloudProvider/CloudProvider"));
 const NotFound = lazy(() => import("@/pages/NotFound/NotFound"));
 
 const withSuspense = (element: ReactNode) => (
@@ -28,31 +24,15 @@ export const router = createBrowserRouter(
             children: [
                 {
                     index: true,
-                    element: withSuspense(<Dashboard />),
+                    element: withSuspense(<Home />),
                 },
                 {
-                    path: "experience",
-                    element: withSuspense(<Experience />),
+                    path: "projects/:slug",
+                    element: withSuspense(<ProjectDetails />),
                 },
                 {
-                    path: "projects",
-                    element: withSuspense(<Projects />),
-                },
-                {
-                    path: "infrastructure",
-                    element: withSuspense(<Infrastructure />),
-                },
-                {
-                    path: "professional",
-                    element: withSuspense(<Professional />),
-                },
-                {
-                    path: "terminal",
-                    element: withSuspense(<Terminal />),
-                },
-                {
-                    path: "contact",
-                    element: withSuspense(<Contact />),
+                    path: "infrastructure/:provider",
+                    element: withSuspense(<CloudProvider />),
                 },
             ],
         },

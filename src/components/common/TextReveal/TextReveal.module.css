@@ -1,0 +1,303 @@
+.reveal {
+    display: inline-block;
+}
+
+.visual {
+    display: inline-flex;
+    white-space: pre;
+}
+
+.charWrap {
+    position: relative;
+    display: inline-block;
+}
+
+.charBase,
+.charGhost,
+.charScan {
+    display: inline-block;
+    opacity: 0;
+    transform: translate3d(0, 0.2em, 0);
+    animation-duration: var(--char-duration-ms, 560ms);
+    animation-timing-function: var(--char-ease, cubic-bezier(0.22, 1, 0.36, 1));
+    animation-fill-mode: forwards;
+    animation-delay: var(--char-delay, 0ms);
+    backface-visibility: hidden;
+    will-change: opacity, transform, filter, clip-path;
+}
+
+.charBase {
+    position: relative;
+    z-index: 2;
+    animation-name: char-materialize-base, char-fragment-mask, char-loading-tilt;
+    animation-duration:
+        var(--char-duration-ms, 560ms),
+        calc(var(--char-duration-ms, 560ms) * 0.74),
+        calc(var(--char-duration-ms, 560ms) * 0.9);
+    animation-delay:
+        var(--char-delay, 0ms),
+        var(--char-delay, 0ms),
+        var(--char-delay, 0ms);
+    animation-timing-function:
+        var(--char-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+        steps(7, end),
+        cubic-bezier(0.2, 0.85, 0.2, 1);
+    clip-path: inset(45% 0 45% 0);
+}
+
+.charGhost {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+    animation-name: char-materialize-ghost, char-ghost-slice;
+    animation-duration: calc(var(--char-duration-ms, 560ms) * 0.62), calc(var(--char-duration-ms, 560ms) * 0.58);
+    animation-delay: var(--char-delay, 0ms), var(--char-delay, 0ms);
+    animation-timing-function: steps(6, end), steps(5, end);
+}
+
+.charScan {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    pointer-events: none;
+    color: rgba(250, 253, 255, 0.98);
+    text-shadow:
+        -1px 0 0 rgba(255, 122, 122, 0.34),
+        1px 0 0 rgba(116, 235, 255, 0.36);
+    clip-path: inset(47% 0 47% 0);
+    animation-name: char-scanline;
+    animation-duration: calc(var(--char-duration-ms, 560ms) * 0.62);
+    animation-delay: var(--char-delay, 0ms);
+    animation-timing-function: steps(5, end);
+}
+
+.charGhostCyan {
+    color: rgba(112, 236, 255, 0.95);
+}
+
+.charGhostRed {
+    color: rgba(255, 124, 124, 0.9);
+}
+
+.charSpace .charGhost {
+    display: none;
+}
+
+.charSpace .charScan {
+    display: none;
+}
+
+.reveal[data-variant="loading"] .charGhost,
+.reveal[data-variant="loading"] .charScan {
+    display: none;
+}
+
+.reveal[data-variant="loading"] .charBase {
+    clip-path: inset(0 0 0 0);
+    animation-name: char-materialize-base, char-loading-tilt;
+    animation-duration:
+        calc(var(--char-duration-ms, 560ms) * 0.9),
+        calc(var(--char-duration-ms, 560ms) * 0.9);
+    animation-delay:
+        var(--char-delay, 0ms),
+        var(--char-delay, 0ms);
+    animation-timing-function:
+        cubic-bezier(0.18, 0.9, 0.22, 1),
+        cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+
+.reveal[data-variant="glitch"] .charBase {
+    animation-name: char-materialize-base, char-fragment-mask;
+    animation-duration: var(--char-duration-ms, 560ms), calc(var(--char-duration-ms, 560ms) * 0.74);
+    animation-delay: var(--char-delay, 0ms), var(--char-delay, 0ms);
+    animation-timing-function: var(--char-ease, cubic-bezier(0.16, 1, 0.3, 1)), steps(7, end);
+}
+
+@keyframes char-materialize-base {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0.2em, 0) scale(0.98, 1.05);
+        filter: blur(1.5px);
+    }
+    14% {
+        opacity: 0.04;
+        transform: translate3d(0, 0.18em, 0) scale(0.99, 1.04);
+        filter: blur(1.4px);
+    }
+    38% {
+        opacity: 0.46;
+        transform: translate3d(0, 0.11em, 0) scale(1, 1.02);
+        filter: blur(0.9px);
+    }
+    68% {
+        opacity: 0.88;
+        transform: translate3d(0, 0.04em, 0);
+        filter: blur(0.35px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+    }
+}
+
+@keyframes char-fragment-mask {
+    0% {
+        clip-path: inset(50% 0 48% 0);
+    }
+    16% {
+        clip-path: inset(16% 0 66% 0);
+    }
+    32% {
+        clip-path: inset(62% 0 12% 0);
+    }
+    48% {
+        clip-path: inset(26% 0 42% 0);
+    }
+    64% {
+        clip-path: inset(8% 0 14% 0);
+    }
+    78% {
+        clip-path: inset(0 0 6% 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes char-materialize-ghost {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0.16em, 0);
+        filter: blur(1.5px);
+    }
+    20% {
+        opacity: 0.62;
+        transform: translate3d(var(--glitch-shift, 0.06em), 0.08em, 0);
+        filter: blur(0.7px);
+    }
+    36% {
+        opacity: 0.4;
+        transform: translate3d(calc(var(--glitch-shift, 0.06em) * -1), 0.05em, 0);
+        filter: blur(0.38px);
+    }
+    52% {
+        opacity: 0.18;
+        transform: translate3d(calc(var(--glitch-shift, 0.06em) * 0.5), 0.02em, 0);
+        filter: blur(0.16px);
+    }
+    70% {
+        opacity: 0;
+        transform: translate3d(0, 0.01em, 0);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+    }
+}
+
+@keyframes char-ghost-slice {
+    0% {
+        clip-path: inset(66% 0 10% 0);
+    }
+    24% {
+        clip-path: inset(16% 0 58% 0);
+    }
+    42% {
+        clip-path: inset(48% 0 18% 0);
+    }
+    60% {
+        clip-path: inset(30% 0 34% 0);
+    }
+    74% {
+        clip-path: inset(0 0 24% 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes char-scanline {
+    0% {
+        opacity: 0;
+        transform: translate3d(calc(var(--glitch-shift, 0.06em) * -1.6), 0.18em, 0) scaleX(0.08);
+        clip-path: inset(50% 0 46% 0);
+    }
+    16% {
+        opacity: 0.84;
+        transform: translate3d(var(--glitch-shift, 0.06em), 0.11em, 0) scaleX(0.45);
+        clip-path: inset(46% 0 48% 0);
+    }
+    36% {
+        opacity: 0.96;
+        transform: translate3d(calc(var(--glitch-shift, 0.06em) * 1.2), 0.05em, 0) scaleX(1.16);
+        clip-path: inset(44% 0 49% 0);
+    }
+    52% {
+        opacity: 0.58;
+        transform: translate3d(calc(var(--glitch-shift, 0.06em) * -0.4), 0.02em, 0) scaleX(0.52);
+        clip-path: inset(48% 0 45% 0);
+    }
+    66% {
+        opacity: 0.18;
+        transform: translate3d(calc(var(--glitch-shift, 0.06em) * 0.2), 0.01em, 0) scaleX(0.22);
+        clip-path: inset(46% 0 48% 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scaleX(0);
+        clip-path: inset(47% 0 47% 0);
+    }
+}
+
+@keyframes char-loading-tilt {
+    0% {
+        transform: translate3d(0, calc(0.16em + var(--char-drop, 0em)), 0) rotate(var(--char-angle, 0deg));
+    }
+    40% {
+        transform: translate3d(0, calc(0.08em + (var(--char-drop, 0em) * 0.5)), 0)
+            rotate(calc(var(--char-angle, 0deg) * 0.58));
+    }
+    72% {
+        transform: translate3d(0, 0.01em, 0) rotate(calc(var(--char-angle, 0deg) * 0.15));
+    }
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .charBase,
+    .charGhost,
+    .charScan {
+        animation: none;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: none;
+    }
+
+    .charGhost {
+        display: none;
+    }
+
+    .charScan {
+        display: none;
+    }
+}

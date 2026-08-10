@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Command, Menu, Moon, Sun, X } from "lucide-react";
 
@@ -17,13 +17,107 @@ type NavbarProps = {
 
 export default function Navbar({ onOpenPalette }: NavbarProps) {
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [activePath, setActivePath] = useState(
+        typeof window !== "undefined" && window.location.hash
+            ? window.location.hash
+            : "#home"
+    );
     const { theme, toggleTheme } = useTheme();
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
-    // Close the mobile menu on route change and lock body scroll while open.
     useEffect(() => {
-        setMobileOpen(false);
+        // Map routes to their corresponding nav sections
+        if (pathname.startsWith("/projects/")) {
+            setActivePath("#projects");
+        } else if (pathname.startsWith("/infrastructure/")) {
+            setActivePath("#infrastructure");
+        } else if (pathname === "/") {
+            // Keep existing hash-based logic for home page
+        } else {
+            setActivePath("#home");
+        }
     }, [pathname]);
+
+    useEffect(() => {
+        const handleHashChange = () => {
+            setActivePath(window.location.hash || "#home");
+        };
+
+        window.addEventListener("hashchange", handleHashChange);
+
+        return () => {
+            window.removeEventListener("hashchange", handleHashChange);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (pathname !== "/") {
+            return;
+        }
+
+        const sections: Array<{ path: string; element: HTMLElement; top: number }> = [];
+
+        navigation.forEach((item) => {
+            const element = document.getElementById(item.path.slice(1));
+
+            if (element) {
+                sections.push({
+                    path: item.path,
+                    element,
+                    top: element.getBoundingClientRect().top + window.scrollY,
+                });
+            }
+        });
+
+        if (sections.length === 0) {
+            return;
+        }
+
+        const handleScroll = () => {
+            const currentScroll = window.scrollY + window.innerHeight * 0.3;
+
+            // Find the section you've scrolled past (most recent one)
+            let activeSection = sections[0];
+
+            for (let i = sections.length - 1; i >= 0; i--) {
+                if (currentScroll >= sections[i].top) {
+                    activeSection = sections[i];
+                    break;
+                }
+            }
+
+            setActivePath(activeSection.path);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // Initial call
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [pathname]);
+
+    useEffect(() => {
+        let frame = 0;
+
+        const update = () => {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = maxScroll > 0
+                ? Math.round((window.scrollY / maxScroll) * 100)
+                : 0;
+
+            setScrollProgress(progress);
+            frame = window.requestAnimationFrame(update);
+        };
+
+        frame = window.requestAnimationFrame(update);
+
+        return () => {
+            window.cancelAnimationFrame(frame);
+        };
+    }, []);
 
     useEffect(() => {
         document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -33,34 +127,80 @@ export default function Navbar({ onOpenPalette }: NavbarProps) {
         };
     }, [mobileOpen]);
 
+    const scrollToSection = (path: string) => {
+        const targetId = path.replace("#", "");
+
+        if (targetId === "home") {
+            window.history.replaceState(null, "", window.location.pathname + window.location.search);
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+            setActivePath("#home");
+            return;
+        }
+
+        const section = document.getElementById(targetId);
+
+        if (section) {
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+
+            window.history.replaceState(null, "", `${window.location.pathname}#${targetId}`);
+            setActivePath(path);
+        }
+    };
+
+    const handleNavigate = (path: string) => {
+        setMobileOpen(false);
+
+        if (pathname !== "/") {
+            navigate("/");
+            // Wait for route to complete before scrolling
+            setTimeout(() => scrollToSection(path), 50);
+            return;
+        }
+
+        scrollToSection(path);
+    };
+
     return (
         <header className={styles.header}>
             <Container>
                 <nav className={styles.nav}>
-                    <NavLink
-                        to="/"
+                    <button
+                        type="button"
+                        onClick={() => handleNavigate("#home")}
                         className={styles.logo}
                     >
                         <div className={styles.logoMark}>
                             <TwinCloudLogo />
                         </div>
 
-                        <span>Cloud Control Center</span>
-                    </NavLink>
+                        <span>Chandan Padal</span>
+                    </button>
+
+                    <div className={styles.scrollMeta} aria-live="polite">
+                        <span className={styles.scrollLabel}>SCROLL</span>
+                        <span className={styles.scrollValue}>{scrollProgress}%</span>
+                    </div>
 
                     <ul className={styles.links}>
                         {navigation.map((item) => (
                             <li key={item.label}>
-                                <NavLink
-                                    to={item.path}
-                                    className={({ isActive }: { isActive: boolean }) =>
-                                        isActive
+                                <button
+                                    type="button"
+                                    onClick={() => handleNavigate(item.path)}
+                                    className={
+                                        activePath === item.path
                                             ? `${styles.link} ${styles.active}`
                                             : styles.link
                                     }
                                 >
                                     {item.label}
-                                </NavLink>
+                                </button>
                             </li>
                         ))}
                     </ul>
@@ -117,16 +257,17 @@ export default function Navbar({ onOpenPalette }: NavbarProps) {
                         <ul className={styles.mobileLinks}>
                             {navigation.map((item) => (
                                 <li key={item.label}>
-                                    <NavLink
-                                        to={item.path}
-                                        className={({ isActive }: { isActive: boolean }) =>
-                                            isActive
+                                    <button
+                                        type="button"
+                                        onClick={() => handleNavigate(item.path)}
+                                        className={
+                                            activePath === item.path
                                                 ? `${styles.mobileLink} ${styles.active}`
                                                 : styles.mobileLink
                                         }
                                     >
                                         {item.label}
-                                    </NavLink>
+                                    </button>
                                 </li>
                             ))}
                         </ul>

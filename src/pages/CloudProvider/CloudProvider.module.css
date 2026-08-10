@@ -1,0 +1,99 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.backLink {
+    width: fit-content;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.88rem;
+}
+
+.header {
+    padding: 1.2rem;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.header p {
+    margin: 0.75rem 0 0;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.7;
+}
+
+.badge {
+    width: fit-content;
+    margin: 0 0 0.45rem;
+    padding: 0.34rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    font-family: var(--font-code);
+    font-size: 0.76rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.aws {
+    background: linear-gradient(150deg, rgba(255, 153, 0, 0.85), rgba(255, 120, 0, 0.45));
+}
+
+.azure {
+    background: linear-gradient(150deg, rgba(0, 120, 212, 0.85), rgba(31, 96, 184, 0.45));
+}
+
+.gcp {
+    color: #1a2f44;
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(229, 242, 255, 0.86));
+}
+
+.gcp p {
+    color: rgba(26, 47, 68, 0.92);
+}
+
+.gcp .badge {
+    border-color: rgba(26, 47, 68, 0.26);
+}
+
+.placeholderGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.placeholderCard {
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: var(--color-surface);
+    padding: 1rem;
+}
+
+.placeholderCard h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.placeholderCard p {
+    margin: 0.58rem 0 0;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 980px) {
+    .placeholderGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .placeholderGrid {
+        grid-template-columns: 1fr;
+    }
+}

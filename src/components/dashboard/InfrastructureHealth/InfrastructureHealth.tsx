@@ -3,31 +3,50 @@ import { dashboard } from "@/data/dashboard";
 import styles from "./InfrastructureHealth.module.css";
 
 export default function InfrastructureHealth() {
+    const { cloudServices } = dashboard.multicloud;
+
+    const getStatusColor = (status: string) => {
+        switch (status) {
+            case "healthy":
+                return "var(--color-status-success)";
+            case "warning":
+                return "var(--color-status-warning)";
+            case "critical":
+                return "var(--color-status-critical)";
+            default:
+                return "var(--color-text-secondary)";
+        }
+    };
+
     return (
         <section className={styles.section}>
             <h2 className={styles.heading}>
-                Infrastructure Health
+                Cloud Services Health
             </h2>
 
             <div className={styles.card}>
-                {dashboard.health.map((item) => (
+                {cloudServices.map((service) => (
                     <div
-                        key={item.name}
-                        className={styles.metric}
+                        key={service.service}
+                        className={styles.serviceRow}
                     >
-                        <div className={styles.top}>
-                            <span>{item.name}</span>
+                        <span className={styles.serviceName}>
+                            {service.service}
+                        </span>
 
-                            <span>{item.value}%</span>
-                        </div>
-
-                        <div className={styles.progress}>
-                            <div
-                                className={styles.fill}
+                        <div className={styles.statusIndicator}>
+                            <span
+                                className={styles.dot}
                                 style={{
-                                    width: `${item.value}%`,
+                                    background: getStatusColor(
+                                        service.status
+                                    ),
                                 }}
                             />
+                            <span className={styles.statusLabel}>
+                                {service.status.charAt(0).toUpperCase() +
+                                    service.status.slice(1)}
+                            </span>
                         </div>
                     </div>
                 ))}

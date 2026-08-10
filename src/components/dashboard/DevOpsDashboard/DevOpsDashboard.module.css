@@ -6,12 +6,6 @@
 
     grid-template-columns: repeat(3, 1fr);
 
-    grid-template-areas:
-        "kpi velocity issues"
-        "error velocity issues"
-        "error requests coverage"
-        "status requests coverage";
-
     gap: 1.5rem;
 }
 
@@ -92,8 +86,6 @@
 /* ----- KPI card ----- */
 
 .kpiCard {
-    grid-area: kpi;
-
     display: flex;
     flex-direction: column;
 
@@ -156,17 +148,35 @@
 /* ----- Sprint velocity / issues per day ----- */
 
 .velocityCard {
-    grid-area: velocity;
+}
+
+.deploymentCard {
+}
+
+.failureCard {
+}
+
+.leadTimeCard {
+}
+
+.mttrCard {
 }
 
 .issuesCard {
-    grid-area: issues;
+}
+
+.pipelineCard {
+}
+
+.incidentsCard {
+}
+
+.statusCard {
 }
 
 /* ----- Error rate ----- */
 
 .errorCard {
-    grid-area: error;
 }
 
 .errorList {
@@ -213,17 +223,14 @@
 /* ----- Requests & errors / coverage ----- */
 
 .requestsCard {
-    grid-area: requests;
 }
 
 .coverageCard {
-    grid-area: coverage;
 }
 
 /* ----- Incident status donut ----- */
 
-.statusCard {
-    grid-area: status;
+.statusDonutCard {
 }
 
 .statusBody {

@@ -12,8 +12,6 @@ export default function AuroraBackground() {
             className={styles.wrapper}
             aria-hidden="true"
         >
-            <div className={styles.grid} />
-
             <div className={`${styles.blob} ${styles.blobOne}`} />
 
             <div className={`${styles.blob} ${styles.blobTwo}`} />

@@ -24,11 +24,8 @@ function getPreferredTheme(): Theme {
         return stored;
     }
 
-    const prefersLight = window.matchMedia(
-        "(prefers-color-scheme: light)"
-    ).matches;
-
-    return prefersLight ? "light" : "dark";
+    // Default to night theme for first-time visitors.
+    return "dark";
 }
 
 type ThemeProviderProps = {
@@ -42,26 +39,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         document.documentElement.dataset.theme = theme;
         window.localStorage.setItem(STORAGE_KEY, theme);
     }, [theme]);
-
-    useEffect(() => {
-        const media = window.matchMedia("(prefers-color-scheme: light)");
-
-        const handleChange = (event: MediaQueryListEvent) => {
-            const hasStoredPreference = window.localStorage.getItem(STORAGE_KEY);
-
-            if (hasStoredPreference) {
-                return;
-            }
-
-            setThemeState(event.matches ? "light" : "dark");
-        };
-
-        media.addEventListener("change", handleChange);
-
-        return () => {
-            media.removeEventListener("change", handleChange);
-        };
-    }, []);
 
     const value = useMemo<ThemeContextValue>(
         () => ({

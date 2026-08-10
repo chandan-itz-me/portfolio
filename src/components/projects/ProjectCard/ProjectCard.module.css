@@ -1,22 +1,19 @@
 .card {
-    display: flex;
-    flex-direction: column;
-
-    padding: 2rem;
-
     border: 1px solid var(--color-border);
-
     border-radius: 18px;
-
-    background: var(--color-surface);
-
-    transition: .3s ease;
+    background: linear-gradient(165deg, rgba(13, 19, 33, 0.92), rgba(10, 24, 38, 0.78));
+    overflow: hidden;
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
 }
 
 .card:hover {
     transform: translateY(-6px);
-
     border-color: var(--color-primary);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
 }
 
 /* Light theme: warm accent on hover */
@@ -25,30 +22,80 @@
     box-shadow: 0 12px 32px var(--color-accent-warm-glow);
 }
 
+[data-theme="light"] .card {
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 242, 0.75));
+}
+
+.cardLink {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.7rem;
+    color: inherit;
+    text-decoration: none;
+}
+
 .provider {
     display: inline-block;
-
-    margin-bottom: 1rem;
 
     color: var(--color-primary);
 
     font-family: var(--font-code);
+
+    font-size: .8rem;
+
+    letter-spacing: .05em;
+}
+
+.headerRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.index {
+    color: var(--color-text-secondary);
+    font-family: var(--font-code);
+    font-size: .75rem;
+    letter-spacing: .08em;
 }
 
 .card h2 {
-    margin-bottom: 1rem;
+    margin: 0;
+    font-size: 1.28rem;
+}
+
+.metaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.metaBadge {
+    padding: 0.34rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.12);
+    color: var(--color-text-secondary);
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+[data-theme="light"] .metaBadge {
+    border-color: rgba(217, 119, 6, 0.25);
+    background: rgba(217, 119, 6, 0.1);
 }
 
 .summary {
     color: var(--color-text-muted);
-
     line-height: 1.7;
-
-    margin-bottom: 1.75rem;
+    margin: 0;
 }
 
 .section {
-    margin-bottom: 1.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .section h3 {
@@ -57,6 +104,51 @@
     font-size: .95rem;
 
     color: var(--color-text);
+}
+
+.cloudGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.cloudBadge {
+    padding: 0.4rem 0.78rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.aws {
+    border-color: rgba(255, 153, 0, 0.4);
+    background: rgba(255, 153, 0, 0.14);
+    color: #ffae31;
+}
+
+.azure {
+    border-color: rgba(0, 120, 212, 0.4);
+    background: rgba(0, 120, 212, 0.14);
+    color: #53adff;
+}
+
+.gcp {
+    border-color: rgba(52, 168, 83, 0.4);
+    background: rgba(52, 168, 83, 0.12);
+    color: #7ee296;
+}
+
+[data-theme="light"] .aws {
+    color: #9a5800;
+}
+
+[data-theme="light"] .azure {
+    color: #005fa4;
+}
+
+[data-theme="light"] .gcp {
+    color: #2a7f42;
 }
 
 .techGrid {
@@ -97,9 +189,7 @@
 
 .impact {
     display: flex;
-
     flex-direction: column;
-
     gap: .75rem;
 }
 
@@ -110,7 +200,27 @@
 }
 
 .impactItem span {
-    color: #2ecc71;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.impactItem p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.exploreLink {
+    margin-top: auto;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .exploreLink {
+    transform: translateX(8px);
 }
 
 .button {

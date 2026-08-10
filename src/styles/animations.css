@@ -101,3 +101,61 @@
         background-position: 100px 100px, 200px 200px, 150px 250px;
     }
 }
+
+/* Atmospheric background animations */
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes nebulaDrift {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes lightRayShift {
+    0%, 100% {
+        opacity: 0.08;
+    }
+    50% {
+        opacity: 0.15;
+    }
+}
+
+@keyframes moonGlow {
+    0%, 100% {
+        box-shadow: 0 0 60px rgba(210, 220, 255, 0.4), 0 0 100px rgba(210, 220, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(210, 220, 255, 0.5), 0 0 120px rgba(210, 220, 255, 0.3);
+    }
+}

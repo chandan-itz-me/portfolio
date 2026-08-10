@@ -8,7 +8,7 @@ export function getSkillCommands(): Command[] {
             id: `skill-${category.title}-${skill.name}`,
             label: skill.name,
             description: `${category.title} · ${skill.level}`,
-            path: "/professional",
+            path: "/#professional",
             group: "Skills",
             keywords: [category.title, skill.level],
         }))

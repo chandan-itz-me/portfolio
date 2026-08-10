@@ -1,0 +1,270 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    overflow: hidden;
+}
+
+.cornerText {
+    position: absolute;
+    top: 1.1rem;
+    left: 0.08rem;
+    margin: 0;
+    color: var(--color-text-primary);
+    font-family: "Orbitron", "Oxanium", var(--font-heading);
+    font-size: clamp(1.08rem, 1.5vw, 1.38rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 14px rgba(0, 229, 255, 0.2);
+    z-index: 3;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    width: min(1200px, 100%);
+}
+
+.roleWrapper {
+    min-height: clamp(160px, 24vh, 240px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+.role {
+    margin: 0;
+    color: #f1fbff;
+    font-size: clamp(1.15rem, 4.4vw, 5.4rem);
+    font-weight: 400;
+    font-family: "Orbitron", "Oxanium", "Share Tech Mono", "IBM Plex Mono", "SF Mono", "Consolas", "Courier New", monospace;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-flex;
+    text-shadow:
+        -1px 0 0 rgba(255, 116, 116, 0.42),
+        1px 0 0 rgba(112, 236, 255, 0.48),
+        0 0 12px rgba(112, 236, 255, 0.2);
+}
+
+.roleText {
+    display: inline-flex;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: calc(clamp(1.15rem, 2.8vh, 2rem) + 1cm);
+}
+
+.primaryAction,
+.secondaryAction {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    padding: 0.78rem 1.05rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.primaryAction {
+    color: var(--color-text-primary);
+    border: 1px solid rgba(56, 189, 248, 0.38);
+    background: rgba(56, 189, 248, 0.12);
+    box-shadow: 0 10px 26px rgba(0, 229, 255, 0.16);
+}
+
+.secondaryAction {
+    color: var(--color-text-primary);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(56, 189, 248, 0.1);
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+    transform: translateY(-2px);
+}
+
+.logoField {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.logoBadge {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.58rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(10, 15, 26, 0.76);
+    color: var(--color-text-primary);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.aws {
+    top: 16%;
+    left: 8%;
+    color: #ffad33;
+}
+
+.azure {
+    top: 23%;
+    right: 11%;
+    color: #59aeff;
+}
+
+.gcp {
+    top: 39%;
+    right: 6%;
+    color: #9ad1ff;
+}
+
+.terraform {
+    top: 18%;
+    left: 23%;
+    color: #b697ff;
+}
+
+.kubernetes {
+    top: 46%;
+    left: 11%;
+    color: #68b7ff;
+}
+
+.docker {
+    bottom: 18%;
+    left: 18%;
+    color: #84cbff;
+}
+
+.jenkins {
+    bottom: 22%;
+    right: 16%;
+    color: #f5c4a9;
+}
+
+.githubActions {
+    bottom: 14%;
+    right: 30%;
+    color: #c5d2ff;
+}
+
+.prometheus {
+    top: 34%;
+    left: 29%;
+    color: #ff8d64;
+}
+
+.grafana {
+    bottom: 30%;
+    right: 7%;
+    color: #f39c3f;
+}
+
+.ansible {
+    top: 9%;
+    right: 34%;
+    color: #ff7f8f;
+}
+
+[data-theme="light"] .role {
+    color: #1d1f23;
+    text-shadow:
+        -1px 0 0 rgba(217, 119, 6, 0.28),
+        1px 0 0 rgba(245, 158, 11, 0.28),
+        0 0 10px rgba(217, 119, 6, 0.12);
+}
+
+[data-theme="light"] .logoBadge {
+    border-color: rgba(217, 119, 6, 0.25);
+    background: rgba(255, 251, 246, 0.84);
+}
+
+[data-theme="light"] .primaryAction,
+[data-theme="light"] .secondaryAction {
+    border-color: rgba(217, 119, 6, 0.3);
+    background: rgba(217, 119, 6, 0.1);
+}
+
+@media (max-width: 640px) {
+    .hero {
+        min-height: 100vh;
+        padding: 1rem;
+    }
+
+    .cornerText {
+        top: 0.85rem;
+        left: 0.04rem;
+        font-size: 1.02rem;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: center;
+        margin-top: calc(1rem + 1cm);
+    }
+
+    .primaryAction,
+    .secondaryAction {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .logoBadge {
+        transform: scale(0.9);
+    }
+
+    .aws,
+    .kubernetes,
+    .docker,
+    .jenkins,
+    .prometheus {
+        left: 3%;
+        right: auto;
+    }
+
+    .azure,
+    .gcp,
+    .terraform,
+    .githubActions,
+    .grafana,
+    .ansible {
+        right: 3%;
+        left: auto;
+    }
+
+    .terraform,
+    .kubernetes,
+    .githubActions,
+    .prometheus,
+    .grafana,
+    .ansible {
+        display: none;
+    }
+}

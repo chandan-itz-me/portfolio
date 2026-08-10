@@ -2,31 +2,31 @@ import type { NavigationItem } from "@/types/navigation";
 
 export const navigation = [
     {
-        label: "Dashboard",
-        path: "/",
+        label: "Home",
+        path: "#home",
+    },
+    {
+        label: "About",
+        path: "#about",
     },
     {
         label: "Experience",
-        path: "/experience",
+        path: "#experience",
     },
     {
         label: "Projects",
-        path: "/projects",
+        path: "#projects",
     },
     {
         label: "Infrastructure",
-        path: "/infrastructure",
+        path: "#infrastructure",
     },
     {
         label: "Professional",
-        path: "/professional",
-    },
-    {
-        label: "Terminal",
-        path: "/terminal",
+        path: "#professional",
     },
     {
         label: "Contact",
-        path: "/contact",
+        path: "#contact",
     },
 ] as const satisfies readonly NavigationItem[];

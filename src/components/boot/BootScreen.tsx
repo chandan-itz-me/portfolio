@@ -18,7 +18,7 @@ const LOG_INTERVAL_MS = 150;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 /**
- * Retro terminal boot sequence — green monospace text on black,
+ * Retro terminal boot sequence — blue monospace text on black,
  * macOS-style terminal window with commands streaming in.
  */
 export default function BootScreen({ onComplete }: BootScreenProps) {
@@ -124,7 +124,7 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}
-                            className={styles.prompt}
+                            className={`${styles.prompt} ${styles.introCommand}`}
                         >
                             $ whoami
                         </motion.div>
@@ -133,7 +133,7 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className={styles.output}
+                            className={`${styles.output} ${styles.introOutput}`}
                         >
                             {profile.name}
                         </motion.div>
@@ -142,7 +142,7 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.6 }}
-                            className={styles.prompt}
+                            className={`${styles.prompt} ${styles.introCommand}`}
                         >
                             $ cat bio.txt
                         </motion.div>
@@ -151,7 +151,7 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.9 }}
-                            className={styles.output}
+                            className={`${styles.output} ${styles.introOutput}`}
                         >
                             {profile.tagline}
                         </motion.div>
@@ -230,10 +230,10 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                                     transition={{ duration: 0.5 }}
                                     className={styles.readyMessage}
                                 >
-                                    <div className={styles.prompt}>
+                                    <div className={`${styles.prompt} ${styles.readyPrompt}`}>
                                         $ sudo access --grant
                                     </div>
-                                    <div className={styles.output}>
+                                    <div className={`${styles.output} ${styles.readyOutput}`}>
                                         Access granted. Welcome back.
                                     </div>
                                 </motion.div>

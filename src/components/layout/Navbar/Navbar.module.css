@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: space-between;
     height: var(--header-height);
+    gap: 1rem;
 }
 
 /* ---------------------------------- */
@@ -35,6 +36,9 @@
 
 .logo {
     display: flex;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 
     align-items: center;
 
@@ -131,10 +135,42 @@
 
 }
 
+.scrollMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.08);
+    line-height: 1.1;
+}
+
+.scrollLabel {
+    color: var(--color-text-secondary);
+    font-family: var(--font-code);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+}
+
+.scrollValue {
+    margin-top: 0.2rem;
+    color: var(--color-primary);
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
 .link {
     position: relative;
     display: inline-flex;
     align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
     text-decoration: none;
     color: var(--color-text-secondary);
     font-size: 0.95rem;
@@ -233,9 +269,10 @@
     background: rgba(217, 119, 6, 0.12);
     box-shadow: 0 0 12px rgba(217, 119, 6, 0.12);
 }
-[data-theme="light"] .iconButton:hover {
-    color: var(--color-primary);
-    border-color: var(--color-primary-glow);
+
+[data-theme="light"] .scrollMeta {
+    border-color: rgba(217, 119, 6, 0.25);
+    background: rgba(217, 119, 6, 0.1);
 }
 
 .kbd {
@@ -292,6 +329,18 @@
 
     display: block;
 
+    width: 100%;
+
+    text-align: left;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
     padding: .9rem 1.5rem;
 
     color: var(--color-text-secondary);
@@ -314,6 +363,10 @@
 
         display: none;
 
+    }
+
+    .scrollMeta {
+        display: none;
     }
 
     .kbd {

@@ -4,11 +4,11 @@
  * Usage example: Add to <head> in index.html or use with react-helmet for SSG/dynamic rendering.
  */
 export const siteConfig = {
-    name: "Cloud Control Center",
+    name: "Chandan Padal Portfolio",
 
-    shortName: "CCC",
+    shortName: "Portfolio",
 
-    title: "Cloud Control Center | Cloud Platform & DevOps Engineer",
+    title: "Chandan Padal | DevOps & Multi-Cloud Engineer",
 
     description:
         "Interactive cloud engineering portfolio.",

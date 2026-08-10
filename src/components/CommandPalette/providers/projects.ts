@@ -7,7 +7,7 @@ export function getProjectCommands(): Command[] {
         id: `project-${project.id}`,
         label: project.title,
         description: project.summary,
-        path: "/projects",
+        path: `/projects/${project.slug}`,
         group: "Projects",
         keywords: [...project.technologies, project.provider, project.client],
     }));

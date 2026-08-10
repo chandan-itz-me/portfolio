@@ -7,7 +7,7 @@ export function getCertificationCommands(): Command[] {
         id: `certification-${certification.id}`,
         label: certification.title,
         description: `${certification.provider} · Issued ${certification.issued}`,
-        path: "/professional",
+        path: "/#professional",
         group: "Certifications",
         keywords: [certification.provider],
     }));

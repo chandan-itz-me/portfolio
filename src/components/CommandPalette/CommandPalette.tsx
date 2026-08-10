@@ -55,6 +55,37 @@ export default function CommandPalette({ open, onClose }: CommandPaletteProps) {
     }, [open]);
 
     const handleSelect = (command: Command) => {
+        const [basePath, hash] = command.path.split("#");
+
+        if (hash) {
+            if (window.location.pathname !== basePath) {
+                navigate(basePath);
+                window.setTimeout(() => {
+                    const target = document.getElementById(hash);
+
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                }, 0);
+            } else {
+                const target = document.getElementById(hash);
+
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            }
+
+            window.history.replaceState(null, "", `${basePath}#${hash}`);
+            onClose();
+            return;
+        }
+
         navigate(command.path);
         onClose();
     };
