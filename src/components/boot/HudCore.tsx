@@ -1,95 +1,57 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 import styles from "./HudCore.module.css";
 
 type HudCoreProps = {
-    ready: boolean;
+    loading?: boolean;
 };
 
-const TICKS = Array.from({ length: 36 });
-
 /**
- * Central holographic emblem for the boot sequence — concentric
- * rings drawing themselves in, a rotating radar sweep, and a pulsing
- * glow behind the "CC" mark. Pure SVG + CSS so it stays smooth even
- * on low-power devices; nothing here is driven by rAF.
+ * Loading bar animation at the bottom of the terminal.
+ * Displays a horizontal progress bar that animates from 0-100%.
  */
-export default function HudCore({ ready }: HudCoreProps) {
+export default function HudCore({ loading = false }: HudCoreProps) {
+    const [percentage, setPercentage] = useState(0);
+
+    useEffect(() => {
+        if (!loading) {
+            setPercentage(0);
+            return;
+        }
+
+        // Animate from 0 to 100 over 2.5 seconds
+        const startTime = Date.now();
+        const duration = 2500;
+
+        const interval = setInterval(() => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            setPercentage(Math.floor(progress * 100));
+
+            if (progress >= 1) {
+                clearInterval(interval);
+            }
+        }, 50);
+
+        return () => clearInterval(interval);
+    }, [loading]);
+
     return (
-        <div
-            className={`${styles.core} ${ready ? styles.ready : ""}`}
-            aria-hidden="true"
-        >
-            <div className={styles.glow} />
-
-            <div className={styles.sweepClip}>
-                <div className={styles.sweep} />
-            </div>
-
-            <svg viewBox="0 0 200 200" className={styles.svg}>
-                <g className={styles.tickRing}>
-                    {TICKS.map((_, index) => (
-                        <rect
-                            key={index}
-                            x="99.25"
-                            y="6"
-                            width="1.5"
-                            height={index % 3 === 0 ? "9" : "4"}
-                            fill="var(--color-text-muted)"
-                            opacity={index % 3 === 0 ? 0.6 : 0.3}
-                            transform={`rotate(${(360 / TICKS.length) * index} 100 100)`}
-                        />
-                    ))}
-                </g>
-
-                <motion.circle
-                    cx="100"
-                    cy="100"
-                    r="88"
-                    fill="none"
-                    stroke="var(--color-secondary)"
-                    strokeWidth="1"
-                    strokeDasharray="553"
-                    initial={{ strokeDashoffset: 553, opacity: 0 }}
-                    animate={{ strokeDashoffset: 0, opacity: 0.55 }}
-                    transition={{ duration: 1.3, ease: "easeInOut" }}
-                />
-
-                <g className={styles.rotateSlow}>
-                    <motion.circle
-                        cx="100"
-                        cy="100"
-                        r="70"
-                        fill="none"
-                        stroke="var(--color-primary)"
-                        strokeWidth="1.5"
-                        strokeDasharray="7 7"
-                        initial={{ strokeDashoffset: 440, opacity: 0 }}
-                        animate={{ strokeDashoffset: 0, opacity: 0.85 }}
-                        transition={{ duration: 1.1, delay: 0.25, ease: "easeInOut" }}
-                    />
-                </g>
-
-                <motion.circle
-                    cx="100"
-                    cy="100"
-                    r="46"
-                    fill="none"
-                    stroke="var(--color-primary)"
-                    strokeWidth="1"
-                    initial={{ opacity: 0, r: 20 }}
-                    animate={{ opacity: 0.35, r: 46 }}
-                    transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
-                />
-            </svg>
-
+        <div className={styles.loadingBar} aria-hidden="true">
             <motion.div
-                className={styles.mark}
-                initial={{ opacity: 0, filter: "blur(6px)" }}
-                animate={{ opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 0.6, delay: 0.7 }}
+                className={styles.barFill}
+                initial={{ width: "0%" }}
+                animate={{ width: `${percentage}%` }}
+                transition={{ duration: 0.1 }}
+            />
+            <motion.div
+                className={styles.percentage}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
             >
-                CC
+                {String(percentage).padStart(2, "0")}%
             </motion.div>
         </div>
     );

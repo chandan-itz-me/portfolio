@@ -1,91 +1,62 @@
-.core {
+.loadingBar {
     position: relative;
 
-    width: clamp(180px, 32vw, 260px);
-    height: clamp(180px, 32vw, 260px);
-
-    flex-shrink: 0;
-}
-
-.glow {
-    position: absolute;
-    inset: -22%;
-
-    border-radius: 50%;
-
-    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
-
-    filter: blur(28px);
-    opacity: 0.22;
-
-    animation: hud-pulse 3.2s ease-in-out infinite;
-}
-
-.sweepClip {
-    position: absolute;
-    inset: 9%;
-
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.sweep {
-    position: absolute;
-    inset: -50%;
-
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 300deg,
-        rgba(0, 229, 255, 0.5) 340deg,
-        rgba(0, 229, 255, 0.05) 360deg
-    );
-
-    animation: hud-sweep 2.4s linear infinite;
-}
-
-.svg {
-    position: absolute;
-    inset: 0;
-
     width: 100%;
-    height: 100%;
-}
+    height: 20px;
 
-.tickRing {
-    animation: hud-rotate 60s linear infinite;
-    transform-origin: 100px 100px;
-}
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 
-.rotateSlow {
-    animation: hud-rotate 14s linear infinite reverse;
-    transform-origin: 100px 100px;
-}
-
-.mark {
-    position: absolute;
-    inset: 0;
+    background: rgba(30, 136, 255, 0.1);
+    border: 1px solid #1e88ff;
+    border-radius: 3px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.8rem;
 
-    font-family: var(--font-heading);
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    background: linear-gradient(90deg, #1e88ff, #42a5f5);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(30, 136, 255, 0.5);
+    transition: width 0.1s linear;
+}
+
+.percentage {
+    position: absolute;
+    right: 0.6rem;
+
+    font-family: "Courier New", monospace;
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.05em;
+    text-variant-numeric: tabular-nums;
 
-    color: var(--color-text);
-    text-shadow: 0 0 22px var(--color-primary);
+    color: #1e88ff;
+    text-shadow: 0 0 4px rgba(30, 136, 255, 0.4);
+
+    white-space: nowrap;
 }
 
-.core.ready .glow {
-    animation-duration: 1.4s;
-    opacity: 0.32;
+.core.closing .sweep,
+.core.closing .rotateSlow {
+    animation-duration: 0.35s;
 }
 
-.core.ready .sweep {
-    animation-duration: 1.2s;
+@keyframes hud-punch {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(6);
+        opacity: 0;
+    }
 }
 
 @keyframes hud-pulse {
@@ -117,5 +88,10 @@
     .tickRing,
     .rotateSlow {
         animation: none;
+    }
+
+    .core.closing {
+        animation: none;
+        opacity: 0;
     }
 }
