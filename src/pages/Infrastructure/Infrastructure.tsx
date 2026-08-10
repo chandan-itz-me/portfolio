@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-// import Container from "@/components/layout/Container";
-import Page from "@/components/layout/Page";  
+import Page from "@/components/layout/Page";
 
 import { infrastructure } from "@/data/infrastructure";
 

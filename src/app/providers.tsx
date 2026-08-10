@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { HelmetProvider } from "react-helmet-async";
 
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { useSmoothScroll } from "@/hooks/useScroll";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 type ProvidersProps = {
     children: ReactNode;

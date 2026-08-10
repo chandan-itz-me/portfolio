@@ -1,3 +1,8 @@
+/**
+ * Site configuration for SEO and meta tags.
+ * TODO: Integrate into index.html or use with a React Helmet component for dynamic meta tag management.
+ * Usage example: Add to <head> in index.html or use with react-helmet for SSG/dynamic rendering.
+ */
 export const siteConfig = {
     name: "Cloud Control Center",
 
