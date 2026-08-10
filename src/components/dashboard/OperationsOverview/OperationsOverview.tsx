@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
 import Card from "@/components/common/Card";
-import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 import { dashboard } from "@/data/dashboard";
@@ -16,11 +15,6 @@ import styles from "./OperationsOverview.module.css";
 export default function OperationsOverview() {
     return (
         <section className={styles.section}>
-            <SectionHeader
-                title="Operations Overview"
-                subtitle="Real-time portfolio and platform summary."
-            />
-
             <motion.div
                 className={styles.grid}
                 variants={staggerContainer}
@@ -36,9 +30,9 @@ export default function OperationsOverview() {
                         key={item.label}
                         variants={staggerItem}
                     >
-                        <Card>
+                        <Card variant="featured">
                             <span className={styles.label}>
-                                {item.label.toUpperCase()}
+                                {item.label}
                             </span>
 
                             <div

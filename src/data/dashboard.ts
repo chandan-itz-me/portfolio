@@ -96,19 +96,19 @@ export const dashboard = {
                 label: "Open Incidents",
                 value: 22,
                 suffix: "",
-                color: "var(--color-warning)",
+                color: "var(--color-status-warning)",
             },
             {
                 label: "Avg Response Time",
                 value: 5.9,
                 suffix: "s",
-                color: "#a855f7",
+                color: "var(--color-status-analytics)",
             },
             {
                 label: "Mean Time To Recover",
                 value: 22,
                 suffix: "days",
-                color: "var(--color-secondary)",
+                color: "var(--color-status-info)",
             },
         ],
 

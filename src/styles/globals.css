@@ -28,24 +28,63 @@ html[data-theme="light"] {
 }
 
 body {
-
     min-height: 100vh;
-
     background: var(--color-background);
-
     color: var(--color-text);
-
     font-family: var(--font-body);
-
     text-rendering: optimizeLegibility;
-
     -webkit-font-smoothing: antialiased;
-
     overflow-x: hidden;
-
+    position: relative;
     transition:
-        background-color .4s ease,
-        color .4s ease;
+        background-color 0.4s ease,
+        color 0.4s ease;
+}
+
+/* Dark theme: subtle gradient overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(0, 229, 255, 0.03) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 80% 50%,
+        rgba(56, 189, 248, 0.02) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+    z-index: 1;
+    animation: subtleGlow 12s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Light theme: warm gradient overlay */
+[data-theme="light"] body::before {
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(232, 166, 8, 0.04) 0%,
+        transparent 50%
+    ),
+    radial-gradient(
+        circle at 80% 50%,
+        rgba(245, 158, 11, 0.02) 0%,
+        transparent 50%
+    );
 }
 
 /* ===== FOCUS & SELECTION ===== */
@@ -215,6 +254,18 @@ textarea,
 [contenteditable="true"] {
 
     cursor: text;
+}
+
+/* ===== LIGHT THEME: ORANGE CURSOR WITH WHITE OUTLINE ===== */
+/* Custom cursor with white outline for visibility on light background */
+[data-theme="light"] {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><polygon points="2,2 2,26 9,19 16,28 20,26 13,17 22,17" fill="%23FFFFFF" stroke="%23D97706" stroke-width="2"/><polygon points="4,4 4,24 9,19 16,26 18,25 12,18 20,18" fill="%23D97706"/></svg>') 2 2, auto;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] [contenteditable="true"] {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20"><rect x="4" y="2" width="4" height="16" fill="%23FFFFFF" stroke="%23D97706" stroke-width="1.5"/><rect x="5" y="3" width="2" height="14" fill="%23D97706"/></svg>') 6 10, text;
 }
 
 /* ------------------------------------------------ */

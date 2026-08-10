@@ -1,0 +1,63 @@
+.tooltip {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.name {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.value {
+    font-weight: 700;
+    margin-left: auto;
+}
+
+/* Light theme */
+[data-theme="light"] .tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--color-border);
+    box-shadow: 0 8px 24px rgba(26, 24, 20, 0.12);
+}
+
+[data-theme="light"] .label {
+    color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .name {
+    color: var(--color-text-secondary);
+}

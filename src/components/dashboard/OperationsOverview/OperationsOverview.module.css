@@ -1,112 +1,81 @@
 .section {
-}
-
-.heading {
-    margin-bottom: 1.5rem;
-
-    font-size: 1.25rem;
-    font-weight: 600;
-
-    color: var(--color-text-primary);
+    margin-bottom: var(--section-spacing);
 }
 
 .grid {
     display: grid;
-
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(220px, 1fr)
-    );
-
-    gap: 1.5rem;
-}
-
-.card {
-    background: rgba(18, 25, 36, 0.7);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 16px;
-
-    padding: 1.5rem;
-
-    backdrop-filter: blur(14px);
-
-    transition: all 0.25s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-
-    border-color: rgba(
-        34,
-        211,
-        238,
-        0.4
-    );
-
-    box-shadow:
-        0 10px 30px rgba(
-            34,
-            211,
-            238,
-            0.12
-        );
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--dashboard-gap-md);
+    margin-bottom: var(--dashboard-gap-lg);
 }
 
 .label {
     display: block;
-
     margin-bottom: 1rem;
-
     color: var(--color-text-secondary);
-
-    font-size: 0.9rem;
-
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
 }
 
 .value {
-    font-size: 2rem;
-
+    font-size: var(--text-kpi);
     font-weight: 700;
-
     color: var(--color-text-primary);
+    line-height: 1.2;
 }
 
-.status {
-    color: #22c55e;
+.value.status {
+    color: var(--color-status-success);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.value.status::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .metricsGrid {
     display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 1.5rem;
-
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--dashboard-gap-md);
 }
 
 .metricValue {
-    margin-bottom: .75rem;
-
-    font-size: 2.5rem;
-
+    font-size: var(--text-kpi);
     font-weight: 700;
-
-    color: var(--color-primary);
+    color: var(--color-status-success);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
 }
 
 .metricLabel {
+    font-size: 0.9rem;
+    font-weight: 500;
     color: var(--color-text-secondary);
-
-    line-height: 1.5;
 }
 
 @media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 
     .metricsGrid {
         grid-template-columns: repeat(2, 1fr);
@@ -114,6 +83,9 @@
 }
 
 @media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 
     .metricsGrid {
         grid-template-columns: 1fr;

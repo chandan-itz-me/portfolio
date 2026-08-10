@@ -1,35 +1,31 @@
 .header {
     position: sticky;
-
     top: 0;
-
     z-index: var(--z-navbar);
-
-    background: rgba(10, 16, 28, 0.82);
-
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
-
+    background: rgba(5, 8, 22, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     transition:
-        background .3s ease,
-        border-color .3s ease;
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-/* Light theme: warm navbar styling */
+/* Light theme: warm navbar with enhanced glass effect */
 [data-theme="light"] .header {
-    background: rgba(254, 253, 251, 0.85);
-    border-bottom: 1px solid rgba(43, 36, 22, 0.12);
+    background: rgba(254, 253, 251, 0.8);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(43, 36, 22, 0.08);
+    box-shadow: 0 4px 12px rgba(26, 24, 20, 0.08);
 }
 
 .nav {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     height: var(--header-height);
 }
 
@@ -136,75 +132,56 @@
 }
 
 .link {
-
     position: relative;
-
     display: inline-flex;
-
     align-items: center;
-
     text-decoration: none;
-
     color: var(--color-text-secondary);
-
-    font-size: .95rem;
-
+    font-size: 0.95rem;
     font-weight: 500;
-
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
     transition:
-        color .25s ease,
-        transform .25s ease;
-
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
 }
 
 .link:hover {
-
     color: var(--color-text-primary);
-
+    background: rgba(34, 211, 238, 0.08);
     transform: translateY(-2px);
-
 }
 
 .link::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: -8px;
-
-    width: 0;
-
-    height: 2px;
-
-    border-radius: 999px;
-
-    background: var(--color-primary);
-
-    transform: translateX(-50%);
-
-    transition: width .25s ease;
-
-}
-
-.link:hover::after {
-
-    width: 100%;
-
+    display: none;
 }
 
 .active {
-
-    color: var(--color-primary);
-
+    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2);
 }
 
-.active::after {
+.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(34, 211, 238, 0.3);
+}
 
-    width: 100%;
+/* Light theme: warm accent pill */
+[data-theme="light"] .link:hover {
+    background: rgba(217, 119, 6, 0.08);
+    color: var(--color-text-primary);
+}
 
+[data-theme="light"] .active {
+    color: white;
+    background: linear-gradient(135deg, #D97706, #F59E0B);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+}
+
+[data-theme="light"] .active:hover {
+    box-shadow: 0 6px 16px rgba(217, 119, 6, 0.3);
 }
 
 /* ---------------------------------- */
@@ -221,37 +198,41 @@
 }
 
 .iconButton {
-
     display: flex;
-
     align-items: center;
-
-    gap: .4rem;
-
-    padding: .5rem .65rem;
-
-    border-radius: var(--radius-md);
-
-    border: 1px solid var(--color-border);
-
-    background: var(--color-surface);
-
+    gap: 0.4rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--color-text-secondary);
-
+    cursor: pointer;
     transition:
-        color .2s ease,
-        border-color .2s ease,
-        background .2s ease;
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .iconButton:hover {
-
     color: var(--color-primary);
-
-    border-color: rgba(217, 119, 6, 0.35);
+    border-color: rgba(34, 211, 238, 0.3);
+    background: rgba(34, 211, 238, 0.1);
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.1);
 }
 
 /* Light theme: warm accent on hover */
+[data-theme="light"] .iconButton {
+    border-color: rgba(43, 36, 22, 0.08);
+    background: rgba(217, 119, 6, 0.05);
+}
+
+[data-theme="light"] .iconButton:hover {
+    color: var(--color-primary);
+    border-color: rgba(217, 119, 6, 0.3);
+    background: rgba(217, 119, 6, 0.12);
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.12);
+}
 [data-theme="light"] .iconButton:hover {
     color: var(--color-primary);
     border-color: var(--color-primary-glow);

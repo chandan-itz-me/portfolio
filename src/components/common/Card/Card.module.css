@@ -1,47 +1,127 @@
 .card {
     height: 100%;
-
-    padding: 1.5rem;
-
+    padding: var(--dashboard-padding);
     border-radius: 16px;
-
     background: rgba(18, 25, 36, 0.72);
-
     border: 1px solid rgba(255, 255, 255, 0.08);
-
     backdrop-filter: blur(16px);
-
     transition:
         transform 0.25s ease,
         border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+        box-shadow 0.3s ease,
+        background 0.25s ease,
+        background-color 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-6px);
+/* === CARD VARIANTS === */
 
+/* Standard card (default) */
+.card.standard:hover {
+    transform: translateY(-4px);
     background: rgba(22, 30, 44, 0.82);
-
     border-color: rgba(34, 211, 238, 0.3);
-
     box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.35),
         0 0 18px rgba(34, 211, 238, 0.08);
 }
 
-/* Light theme: warm card styling */
+/* Featured KPI card (larger, more prominent) */
+.card.featured {
+    grid-column: span 2;
+    padding: 2rem;
+    background: rgba(18, 25, 36, 0.85);
+    border: 2px solid rgba(34, 211, 238, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.card.featured:hover {
+    transform: translateY(-8px);
+    background: rgba(22, 30, 44, 0.92);
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(34, 211, 238, 0.12);
+}
+
+/* Secondary card (softer prominence) */
+.card.secondary {
+    background: rgba(13, 19, 33, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.card.secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(18, 25, 36, 0.65);
+    border-color: rgba(34, 211, 238, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Interactive card (for clickable content) */
+.card.interactive {
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card.interactive:hover {
+    transform: translateY(-6px);
+    background: rgba(26, 35, 50, 0.9);
+    border-color: rgba(34, 211, 238, 0.4);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(34, 211, 238, 0.15);
+}
+
+/* === LIGHT THEME === */
+
 [data-theme="light"] .card {
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid var(--color-border);
     backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(26, 24, 20, 0.04);
 }
 
-[data-theme="light"] .card:hover {
+[data-theme="light"] .card.standard:hover {
     background: rgba(255, 255, 255, 0.75);
     border-color: var(--color-accent-warm);
     box-shadow: 
         0 12px 32px rgba(26, 24, 20, 0.08),
         0 0 20px var(--color-accent-warm-glow);
     transform: translateY(-4px);
+}
+
+[data-theme="light"] .card.featured {
+    grid-column: span 2;
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid var(--color-accent-warm-muted);
+    box-shadow: 0 12px 40px rgba(26, 24, 20, 0.06);
+}
+
+[data-theme="light"] .card.featured:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--color-accent-warm);
+    box-shadow:
+        0 20px 50px rgba(26, 24, 20, 0.12),
+        0 0 28px var(--color-accent-warm-glow);
+}
+
+[data-theme="light"] .card.secondary {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--color-border-weak);
+}
+
+[data-theme="light"] .card.secondary:hover {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--color-accent-warm-muted);
+    box-shadow: 0 8px 20px rgba(26, 24, 20, 0.05);
+}
+
+[data-theme="light"] .card.interactive {
+    border: 1px solid var(--color-border);
+}
+
+[data-theme="light"] .card.interactive:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: var(--color-accent-warm);
+    box-shadow: 0 16px 36px rgba(26, 24, 20, 0.08);
 }

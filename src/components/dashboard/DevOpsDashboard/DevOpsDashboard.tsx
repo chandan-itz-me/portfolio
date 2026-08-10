@@ -13,8 +13,8 @@ import {
 } from "recharts";
 
 import Card from "@/components/common/Card";
-import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import ChartTooltip from "./ChartTooltip";
 
 import { dashboard } from "@/data/dashboard";
 
@@ -22,23 +22,15 @@ import styles from "./DevOpsDashboard.module.css";
 
 const AXIS_COLOR = "var(--color-text-secondary)";
 
-const TOOLTIP_STYLE = {
-    background: "var(--color-surface)",
-    border: "1px solid var(--color-border)",
-    borderRadius: 8,
-    color: "var(--color-text-primary)",
-    fontSize: 12,
-};
-
 const COVERAGE_SERIES = [
-    { key: "passed", label: "Passed", color: "var(--color-warning)" },
-    { key: "notRun", label: "Not Run", color: "#a855f7" },
-    { key: "failed", label: "Failed", color: "var(--color-secondary)" },
-    { key: "blocked", label: "Blocked", color: "var(--color-danger)" },
+    { key: "passed", label: "Passed", color: "var(--color-status-success)" },
+    { key: "notRun", label: "Not Run", color: "var(--color-status-analytics)" },
+    { key: "failed", label: "Failed", color: "var(--color-status-warning)" },
+    { key: "blocked", label: "Blocked", color: "var(--color-status-critical)" },
     {
         key: "notApplicable",
         label: "Not Applicable",
-        color: "var(--color-primary)",
+        color: "var(--color-status-info)",
     },
 ] as const;
 
@@ -47,11 +39,6 @@ export default function DevOpsDashboard() {
 
     return (
         <section className={styles.section}>
-            <SectionHeader
-                title="DevOps Dashboard"
-                subtitle="A simulated view of the sprint, incident, and reliability signals I track day to day."
-            />
-
             <div className={styles.grid}>
                 <Card className={styles.kpiCard}>
                     {devops.kpis.map((kpi) => (
@@ -124,7 +111,8 @@ export default function DevOpsDashboard() {
                                 />
 
                                 <Tooltip
-                                    contentStyle={TOOLTIP_STYLE}
+                                    content={<ChartTooltip />}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
                                 />
 
                                 <Legend
@@ -137,21 +125,21 @@ export default function DevOpsDashboard() {
                                 <Bar
                                     dataKey="planned"
                                     name="Planned"
-                                    fill="var(--color-warning)"
+                                    fill="var(--color-status-info)"
                                     radius={[4, 4, 0, 0]}
                                 />
 
                                 <Bar
                                     dataKey="commitment"
                                     name="Commitment"
-                                    fill="#a855f7"
+                                    fill="var(--color-status-analytics)"
                                     radius={[4, 4, 0, 0]}
                                 />
 
                                 <Bar
                                     dataKey="delivered"
                                     name="Delivered"
-                                    fill="var(--color-secondary)"
+                                    fill="var(--color-status-success)"
                                     radius={[4, 4, 0, 0]}
                                 />
                             </BarChart>
@@ -196,7 +184,8 @@ export default function DevOpsDashboard() {
                                 />
 
                                 <Tooltip
-                                    contentStyle={TOOLTIP_STYLE}
+                                    content={<ChartTooltip />}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
                                 />
 
                                 <Bar
@@ -210,9 +199,9 @@ export default function DevOpsDashboard() {
                                                 key={entry.day}
                                                 fill={
                                                     [
-                                                        "var(--color-warning)",
-                                                        "#a855f7",
-                                                        "var(--color-secondary)",
+                                                        "var(--color-status-warning)",
+                                                        "var(--color-status-analytics)",
+                                                        "var(--color-status-info)",
                                                     ][index % 3]
                                                 }
                                             />
@@ -254,9 +243,9 @@ export default function DevOpsDashboard() {
                                                 100
                                             }%`,
                                             background: [
-                                                "var(--color-warning)",
-                                                "#a855f7",
-                                                "var(--color-secondary)",
+                                                "var(--color-status-warning)",
+                                                "var(--color-status-analytics)",
+                                                "var(--color-status-info)",
                                             ][index % 3],
                                         }}
                                     />
@@ -296,13 +285,14 @@ export default function DevOpsDashboard() {
                                 />
 
                                 <Tooltip
-                                    contentStyle={TOOLTIP_STYLE}
+                                    content={<ChartTooltip />}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
                                 />
 
                                 <Bar
                                     dataKey="errors"
                                     name="Errors"
-                                    fill="var(--color-secondary)"
+                                    fill="var(--color-status-warning)"
                                     radius={[4, 4, 0, 0]}
                                 />
                             </BarChart>
@@ -347,7 +337,8 @@ export default function DevOpsDashboard() {
                                 />
 
                                 <Tooltip
-                                    contentStyle={TOOLTIP_STYLE}
+                                    content={<ChartTooltip />}
+                                    cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
                                 />
 
                                 <Legend
@@ -404,7 +395,8 @@ export default function DevOpsDashboard() {
                                     </Pie>
 
                                     <Tooltip
-                                        contentStyle={TOOLTIP_STYLE}
+                                        content={<ChartTooltip />}
+                                        cursor={{ fill: "rgba(34, 211, 238, 0.05)" }}
                                     />
                                 </PieChart>
                             </ResponsiveContainer>
