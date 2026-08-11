@@ -103,6 +103,13 @@
     box-shadow: 0 0 12px rgba(217, 119, 6, 0.2);
 }
 
+.logoMark img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
 /* Light theme: warm accent styling */
 [data-theme="light"] .logoMark {
     border-color: rgba(217, 119, 6, .25);

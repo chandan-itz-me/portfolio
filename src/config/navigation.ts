@@ -2,10 +2,6 @@ import type { NavigationItem } from "@/types/navigation";
 
 export const navigation = [
     {
-        label: "Home",
-        path: "#home",
-    },
-    {
         label: "About",
         path: "#about",
     },

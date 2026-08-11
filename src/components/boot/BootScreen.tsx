@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { profile } from "@/config/profile";
 
 import HudCore from "./HudCore";
+import LinuxProgressBar from "./LinuxProgressBar";
 import PortalOverlay from "./PortalOverlay";
 import { bootLogs } from "./bootLogs";
 import styles from "./BootScreen.module.css";
@@ -14,7 +15,7 @@ type BootScreenProps = {
 
 type Phase = "assemble" | "diagnostics" | "readouts" | "ready" | "closing";
 
-const LOG_INTERVAL_MS = 150;
+const LOG_INTERVAL_MS = 200;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 /**
@@ -91,7 +92,7 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
 
     return (
         <div
-            className={`${styles.boot} ${
+            className={`${styles.boot} ${styles[phase]} ${
                 phase === "closing" ? styles.closing : ""
             }`}
             role="status"
@@ -199,6 +200,17 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                                             </motion.div>
                                         ))}
 
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <LinuxProgressBar 
+                                            active={phase === "diagnostics" || phase === "readouts"} 
+                                            label="System initialization"
+                                        />
+                                    </motion.div>
+
                                     {phase === "diagnostics" ? (
                                         <span
                                             className={styles.cursor}
@@ -209,8 +221,8 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                             )}
                         </AnimatePresence>
 
-                        {/* Loading percentage */}
-                        {(phase === "diagnostics" || phase === "readouts") && (
+                        {/* Loading percentage - now integrated into terminal as LinuxProgressBar */}
+                        {false && (
                             <motion.div
                                 className={styles.loadingPercentage}
                                 initial={{ opacity: 0 }}

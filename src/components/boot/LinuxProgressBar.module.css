@@ -1,0 +1,57 @@
+.progressLine {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    margin: 0.6rem 0;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    color: var(--boot-primary, #00e5ff);
+}
+
+.bracket {
+    color: var(--boot-primary, #00e5ff);
+    font-weight: 600;
+}
+
+.bar {
+    display: inline-block;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    
+    /* Color coding for filled vs empty */
+    color: var(--boot-secondary, #38bdf8);
+    
+    text-shadow: 0 0 4px color-mix(in srgb, var(--boot-secondary, #38bdf8) 40%, transparent);
+}
+
+.percentage {
+    font-weight: 600;
+    min-width: 35px;
+    text-align: right;
+    color: var(--boot-secondary, #38bdf8);
+}
+
+.label {
+    color: var(--boot-primary, #00e5ff);
+    opacity: 0.85;
+}
+
+/* Animation for the progress line appearing */
+@keyframes progress-in {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.progressLine {
+    animation: progress-in 0.25s ease;
+}

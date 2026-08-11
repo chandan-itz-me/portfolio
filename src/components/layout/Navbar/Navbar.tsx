@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Command, Menu, Moon, Sun, X } from "lucide-react";
 
 import Container from "../Container/Container";
-import TwinCloudLogo from "./TwinCloudLogo/TwinCloudLogo";
 import { navigation } from "@/config/navigation";
 import { useTheme } from "@/hooks/useTheme";
 import MagneticButton from "@/components/ui/MagneticButton/MagneticButton";
@@ -176,7 +175,12 @@ export default function Navbar({ onOpenPalette }: NavbarProps) {
                         className={styles.logo}
                     >
                         <div className={styles.logoMark}>
-                            <TwinCloudLogo />
+                            <img 
+                                src={`${import.meta.env.BASE_URL}logo.png`}
+                                alt="Chandan Padal logo"
+                                width="32" 
+                                height="32"
+                            />
                         </div>
 
                         <span>Chandan Padal</span>
