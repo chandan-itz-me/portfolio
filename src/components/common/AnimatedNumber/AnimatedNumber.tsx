@@ -18,6 +18,12 @@ export default function AnimatedNumber({ value, suffix = "", className = "" }: A
     });
 
     useEffect(() => {
+        const target = ref.current;
+
+        if (!target) {
+            return;
+        }
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting && !hasAnimated.current) {
@@ -28,14 +34,10 @@ export default function AnimatedNumber({ value, suffix = "", className = "" }: A
             { threshold: 0.5 }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
+        observer.observe(target);
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
+            observer.unobserve(target);
         };
     }, [motionValue, value]);
 

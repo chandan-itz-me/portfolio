@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 import { projects } from "@/data/projects";
 import { staggerContainer } from "@/animations/stagger";
@@ -41,6 +42,21 @@ export default function ProjectGrid() {
     const [isClosingModal, setIsClosingModal] = useState(false);
     const [isLoopPaused, setIsLoopPaused] = useState(false);
     const viewportRef = useRef<HTMLDivElement>(null);
+
+    const closeProjectPostcard = useCallback(() => {
+        if (!selectedProject || isClosingModal) {
+            return;
+        }
+
+        setIsClosingModal(true);
+        setIsModalFlipped(false);
+
+        window.setTimeout(() => {
+            setSelectedProject(null);
+            setSelectedLayoutId(null);
+            setIsClosingModal(false);
+        }, MODAL_FLIP_DURATION);
+    }, [isClosingModal, selectedProject]);
 
     const orderedProjects = useMemo(
         () => [...projects].sort((first, second) => {
@@ -153,28 +169,13 @@ export default function ProjectGrid() {
             window.removeEventListener("touchmove", closeOnScroll);
             window.removeEventListener("keydown", closeOnEscape);
         };
-    }, [selectedProject]);
+    }, [closeProjectPostcard, selectedProject]);
 
     const openProjectPostcard = (project: Project, layoutId: string) => {
         setIsClosingModal(false);
         setIsModalFlipped(false);
         setSelectedProject(project);
         setSelectedLayoutId(layoutId);
-    };
-
-    const closeProjectPostcard = () => {
-        if (!selectedProject || isClosingModal) {
-            return;
-        }
-
-        setIsClosingModal(true);
-        setIsModalFlipped(false);
-
-        window.setTimeout(() => {
-            setSelectedProject(null);
-            setSelectedLayoutId(null);
-            setIsClosingModal(false);
-        }, MODAL_FLIP_DURATION);
     };
 
     const modalLogoCandidates = selectedProject?.logoPaths?.length
@@ -316,6 +317,19 @@ export default function ProjectGrid() {
                                             <h3>Application</h3>
                                             <p>{selectedProject.application}</p>
                                         </div>
+
+                                        {selectedProject.blueprintRoute ? (
+                                            <div className={styles.modalSection}>
+                                                <h3>Infrastructure Blueprint</h3>
+                                                <Link
+                                                    to={selectedProject.blueprintRoute}
+                                                    className={styles.blueprintLink}
+                                                    onClick={(event) => event.stopPropagation()}
+                                                >
+                                                    Open AWS Infrastructure Blueprint
+                                                </Link>
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </button>

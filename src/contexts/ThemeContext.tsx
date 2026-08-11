@@ -1,17 +1,13 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
-export type Theme = "dark" | "light";
-
-type ThemeContextValue = {
-    theme: Theme;
-    toggleTheme: () => void;
-    setTheme: (theme: Theme) => void;
-};
+import {
+    ThemeContext,
+    type Theme,
+    type ThemeContextValue,
+} from "./theme-context";
 
 const STORAGE_KEY = "ccc_theme";
-
-export const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 function getPreferredTheme(): Theme {
     if (typeof window === "undefined") {

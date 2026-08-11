@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { profile } from "@/config/profile";
 
-import HudCore from "./HudCore";
 import LinuxProgressBar from "./LinuxProgressBar";
 import PortalOverlay from "./PortalOverlay";
 import { bootLogs } from "./bootLogs";
@@ -220,18 +219,6 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
                                 </motion.div>
                             )}
                         </AnimatePresence>
-
-                        {/* Loading percentage - now integrated into terminal as LinuxProgressBar */}
-                        {false && (
-                            <motion.div
-                                className={styles.loadingPercentage}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.3, delay: 1.5 }}
-                            >
-                                <HudCore loading={true} />
-                            </motion.div>
-                        )}
 
                         {/* Ready message */}
                         <AnimatePresence>

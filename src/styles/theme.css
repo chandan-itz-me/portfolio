@@ -1,6 +1,0 @@
-/*
- * No blanket spacing rule on <section>. Vertical rhythm between
- * top-level page sections comes from Page's .stack gap instead —
- * a single source of truth so spacing is identical on every page.
- * Component-internal padding is defined per-component.
- */

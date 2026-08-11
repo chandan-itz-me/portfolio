@@ -76,11 +76,10 @@ export default function ProjectDetails() {
                 </section>
 
                 <section className={styles.placeholder}>
-                    <h2>Project Blueprint Placeholder</h2>
+                    <h2>Project Blueprint</h2>
                     <p>
-                        This page is prepared for future expansion with architecture
-                        diagrams, deployment flow, automation modules, and operational
-                        retrospectives.
+                        This section captures architecture direction, deployment flow,
+                        automation modules, and operational decisions for this delivery.
                     </p>
                 </section>
             </motion.section>

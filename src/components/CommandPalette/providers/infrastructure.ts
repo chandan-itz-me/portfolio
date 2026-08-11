@@ -15,7 +15,7 @@ export function getInfrastructureCommands(): Command[] {
                 id: `infra-${provider}-${service.id}`,
                 label: service.name,
                 description: `${PROVIDER_LABELS[provider]} · ${service.category}`,
-                path: `/infrastructure/${provider}`,
+                path: "/#infrastructure",
                 group: "Infrastructure",
                 keywords: [PROVIDER_LABELS[provider], service.category, service.level],
             }))

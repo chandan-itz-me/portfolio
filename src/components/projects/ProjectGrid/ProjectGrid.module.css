@@ -151,6 +151,26 @@
     line-height: 1.6;
 }
 
+.blueprintLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.1rem;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.12);
+    color: #67e8f9;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.blueprintLink:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    transform: translateY(-1px);
+}
+
 .modalBadgeGrid {
     display: flex;
     flex-wrap: wrap;

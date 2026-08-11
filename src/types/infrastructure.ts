@@ -1,4 +1,4 @@
-export interface InfrastructureService {
+interface InfrastructureService {
     id: string;
     name: string;
     category: string;

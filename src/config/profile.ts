@@ -17,5 +17,5 @@ export const profile = {
 
     phone: "+91 8093323137",
 
-    resume: "/resume.pdf",
+    resume: "https://www.linkedin.com/in/chandan-itz-me/",
 } as const satisfies Profile;

@@ -1,0 +1,471 @@
+.page {
+    --void: #05070e;
+    --navy: #0a0e1d;
+    --panel: #0f1428;
+    --panel-border: rgba(148, 163, 209, 0.12);
+    --cyan: #2dd4e8;
+    --purple: #8b7cf6;
+    --emerald: #2dd8a0;
+    --text-1: #e9ecfb;
+    --text-2: #909ab8;
+    --text-3: #525c7a;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 80% -20%, rgba(139, 124, 246, 0.14), transparent 55%),
+        radial-gradient(circle at -10% 30%, rgba(45, 212, 232, 0.13), transparent 45%),
+        var(--navy);
+    color: var(--text-1);
+    position: relative;
+    overflow-x: hidden;
+    isolation: isolate;
+}
+
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(45, 212, 232, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 212, 232, 0.12) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.45;
+}
+
+.container {
+    width: min(1180px, calc(100% - 3rem));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.sysnav {
+    position: fixed;
+    right: 1.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.sysnav a {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--text-3);
+    background: rgba(255, 255, 255, 0.04);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.sysnav span {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-code);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    color: var(--text-2);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+}
+
+.sysnav a:hover span {
+    opacity: 1;
+}
+
+.sysnav a.active {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px rgba(45, 212, 232, 0.7);
+}
+
+.hero {
+    padding: 7rem 0 5rem;
+    min-height: 86vh;
+    display: grid;
+    align-items: center;
+}
+
+.heroTag {
+    font-family: var(--font-code);
+    letter-spacing: 0.11em;
+    color: var(--text-2);
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 4.3rem);
+    line-height: 1.03;
+    background: linear-gradient(110deg, #ffffff 30%, var(--cyan) 65%, var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    max-width: 900px;
+}
+
+.lede {
+    margin: 1.35rem 0 0;
+    max-width: 700px;
+    color: var(--text-2);
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.heroCtaRow {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btnPrimary {
+    color: #052026;
+    font-weight: 700;
+    background: var(--cyan);
+}
+
+.btnPrimary:hover {
+    transform: translateY(-1px);
+    background: #59e2f2;
+}
+
+.btnGhost {
+    border-color: var(--panel-border);
+    color: var(--text-1);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.btnGhost:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.section {
+    padding: 5.5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.sectionHead h2 {
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.sectionHead p {
+    color: var(--text-2);
+    margin: 0.8rem 0 0;
+}
+
+.eyebrow {
+    margin: 0 0 0.9rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.74rem;
+    font-family: var(--font-code);
+}
+
+.diagramWrap {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 1.35rem;
+}
+
+.diagramPanel {
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    background: linear-gradient(140deg, rgba(139, 124, 246, 0.08), rgba(10, 14, 29, 0.9));
+    padding: 1.6rem;
+}
+
+.tierLabel {
+    margin: 1rem 0 0.75rem;
+    color: var(--text-2);
+    font-family: var(--font-code);
+    font-size: 0.76rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.tierLabel:first-child {
+    margin-top: 0;
+}
+
+.nodeRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.node {
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-1);
+    padding: 0.58rem 0.8rem;
+    font-family: var(--font-code);
+    font-size: 0.76rem;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.node:hover,
+.nodeActive {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(45, 212, 232, 0.1);
+}
+
+.specPanel {
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    background: var(--panel);
+    padding: 1.25rem;
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+}
+
+.specKicker {
+    margin: 0;
+    color: var(--cyan);
+    font-family: var(--font-code);
+    font-size: 0.66rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.specPanel h3 {
+    margin: 0.65rem 0 0;
+    font-size: 1.2rem;
+}
+
+.specPanel p {
+    margin: 0.7rem 0 0;
+    color: var(--text-2);
+    line-height: 1.65;
+}
+
+.topologyBands {
+    margin-top: 1.1rem;
+    display: grid;
+    gap: 0.7rem;
+}
+
+.band {
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.9rem 0.95rem;
+}
+
+.band h4 {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.band p {
+    margin: 0.35rem 0 0;
+    color: var(--text-2);
+    font-size: 0.82rem;
+}
+
+.codePanel {
+    margin-top: 1.8rem;
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    background: var(--void);
+    padding: 1.2rem;
+}
+
+.codePanel pre {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 0.86rem;
+    line-height: 1.7;
+    font-family: var(--font-code);
+}
+
+.pipeline {
+    margin-top: 1.7rem;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(140px, 1fr));
+    gap: 0.65rem;
+    overflow-x: auto;
+}
+
+.pipelineNode {
+    border: 1px solid var(--panel-border);
+    border-radius: 9px;
+    background: var(--panel);
+    padding: 0.9rem 0.75rem;
+    font-family: var(--font-code);
+    color: var(--text-1);
+    white-space: nowrap;
+    font-size: 0.77rem;
+}
+
+.ringStack {
+    margin-top: 1.8rem;
+    display: grid;
+    gap: 0.6rem;
+    max-width: 720px;
+}
+
+.ring {
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    background: var(--panel);
+    padding: 1rem 1.1rem;
+}
+
+.ring h3 {
+    margin: 0;
+    font-size: 0.96rem;
+}
+
+.ring p {
+    margin: 0.45rem 0 0;
+    color: var(--text-2);
+    font-size: 0.85rem;
+}
+
+.observabilityGrid {
+    margin-top: 1.7rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.card {
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    background: var(--panel);
+    padding: 1.1rem;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.card p {
+    margin: 0.55rem 0 0;
+    color: var(--text-2);
+    font-size: 0.85rem;
+}
+
+.accordion {
+    margin-top: 1.6rem;
+    border-top: 1px solid var(--panel-border);
+}
+
+.accordionItem {
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.accordionTrigger {
+    width: 100%;
+    background: transparent;
+    color: var(--text-1);
+    border: 0;
+    padding: 1rem 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 0.96rem;
+    font-family: var(--font-heading);
+}
+
+.accordionBody {
+    margin: 0;
+    padding: 0 0.2rem 1.1rem;
+    color: var(--text-2);
+    max-width: 760px;
+}
+
+.repositoryCta {
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    background: linear-gradient(130deg, rgba(139, 124, 246, 0.14), rgba(45, 212, 232, 0.09));
+    padding: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.repositoryCta h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+}
+
+.repoLabel {
+    margin: 0.45rem 0 0;
+    color: var(--text-2);
+    font-size: 0.82rem;
+    font-family: var(--font-code);
+}
+
+@media (max-width: 1000px) {
+    .sysnav {
+        display: none;
+    }
+
+    .diagramWrap {
+        grid-template-columns: 1fr;
+    }
+
+    .specPanel {
+        position: static;
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        width: min(1180px, calc(100% - 1.6rem));
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 6rem;
+    }
+
+    .observabilityGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .pipeline {
+        grid-template-columns: repeat(6, minmax(122px, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .node,
+    .sysnav a {
+        transition: none;
+    }
+}

@@ -1,8 +1,6 @@
-export type BootLogTag = "BOOT" | "LINK" | "SYNC" | "SEC" | "OK";
-
 export type BootLogEntry = {
     text: string;
-    tag: BootLogTag;
+    tag: "BOOT" | "LINK" | "SYNC" | "SEC" | "OK";
 };
 
 export const bootLogs: BootLogEntry[] = [

@@ -19,3 +19,8 @@
     left: 0;
     z-index: var(--z-navbar);
 }
+
+.routeContent {
+    position: relative;
+    z-index: 1;
+}

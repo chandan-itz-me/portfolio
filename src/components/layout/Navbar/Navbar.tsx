@@ -30,8 +30,6 @@ export default function Navbar({ onOpenPalette }: NavbarProps) {
         // Map routes to their corresponding nav sections
         if (pathname.startsWith("/projects/")) {
             setActivePath("#projects");
-        } else if (pathname.startsWith("/infrastructure/")) {
-            setActivePath("#infrastructure");
         } else if (pathname === "/") {
             // Keep existing hash-based logic for home page
         } else {
@@ -156,9 +154,11 @@ export default function Navbar({ onOpenPalette }: NavbarProps) {
         setMobileOpen(false);
 
         if (pathname !== "/") {
-            navigate("/");
-            // Wait for route to complete before scrolling
-            setTimeout(() => scrollToSection(path), 50);
+            // Route with hash in one SPA navigation to avoid timing races.
+            navigate({
+                pathname: "/",
+                hash: path,
+            });
             return;
         }
 

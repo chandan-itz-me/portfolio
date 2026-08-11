@@ -14,6 +14,7 @@ export interface Project {
     description: string;
     infrastructureArchitecture: string;
     application: string;
+    blueprintRoute?: string;
     cloudProviders: readonly ("aws" | "azure" | "gcp")[];
     technologies: readonly string[];
     impact: readonly string[];

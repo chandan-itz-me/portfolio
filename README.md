@@ -16,10 +16,7 @@ Rather than listing technologies, the application demonstrates them through inte
 - Responsive design
 - Infrastructure visualizations
 - Interactive project showcase
-- DevOps pipeline simulation
-- Cloud metrics dashboard
-- Animated charts
-- Three.js powered hero section
+- Infrastructure tiles and service highlights
 - GitHub Pages deployment
 
 ---
@@ -38,13 +35,6 @@ Rather than listing technologies, the application demonstrates them through inte
 - CSS Variables
 - Framer Motion
 - Lucide Icons
-
-### Visualization
-
-- Three.js
-- React Three Fiber
-- Drei
-- Recharts
 
 ### Routing
 
@@ -96,9 +86,9 @@ The application is designed to be deployed using GitHub Pages.
 - [x] Design System (Dark/Light theme with semantic colors)
 - [x] Responsive Layout (Mobile, tablet, desktop)
 - [x] Navigation (With glass morphism navbar)
-- [x] Hero Section (Three.js powered with aurora effects)
+- [x] Hero Section (animated identity experience)
 - [x] JARVIS Boot Sequence (Retro terminal with blue accents)
-- [x] Dashboard (Live metrics, charts, KPIs with micro-interactions)
+- [x] Dashboard-inspired homepage sections (metrics and cloud operations)
 - [x] Infrastructure Visualization (Cloud provider status)
 - [x] Project Explorer (Interactive project showcase)
 - [x] Experience Timeline (Career history with badges)

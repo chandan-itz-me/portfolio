@@ -73,17 +73,9 @@ export default function MainLayout() {
                     ) : null}
                 </AnimatePresence>
 
-                <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                        key={pathname}
-                        initial={prefersReducedMotion ? false : { opacity: 0, y: 20, scale: 0.985 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12, scale: 1.01 }}
-                        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                        <Outlet />
-                    </motion.div>
-                </AnimatePresence>
+                <div className={styles.routeContent}>
+                    <Outlet />
+                </div>
 
                 <Footer />
             </div>

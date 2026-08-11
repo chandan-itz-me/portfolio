@@ -7,6 +7,7 @@ export default function RouteFallback() {
     return (
         <div className={styles.wrapper} role="status" aria-label="Loading page">
             <span className={styles.ring} />
+            <p className={styles.message}>Loading cloud blueprint...</p>
         </div>
     );
 }

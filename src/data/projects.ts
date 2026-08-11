@@ -21,6 +21,7 @@ export const projects = [
             "Multi-account AWS architecture with VPC segmentation, shared services, observability, and deployment guardrails.",
         application:
             "Freight workflow and shipment visibility applications used by regional operations and support teams.",
+        blueprintRoute: "/infrastructure/aws",
         cloudProviders: ["aws"],
 
         technologies: ["AWS", "Terraform", "Jenkins", "Docker", "CloudWatch"],
