@@ -169,7 +169,7 @@ export default function ParticleField() {
         if (reduceMotion) {
             draw();
         } else {
-            animate();
+            frameId = requestAnimationFrame(animate);
         }
 
         return () => {
