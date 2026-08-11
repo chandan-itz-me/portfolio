@@ -19,21 +19,26 @@ export const career = [
             "DFDS",
             "PSA BDP",
             "Edge World Logistics",
+            "Bridgenet Solutions",
         ],
 
         technologies: [
-            "Azure",
             "AWS",
+            "Azure",
+            "GCP",
+            "MySQL",
             "Terraform",
-            "ARM Templates",
-            "CloudFormation",
-            "Azure DevOps",
             "Docker",
-            "Amazon ECS",
-            "CloudWatch",
-            "Azure Monitor",
+            "Jenkins",
+            "Git",
             "Python",
+            "Go",
             "Bash",
+            "SQL Server",
+            "DevOps",
+            "CI/CD",
+            "IAM",
+            "YAML",
         ],
 
         highlights: [
@@ -55,7 +60,7 @@ export const career = [
 
         duration: "Oct 2021 – May 2022",
 
-        location: "Bhubaneswar, India",
+        location: "Vadodara, India",
 
         summary:
             "Managed enterprise infrastructure operations, production support, and monitoring across Oracle Cloud Infrastructure and on-premises retail environments.",
@@ -63,20 +68,29 @@ export const career = [
         clients: [
             "Primark",
             "WHSmith",
+            "Aptos",
+            "Superdry",
         ],
 
         technologies: [
-            "Oracle Cloud Infrastructure",
+            "OCI",
+            "Grafana",
             "Zabbix",
-            "SQL",
-            "Windows Server",
-            "Linux",
+            "SQL Server",
+            "MySQL",
+            "Security",
+            "Patching",
+            "Migration",
+            "OnPrem",
+            "VPN",
+            "Networking",
         ],
 
         highlights: [
             "Provided 24×7 production support for business-critical retail applications, participating in on-call rotations",
             "Managed infrastructure monitoring and alerting using Zabbix, tracking server health, storage, and application availability",
             "Diagnosed and resolved network, server, OS, and application issues across distributed retail store environments",
+            "Managed SQL database operations, including health monitoring, backup coordination, and query troubleshooting for retail applications",
             "Investigated production incidents, performed root cause analysis, and restored services within SLA targets",
         ],
     },
@@ -90,7 +104,7 @@ export const career = [
 
         duration: "Dec 2019 – Oct 2021",
 
-        location: "Bhubaneswar, India",
+        location: "Gandhinagar, India",
 
         summary:
             "Provided L3 production support for AWS-based enterprise environments, enterprise authentication, and cloud operations for global consumer goods clients.",
@@ -99,16 +113,24 @@ export const career = [
             "Mondelez International",
             "PepsiCo",
             "Kellogg's",
+            "AG Barr",
+            "Kimberly-Clark",
         ],
 
         technologies: [
-            "AWS",
-            "IAM",
-            "SAML",
+            "Windows Server",
+            "Linux",
             "SSO",
-            "SQL Server",
+            "SAML",
+            "Shell",
+            "SQL",
+            "Maintenance",
+            "Release",
+            "ALB",
+            "AWS",
             "IIS",
-            "Bash",
+            "Winshell",
+            "App Pool",
         ],
 
         highlights: [

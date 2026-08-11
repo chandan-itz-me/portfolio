@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import Page from "@/components/layout/Page";
-import { fadeUp } from "@/constants/animations";
+import { fadeUp, slideInLeft, slideInRight, slideInUp, scaleUp, staggerContainer } from "@/constants/animations";
 
 import IdentityHero from "@/components/home/IdentityHero";
 import AboutMeHero from "@/components/home/AboutMeHero";
@@ -43,7 +43,7 @@ export default function Home() {
             <motion.section
                 id="about"
                 className={styles.section}
-                variants={fadeUp as any}
+                variants={slideInLeft as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -55,19 +55,23 @@ export default function Home() {
             <motion.section
                 id="experience"
                 className={styles.section}
-                variants={fadeUp as any}
+                variants={staggerContainer as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
             >
-                <ExperienceHero />
-                <CareerTimeline />
+                <motion.div variants={slideInLeft as any}>
+                    <ExperienceHero />
+                </motion.div>
+                <motion.div variants={slideInLeft as any}>
+                    <CareerTimeline />
+                </motion.div>
             </motion.section>
 
             <motion.section
                 id="projects"
                 className={styles.section}
-                variants={fadeUp as any}
+                variants={scaleUp as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -83,7 +87,7 @@ export default function Home() {
             <motion.section
                 id="infrastructure"
                 className={styles.section}
-                variants={fadeUp as any}
+                variants={slideInRight as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -100,7 +104,7 @@ export default function Home() {
             <motion.section
                 id="professional"
                 className={styles.section}
-                variants={fadeUp as any}
+                variants={staggerContainer as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -120,7 +124,7 @@ export default function Home() {
             <motion.section
                 id="contact"
                 className={styles.section}
-                variants={fadeUp as any}
+                variants={slideInUp as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}

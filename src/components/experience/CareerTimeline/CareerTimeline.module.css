@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 2.2rem;
+    gap: 1.2rem;
     padding: 0.4rem 0;
 }
 
@@ -54,15 +54,20 @@
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 1.2rem;
 }
 
 .card {
+    grid-row: 1;
     width: calc(100% - 2.5rem);
     padding: 1.45rem;
 
     border: 1px solid var(--color-border);
     border-radius: 18px;
     background: linear-gradient(165deg, rgba(13, 19, 33, 0.92), rgba(10, 25, 39, 0.78));
+    display: flex;
+    flex-direction: column;
 
     transition:
         transform .3s ease,
@@ -150,36 +155,84 @@
 
 .techGrid {
     display: flex;
-
     flex-wrap: wrap;
-
     gap: .75rem;
+    margin-bottom: 0;
+}
 
-    margin-bottom: 2rem;
+.floatingTech {
+    display: none;
+}
+
+.placeholder {
+    grid-row: 1;
+    position: relative;
+    overflow: hidden;
+    width: calc(100% - 2.5rem);
+    height: 100%;
+    padding: 1.45rem;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 18px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.placeholderLeft {
+    grid-column: 1;
+    justify-self: start;
+}
+
+.placeholderRight {
+    grid-column: 2;
+    justify-self: end;
+}
+
+.techLeft {
+    grid-column: 2;
+}
+
+.techRight {
+    grid-column: 1;
 }
 
 .badge {
     padding: .45rem .9rem;
-
     border: 1px solid var(--color-border);
-
     border-radius: 999px;
-
     background: rgba(255,255,255,.03);
-
     color: var(--color-text-muted);
-
     font-size: .85rem;
-
     transition: all .25s ease;
+    position: absolute;
+    top: var(--skill-top);
+    left: var(--skill-left);
+    animation: float 6s ease-in-out var(--float-delay) infinite;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(-50%, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -4px) rotate(1deg);
+    }
+    50% {
+        transform: translate(-50%, -8px) rotate(-1deg);
+    }
+    75% {
+        transform: translate(-50%, -4px) rotate(1deg);
+    }
 }
 
 .badge:hover {
     border-color: var(--color-primary);
-
     color: var(--color-primary);
-
-    transform: translateY(-2px);
+    transform: translate(-50%, -2px) !important;
+    animation-play-state: paused;
 }
 
 .highlights {
