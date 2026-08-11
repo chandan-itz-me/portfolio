@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Cloud, GitBranch, Monitor, Server, Shield, Zap } from "lucide-react";
 
-import { fadeUp } from "@/constants/animations";
 import AnimatedNumber from "@/components/common/AnimatedNumber";
 
 import styles from "./AboutMe.module.css";
@@ -30,32 +30,47 @@ const provenImpact = [
 ] as const;
 
 export default function AboutMe() {
+    const contentRef = useRef<HTMLDivElement>(null);
+    const isContentInView = useInView(contentRef, { amount: 0.25 });
+
     return (
         <section className={styles.about}>
-            <motion.div
+            <div
+                ref={contentRef}
                 className={styles.content}
-                variants={fadeUp as any}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
             >
                 <div className={styles.layout}>
                     <aside className={styles.metricsColumn} aria-label="Professional highlights">
-                        {metrics.map((item) => {
+                        {metrics.map((item, index) => {
                             const numericValue = parseInt(item.value.replace('+', ''));
                             return (
-                                <div key={item.label} className={styles.metricCard}>
+                                <motion.article
+                                    key={item.label}
+                                    className={styles.metricCard}
+                                    initial={{ opacity: 0, x: "-110vw" }}
+                                    animate={isContentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: "-110vw" }}
+                                    transition={{
+                                        duration: 0.72,
+                                        delay: 0.25 + index * 0.2,
+                                        ease: [0.16, 1, 0.3, 1],
+                                    }}
+                                >
                                     <div className={styles.metricValueWrapper}>
                                         <AnimatedNumber value={numericValue} className={styles.metricNumber} />
                                         <span className={styles.metricPlus}>+</span>
                                     </div>
                                     <p className={styles.metricLabel}>{item.label}</p>
-                                </div>
+                                </motion.article>
                             );
                         })}
                     </aside>
 
-                    <article className={styles.descriptionColumn}>
+                    <motion.article
+                        className={styles.descriptionColumn}
+                        initial={{ opacity: 0 }}
+                        animate={isContentInView ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ duration: 0.45, delay: 0.18, ease: "easeOut" }}
+                    >
                         <p className={styles.titleLead}>
                             <strong>Building reliable cloud platforms through automation.</strong>
                         </p>
@@ -65,22 +80,38 @@ export default function AboutMe() {
                         <p className={styles.description}>
                             I enjoy turning complex operational challenges into simple, repeatable solutions whether it's provisioning cloud infrastructure, optimizing delivery pipelines, or improving reliability and performance. My goal is to build systems that are secure, resilient, and easy to maintain, allowing teams to focus on delivering great software.
                         </p>
-                    </article>
+                    </motion.article>
 
                     <div className={styles.focusColumn}>
-                        {focusAreas.map((area) => {
+                        {focusAreas.map((area, index) => {
                             const Icon = area.icon;
 
                             return (
-                                <article key={area.label} className={styles.focusCard}>
+                                <motion.article
+                                    key={area.label}
+                                    className={styles.focusCard}
+                                    initial={{ opacity: 0, x: 72 }}
+                                    animate={isContentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 72 }}
+                                    transition={{
+                                        duration: 0.42,
+                                        delay: 0.3 + index * 0.08,
+                                        ease: [0.22, 1, 0.36, 1],
+                                    }}
+                                >
                                     <Icon className={`${styles.focusIcon} ${styles[area.className]}`} size={26} />
                                     <h3>{area.label}</h3>
-                                </article>
+                                </motion.article>
                             );
                         })}
                     </div>
 
-                    <section className={styles.impactSection} aria-label="Proven Impact">
+                    <motion.section
+                        className={styles.impactSection}
+                        aria-label="Proven Impact"
+                        initial={{ opacity: 0, y: 56 }}
+                        animate={isContentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 56 }}
+                        transition={{ duration: 0.55, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                    >
                         <h3 className={styles.impactTitle}>Proven Impact</h3>
                         <div className={styles.impactGrid}>
                             {provenImpact.map((item) => {
@@ -98,9 +129,9 @@ export default function AboutMe() {
                                 );
                             })}
                         </div>
-                    </section>
+                    </motion.section>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 }

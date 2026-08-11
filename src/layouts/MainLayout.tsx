@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import Navbar from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/layout/Footer/Footer";
@@ -16,8 +17,8 @@ import styles from "./MainLayout.module.css";
 export default function MainLayout() {
     const { open, openPalette, closePalette } = useCommandPalette();
     const { pathname } = useLocation();
+    const prefersReducedMotion = useReducedMotion();
     const [showTopChrome, setShowTopChrome] = useState(pathname !== "/");
-    const [key, setKey] = useState(0);
 
     useEffect(() => {
         if (pathname !== "/") {
@@ -45,11 +46,6 @@ export default function MainLayout() {
         };
     }, [pathname]);
 
-    // Force animation reset on route change by updating key
-    useEffect(() => {
-        setKey(prev => prev + 1);
-    }, [pathname]);
-
     return (
         <>
             <AuroraBackground />
@@ -63,11 +59,31 @@ export default function MainLayout() {
             <div className={styles.content}>
                 <ScrollToTop />
 
-                {showTopChrome ? <Navbar onOpenPalette={openPalette} /> : null}
+                <AnimatePresence>
+                    {showTopChrome ? (
+                        <motion.div
+                            className={styles.topChrome}
+                            initial={prefersReducedMotion ? false : { opacity: 0, y: -18 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={prefersReducedMotion ? undefined : { opacity: 0, y: -18 }}
+                            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <Navbar onOpenPalette={openPalette} />
+                        </motion.div>
+                    ) : null}
+                </AnimatePresence>
 
-                <div key={key}>
-                    <Outlet />
-                </div>
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={pathname}
+                        initial={prefersReducedMotion ? false : { opacity: 0, y: 20, scale: 0.985 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12, scale: 1.01 }}
+                        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <Outlet />
+                    </motion.div>
+                </AnimatePresence>
 
                 <Footer />
             </div>

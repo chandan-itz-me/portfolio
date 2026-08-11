@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
 import Page from "@/components/layout/Page";
 import { fadeUp, slideInLeft, slideInRight, slideInUp, scaleUp, staggerContainer } from "@/constants/animations";
@@ -25,8 +25,15 @@ import ContactMethods from "@/components/contact/ContactMethods";
 
 import styles from "./Home.module.css";
 
+const sectionViewport = {
+    once: false,
+    amount: 0.3,
+};
+
 export default function Home() {
     const [activeTab, setActiveTab] = useState<ProfessionalTab>("skills");
+    const aboutRef = useRef<HTMLElement>(null);
+    const isAboutInView = useInView(aboutRef, { amount: 0.3 });
 
     return (
         <Page>
@@ -40,17 +47,14 @@ export default function Home() {
                 <IdentityHero />
             </motion.section>
 
-            <motion.section
+            <section
+                ref={aboutRef}
                 id="about"
                 className={styles.section}
-                variants={slideInLeft as any}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
             >
-                <AboutMeHero />
+                <AboutMeHero isVisible={isAboutInView} />
                 <AboutMe />
-            </motion.section>
+            </section>
 
             <motion.section
                 id="experience"
@@ -58,7 +62,7 @@ export default function Home() {
                 variants={staggerContainer as any}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={sectionViewport}
             >
                 <motion.div variants={slideInLeft as any}>
                     <ExperienceHero />
@@ -74,7 +78,7 @@ export default function Home() {
                 variants={scaleUp as any}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={sectionViewport}
             >
                 <ProjectsHero />
                 <p className={styles.sectionDescription}>
@@ -90,7 +94,7 @@ export default function Home() {
                 variants={slideInRight as any}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={sectionViewport}
             >
                 <InfrastructureHero />
                 <p className={styles.sectionDescription}>
@@ -107,7 +111,7 @@ export default function Home() {
                 variants={staggerContainer as any}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={sectionViewport}
             >
                 <ProfessionalHero />
 
@@ -127,7 +131,7 @@ export default function Home() {
                 variants={slideInUp as any}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={sectionViewport}
             >
                 <ContactHero />
                 <ContactMethods />

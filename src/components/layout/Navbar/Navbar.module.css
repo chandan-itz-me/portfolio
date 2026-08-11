@@ -1,7 +1,4 @@
 .header {
-    position: sticky;
-    top: 0;
-    z-index: var(--z-navbar);
     background: rgba(5, 8, 22, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);

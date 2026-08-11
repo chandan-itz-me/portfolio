@@ -33,6 +33,29 @@ export const slideInLeft: Variants = {
     },
 };
 
+export const flyInFromSpace: Variants = {
+    hidden: {
+        opacity: 0,
+        x: -140,
+        y: 96,
+        scale: 0.82,
+        rotate: -2,
+    },
+
+    visible: {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        scale: 1,
+        rotate: 0,
+
+        transition: {
+            duration: 0.85,
+            ease: [0.16, 1, 0.3, 1],
+        },
+    },
+};
+
 export const slideInRight: Variants = {
     hidden: {
         opacity: 0,
