@@ -56,6 +56,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
     gap: 1.2rem;
+    perspective: 1200px;
 }
 
 .card {
@@ -68,6 +69,8 @@
     background: linear-gradient(165deg, rgba(13, 19, 33, 0.92), rgba(10, 25, 39, 0.78));
     display: flex;
     flex-direction: column;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
 
     transition:
         transform .3s ease,
@@ -177,6 +180,7 @@
     background: transparent;
     display: flex;
     flex-direction: column;
+    will-change: transform, opacity;
 }
 
 .placeholderLeft {

@@ -12,9 +12,10 @@ type Particle = {
 
 const PARTICLE_RGB = "0, 229, 255"; // --color-primary
 const LINK_RGB = "56, 189, 248"; // --color-secondary
-const LINK_DISTANCE = 130;
+const LINK_DISTANCE = 112;
 const CURSOR_RADIUS = 150;
 const CURSOR_FORCE = 1.6;
+const FRAME_INTERVAL_MS = 1000 / 30;
 
 /**
  * Fixed, decorative particle network mounted once in MainLayout.
@@ -43,14 +44,15 @@ export default function ParticleField() {
         let width = 0;
         let height = 0;
         let frameId = 0;
+        let lastDrawTime = 0;
 
         const mouse = { x: -9999, y: -9999 };
 
         function createParticles() {
             const area = width * height;
             const count = Math.min(
-                120,
-                Math.max(36, Math.round(area / 16000))
+                72,
+                Math.max(28, Math.round(area / 24000))
             );
 
             particles = Array.from({ length: count }, () => ({
@@ -66,7 +68,7 @@ export default function ParticleField() {
             width = window.innerWidth;
             height = window.innerHeight;
 
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
             canvas!.width = width * dpr;
             canvas!.height = height * dpr;
@@ -90,6 +92,7 @@ export default function ParticleField() {
 
         function draw() {
             ctx!.clearRect(0, 0, width, height);
+            ctx!.fillStyle = `rgba(${PARTICLE_RGB}, 0.75)`;
 
             for (const particle of particles) {
                 particle.x += particle.vx;
@@ -97,9 +100,10 @@ export default function ParticleField() {
 
                 const dx = particle.x - mouse.x;
                 const dy = particle.y - mouse.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+                const distSquared = dx * dx + dy * dy;
 
-                if (dist < CURSOR_RADIUS && dist > 0.01) {
+                if (distSquared < CURSOR_RADIUS * CURSOR_RADIUS && distSquared > 0.01) {
+                    const dist = Math.sqrt(distSquared);
                     const force =
                         ((CURSOR_RADIUS - dist) / CURSOR_RADIUS) *
                         CURSOR_FORCE;
@@ -121,7 +125,6 @@ export default function ParticleField() {
                     0,
                     Math.PI * 2
                 );
-                ctx!.fillStyle = `rgba(${PARTICLE_RGB}, 0.75)`;
                 ctx!.fill();
             }
 
@@ -131,9 +134,10 @@ export default function ParticleField() {
                     const b = particles[j];
                     const dx = a.x - b.x;
                     const dy = a.y - b.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const distSquared = dx * dx + dy * dy;
 
-                    if (dist < LINK_DISTANCE) {
+                    if (distSquared < LINK_DISTANCE * LINK_DISTANCE) {
+                        const dist = Math.sqrt(distSquared);
                         ctx!.beginPath();
                         ctx!.strokeStyle = `rgba(${LINK_RGB}, ${
                             0.18 * (1 - dist / LINK_DISTANCE)
@@ -147,8 +151,12 @@ export default function ParticleField() {
             }
         }
 
-        function animate() {
-            draw();
+        function animate(timestamp: number) {
+            if (timestamp - lastDrawTime >= FRAME_INTERVAL_MS) {
+                draw();
+                lastDrawTime = timestamp;
+            }
+
             frameId = requestAnimationFrame(animate);
         }
 
