@@ -2,6 +2,9 @@ export interface Project {
     id: number;
     slug: string;
     title: string;
+    logoPath?: string;
+    logoPaths?: readonly string[];
+    logoAlt?: string;
     client: string;
     domain: string;
     provider: string;
@@ -9,6 +12,8 @@ export interface Project {
     category: string;
     summary: string;
     description: string;
+    infrastructureArchitecture: string;
+    application: string;
     cloudProviders: readonly ("aws" | "azure" | "gcp")[];
     technologies: readonly string[];
     impact: readonly string[];
