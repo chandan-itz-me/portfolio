@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import styles from "./LearningSection.module.css";
 
 const education = [
@@ -32,62 +34,83 @@ const interests = [
 ];
 
 export default function LearningSection() {
+    const [activeItem, setActiveItem] = useState<string | null>(null);
+
+    useEffect(() => {
+        const closeOnOutsidePointer = (event: PointerEvent) => {
+            if (!(event.target as Element).closest(`.${styles.node}`)) {
+                setActiveItem(null);
+            }
+        };
+
+        document.addEventListener("pointerdown", closeOnOutsidePointer);
+
+        return () => document.removeEventListener("pointerdown", closeOnOutsidePointer);
+    }, []);
+
+    const toggleItem = (itemId: string) => {
+        setActiveItem((currentItem) => currentItem === itemId ? null : itemId);
+    };
+
     return (
-        <section className={styles.section}>
-            <h2 className={styles.heading}>
-                Education & Achievements
-            </h2>
+        <div className={styles.educationLayer}>
+            {education.map((item, index) => {
+                const itemId = `education-${index}`;
+                const isActive = activeItem === itemId;
 
-            <div className={styles.educationGrid}>
-                {education.map((item) => (
-                    <article
+                return (
+                    <div
                         key={item.degree}
-                        className={styles.card}
+                        className={`${styles.node} ${styles[`education${index + 1}`]} ${isActive ? styles.nodeActive : ""}`}
                     >
-                        <h3>{item.degree}</h3>
+                        <button
+                            className={styles.nodeButton}
+                            type="button"
+                            aria-expanded={isActive}
+                            onClick={() => toggleItem(itemId)}
+                        >
+                            <span className={styles.nodeKicker}>Education</span>
+                            <strong>{index === 0 ? "MCA" : "B.Sc."}</strong>
+                        </button>
 
-                        <p className={styles.institution}>
-                            {item.institution}
-                        </p>
+                        {isActive && (
+                            <div className={styles.detailCloud}>
+                                <strong>{item.degree}</strong>
+                                <span>{item.institution}</span>
+                                <small>{item.duration}</small>
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
 
-                        <span className={styles.duration}>
-                            {item.duration}
-                        </span>
-                    </article>
-                ))}
-            </div>
+            {achievements.map((item, index) => {
+                const itemId = `achievement-${index}`;
+                const isActive = activeItem === itemId;
 
-            <h3 className={styles.subheading}>
-                Key Achievements
-            </h3>
-
-            <div className={styles.achievements}>
-                {achievements.map((item) => (
+                return (
                     <div
                         key={item}
-                        className={styles.achievementItem}
+                        className={`${styles.node} ${styles[`achievement${index + 1}`]} ${isActive ? styles.nodeActive : ""}`}
                     >
-                        <span>✓</span>
+                        <button
+                            className={styles.achievementButton}
+                            type="button"
+                            aria-expanded={isActive}
+                            onClick={() => toggleItem(itemId)}
+                        >
+                            <span>Impact {index + 1}</span>
+                        </button>
 
-                        <p>{item}</p>
+                        {isActive && <div className={styles.detailCloud}>{item}</div>}
                     </div>
-                ))}
-            </div>
+                );
+            })}
 
-            <h3 className={styles.subheading}>
-                Beyond Work
-            </h3>
-
-            <div className={styles.interests}>
-                {interests.map((item) => (
-                    <span
-                        key={item}
-                        className={styles.interestBadge}
-                    >
-                        {item}
-                    </span>
-                ))}
+            <div className={styles.interestsStrip}>
+                <span className={styles.interestsLabel}>Beyond work</span>
+                {interests.map((item) => <span key={item}>{item}</span>)}
             </div>
-        </section>
+        </div>
     );
 }

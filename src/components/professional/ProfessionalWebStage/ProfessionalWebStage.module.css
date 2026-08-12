@@ -24,8 +24,8 @@
     position: absolute;
     width: clamp(9rem, 26%, 17rem);
     aspect-ratio: 1;
-    top: 50%;
-    left: 26%;
+    top: 46%;
+    left: 27%;
     transform: translate(-50%, -50%);
     object-fit: contain;
     z-index: 3;

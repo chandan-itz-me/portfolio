@@ -129,11 +129,8 @@ export default function Home() {
                     onChange={setActiveTab}
                 />
 
-                {activeTab === "learning" ? (
-                    <LearningSection />
-                ) : (
-                    <ProfessionalWebStage>
-                        <AnimatePresence mode="wait" initial={false}>
+                <ProfessionalWebStage>
+                    <AnimatePresence mode="wait" initial={false}>
                             {activeTab === "skills" && (
                                 <motion.div
                                     key="skills"
@@ -156,9 +153,19 @@ export default function Home() {
                                     <CertificationsSection />
                                 </motion.div>
                             )}
+                            {activeTab === "learning" && (
+                                <motion.div
+                                    key="learning"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.22 }}
+                                >
+                                    <LearningSection />
+                                </motion.div>
+                            )}
                         </AnimatePresence>
-                    </ProfessionalWebStage>
-                )}
+                </ProfessionalWebStage>
             </motion.section>
 
             <motion.section
