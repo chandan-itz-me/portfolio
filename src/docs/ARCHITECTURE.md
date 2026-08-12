@@ -1,168 +1,144 @@
-# Cloud Control Center Architecture
+# Portfolio Architecture
 
 ## Overview
 
-Cloud Control Center follows a layered architecture inspired by modern React applications.
+This project is a React + TypeScript single-page application built with Vite and structured around route-driven feature modules.
 
-```
-                    Browser
+The architecture combines:
 
-                       │
+- A shared application shell (layout, providers, global styles)
+- Route-level page modules
+- Feature component clusters
+- Static typed data sources
+- Reusable hooks for motion, navigation, and interaction state
 
-               React Application
+## Layered Design
 
-                       │
+### 1. Application Layer
 
-              React Router
+Responsibility: app bootstrap, providers, routing, and global boundaries.
 
-                       │
+Primary modules:
 
-                 Main Layout
+- src/main.tsx
+- src/app/App.tsx
+- src/app/providers.tsx
+- src/app/router.tsx
 
-                       │
+Notes:
 
-     ┌───────────┬───────────┬────────────┐
+- Browser router uses basename from Vite base path.
+- Route-level suspense fallback is used for lazily loaded pages.
+- Infrastructure provider routes include explicit pages for AWS, Azure, and GCP.
 
-     │           │           │            │
+### 2. Layout Layer
 
-   Hero      Dashboard    Projects    Contact
+Responsibility: persistent shell and cross-route UI behavior.
 
-     │
+Primary modules:
 
-     ▼
+- src/layouts/MainLayout.tsx
+- src/components/layout/*
+- src/components/ScrollToTop/*
 
-Shared Components
+Notes:
 
-     │
+- Navigation, command palette entry points, and scroll progress live in the shell.
+- Hash-based in-page navigation is coordinated at layout level.
 
-     ▼
+### 3. Page Layer
 
-Utilities / Hooks / Data
-```
+Responsibility: route composition and page-level content orchestration.
 
----
+Examples:
 
-# Architecture Layers
+- Home and section pages under src/pages/*
+- Cloud provider blueprints under src/pages/CloudProvider/*
 
-## Presentation Layer
+Cloud routes:
 
-Responsible for UI rendering.
+- /infrastructure/aws
+- /infrastructure/azure
+- /infrastructure/gcp
 
-Examples
+### 4. Feature Component Layer
 
-- Pages
-- Components
-- Layouts
+Responsibility: reusable domain UI and local interaction logic.
 
----
+Examples:
 
-## Application Layer
+- Dashboard, projects, timeline, contact, and infrastructure explorer components
+- Cloud blueprint submodules (diagram, topology, pipeline, security, observability)
 
-Controls routing and application providers.
+### 5. Data and Configuration Layer
 
-Contains
+Responsibility: typed static content and config consumed by UI.
 
-- Router
-- Theme
-- Context
+Primary folders:
 
----
+- src/data
+- src/config
+- src/types
 
-## Data Layer
+Notes:
 
-Static configuration and portfolio data.
+- Page copy, project metadata, and skill/career data are centralized and typed.
 
-Examples
+## Route Architecture
 
-- Skills
-- Experience
-- Projects
-- Certifications
+Router behavior in src/app/router.tsx:
 
----
+- Index route renders home.
+- Project detail route is lazy-loaded.
+- Infrastructure index redirects to home infrastructure section hash.
+- Provider routes render dedicated blueprint pages.
+- Unknown provider route redirects to infrastructure section.
 
-## Shared Layer
+This keeps provider deep links stable while preserving SPA section navigation behavior.
 
-Reusable business logic.
+## Cloud Blueprint Module Pattern
 
-Contains
+Each cloud blueprint follows the same module composition pattern:
 
-- Hooks
-- Helpers
-- Utilities
-- Shared Components
+- Route page container with metadata, section wrappers, and side navigation
+- Interactive architecture and network topology diagrams
+- IaC workflow, deployment pipeline, defense-in-depth, observability, decisions, and repository CTA sections
+- Local hook modules for active-section tracking and reveal-on-view behavior
+- CSS module theme tokens for cloud-specific visual identity
 
----
+Shared benefits:
 
-# Rendering Flow
+- Consistent IA and user flow across providers
+- Independent cloud branding and service mapping
+- Isolated feature evolution per provider without breaking other pages
 
-```
-main.tsx
+## Rendering and Data Flow
 
-↓
+High-level flow:
 
-App
+1. main.tsx bootstraps provider tree and router.
+2. Router resolves route and renders MainLayout.
+3. Layout renders page outlet and shared shell elements.
+4. Route page composes feature sections.
+5. Sections consume typed data/config and local interaction state.
 
-↓
+Interaction flow examples:
 
-Router
+- Infrastructure tile click -> route navigation to provider blueprint
+- Side-nav click -> hash navigation within current blueprint
+- Diagram node click -> local inspector state update
 
-↓
+## Styling and Motion System
 
-MainLayout
+- Global CSS variables and resets in src/styles
+- Feature-level CSS Modules for scoped styles
+- Framer Motion for section entrance/stagger effects
+- Reduced-motion safeguards via media queries and conservative idle animation strategy
 
-↓
+## Non-Functional Design Principles
 
-Page
-
-↓
-
-Components
-
-↓
-
-Shared Utilities
-```
-
----
-
-# Design Principles
-
-- Simple architecture
-- Modular components
-- Reusable code
-- Responsive design
-- Performance-first
-- Accessibility-first
-- Type-safe development
-
----
-
-# Animation Philosophy
-
-Animations should communicate information.
-
-Good examples
-
-- Section transitions
-- Counter animations
-- Card hover elevation
-- Dashboard updates
-
-Avoid
-
-- Random floating effects
-- Continuous flashing
-- Unnecessary motion
-
----
-
-# Future Enhancements
-
-- Theme switcher
-- Internationalization
-- Blog
-- CMS integration
-- Analytics
-- Contact API
-- Dark/Light mode
+- Type safety first (TypeScript strict configuration)
+- Predictable route behavior and robust fallback handling
+- Accessibility-aware interactions (focus states, aria attributes, reduced motion)
+- Modular growth via feature folders
+- Minimal coupling between provider-specific blueprint modules

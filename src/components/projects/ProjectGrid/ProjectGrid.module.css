@@ -7,6 +7,8 @@
     --loop-duration: 36s;
 
     display: block;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     margin-bottom: 5rem;
 }
 

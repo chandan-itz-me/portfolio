@@ -39,6 +39,13 @@ export default function ProfessionalHero() {
                         Major Cloud Platforms
                     </span>
                 </div>
+
+                <div className={styles.stat}>
+                    <span className={styles.value}>75+</span>
+                    <span className={styles.label}>
+                        Tools &amp; Services
+                    </span>
+                </div>
             </div>
         </section>
     );

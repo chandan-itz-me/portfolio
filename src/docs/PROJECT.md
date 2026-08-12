@@ -1,155 +1,176 @@
-# Project Structure
+# Project Structure Guide
+
+## Current Source Tree
 
 ```
 src
-│
-├── app
-│
-├── assets
-│   ├── fonts
-│   ├── icons
-│   ├── images
-│   └── logos
-│
-├── components
-│   ├── common
-│   ├── dashboard
-│   ├── hero
-│   ├── layout
-│   ├── charts
-│   ├── globe
-│   ├── projects
-│   ├── terminal
-│   ├── timeline
-│   └── ui
-│
-├── config
-│
-├── constants
-│
-├── contexts
-│
-├── data
-│
-├── hooks
-│
-├── layouts
-│
-├── pages
-│
-├── services
-│
-├── shared
-│   ├── components
-│   ├── hooks
-│   ├── types
-│   └── utils
-│
-├── styles
-│
-├── types
-│
-├── utils
-│
-├── App.tsx
-└── main.tsx
+|
+|- animations/
+|- app/
+|- assets/
+|- components/
+|- config/
+|- constants/
+|- contexts/
+|- data/
+|- docs/
+|- hooks/
+|- layouts/
+|- pages/
+|- styles/
+|- types/
+|- main.tsx
+|- vite-env.d.ts
 ```
 
----
+## Folder Responsibilities
 
-# Folder Responsibilities
+### app
 
-## app
+App bootstrap and composition.
 
-Application bootstrap.
+Contains:
 
-Contains routing, providers and application configuration.
+- App root composition
+- providers setup
+- router configuration
 
----
+### animations
 
-## assets
+Reusable animation presets and motion helpers.
 
-Static resources.
+Examples:
 
-- Fonts
-- Images
-- Icons
-- Logos
+- fade variants
+- stagger/container patterns
+- page transition primitives
 
----
+### assets
 
-## components
+Static visual assets used by UI modules.
 
-Reusable UI components.
+### components
 
-Components should have a single responsibility.
+Reusable feature components grouped by domain.
 
-Example
+Examples:
 
-```
-Hero/
+- boot experience
+- dashboard widgets
+- infrastructure explorer
+- project grid
+- shared/common UI primitives
 
-Hero.tsx
+### config
 
-Hero.module.css
+Application configuration maps and section metadata.
 
-index.ts
-```
+### constants
 
----
+Global constants for animation, display, and app behavior.
 
-## data
+### contexts
 
-Static application data.
+React context providers and context contracts.
 
-Examples
+### data
+
+Typed static data used across pages.
+
+Examples:
 
 - projects
 - skills
+- career timeline
 - certifications
-- metrics
+- infrastructure descriptors
 
----
+### docs
 
-## layouts
+Internal project documentation.
 
-Application layouts.
+### hooks
 
-Example
+Reusable custom hooks.
 
-- MainLayout
+Examples:
 
----
+- boot sequencing
+- command palette behavior
+- smooth scroll and route/hash scroll handling
+- theme handling
 
-## pages
+### layouts
 
-Top-level pages rendered by React Router.
+Persistent layout shells and route outlet containers.
 
----
+### pages
 
-## shared
+Route-level page modules.
 
-Reusable utilities shared across the application.
+Includes:
 
----
+- primary site sections (home, projects, experience, etc.)
+- provider blueprint pages under pages/CloudProvider
 
-## styles
+### styles
 
-Global styling.
+Global style foundation.
 
-- CSS Variables
-- Typography
-- Animations
-- Global resets
+Includes:
 
----
+- CSS variable tokens
+- global reset/base styles
+- shared animation styles
 
-# Coding Standards
+### types
 
-- TypeScript Strict Mode
-- Functional Components
-- CSS Modules
-- Mobile First
-- Accessibility First
-- No duplicated logic
-- One responsibility per component
+Shared TypeScript types/interfaces used across data and components.
+
+## Cloud Provider Blueprint Structure
+
+Each cloud provider page follows a consistent module pattern under pages/CloudProvider:
+
+- Provider route entry file
+- Blueprint page container
+- nodeSpecs with typed diagram/decision content
+- Interactive diagrams (architecture and topology)
+- IaC, pipeline, security, observability, decisions, and repository sections
+- Local hooks and provider-specific CSS module
+
+This pattern is implemented for:
+
+- AWS
+- Azure
+- GCP
+
+## Routing Summary
+
+Configured in app/router.tsx.
+
+Primary infrastructure routes:
+
+- /infrastructure/aws
+- /infrastructure/azure
+- /infrastructure/gcp
+
+Fallback behavior:
+
+- /infrastructure redirects to home infrastructure anchor
+- /infrastructure/:provider unknown values redirect to the infrastructure section
+
+## Naming and Organization Conventions
+
+- Keep feature modules colocated with their CSS module and local utilities.
+- Use typed static content from data or feature-level typed spec files.
+- Prefer small, composable components over large monolithic files.
+- Keep route pages focused on composition; push local logic down to feature components and hooks.
+
+## Coding Conventions
+
+- TypeScript strict mode
+- Functional React components
+- CSS Modules for scoped styles
+- Accessibility-first interactions
+- Reduced-motion support for animated UI
+- Clear separation of route composition, visual components, and content data

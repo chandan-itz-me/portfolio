@@ -1,102 +1,84 @@
-# ☁️ Cloud Control Center
+# Chandan Padal Portfolio
 
-> A modern, interactive portfolio built as a Cloud Operations Dashboard.
+Interactive DevOps and multi-cloud engineering portfolio built with React, TypeScript, and Vite.
 
-Cloud Control Center is a production-quality portfolio that showcases cloud engineering, infrastructure automation, DevOps workflows, and platform engineering through an immersive dashboard experience instead of a traditional portfolio website.
+This site is designed as an operations-first experience with dashboard-style UI, animated sections, and deep-dive cloud architecture blueprints for AWS, Azure, and Google Cloud.
 
-Rather than listing technologies, the application demonstrates them through interactive visualizations, dashboards, infrastructure diagrams, and realistic cloud operations.
+## Live Site
 
----
+- Production: https://chandan-itz-me.github.io/portfolio/
 
-## ✨ Features
+## Highlights
 
-- Modern React 19 + TypeScript application
-- Interactive Cloud Operations Dashboard
-- JARVIS-inspired startup sequence
-- Responsive design
-- Infrastructure visualizations
-- Interactive project showcase
-- Infrastructure tiles and service highlights
-- GitHub Pages deployment
+- Animated portfolio landing with smooth section navigation
+- JARVIS-style boot experience
+- Infrastructure Explorer tiles for AWS, Azure, and Google Cloud
+- Dedicated cloud blueprint pages:
+	- /infrastructure/aws
+	- /infrastructure/azure
+	- /infrastructure/gcp
+- Interactive architecture and topology diagrams with component inspectors
+- Deployment pipeline visualization with staged animations
+- Security, observability, and architecture decision sections
+- Responsive layout for desktop and mobile
+- Accessible interactions (focus states, reduced motion support)
 
----
-
-## 🛠 Tech Stack
-
-### Core
+## Tech Stack
 
 - React 19
 - TypeScript
 - Vite 8
-
-### UI
-
-- CSS Modules
-- CSS Variables
-- Framer Motion
-- Lucide Icons
-
-### Routing
-
 - React Router
+- Framer Motion
+- CSS Modules + CSS variables
+- react-helmet-async
+- Lucide React
 
----
+## Scripts
 
-## 📁 Documentation
+- npm run dev: Start local development server
+- npm run build: Type-check and build production assets
+- npm run preview: Preview production build locally
+- npm run lint: Run lint checks (oxlint)
+- npm run deploy: Deploy dist to GitHub Pages
 
-| Document | Description |
-|----------|-------------|
-| PROJECT_STRUCTURE.md | Project folder structure |
-| ARCHITECTURE.md | Software architecture |
-| README.md | Project overview |
-
----
-
-## 🚀 Development
+## Getting Started
 
 ```bash
 npm install
-
 npm run dev
 ```
 
-Build
+Open the app at:
+
+- http://localhost:5173/portfolio/
+
+## Build and Preview
 
 ```bash
 npm run build
-```
-
-Preview
-
-```bash
 npm run preview
 ```
 
----
+## Deployment
 
-## 🌐 Deployment
+GitHub Pages deployment is configured via:
 
-The application is designed to be deployed using GitHub Pages.
+- homepage in package.json
+- predeploy script
+- deploy script using gh-pages
 
----
+Deploy command:
 
-## 📌 Roadmap
+```bash
+npm run deploy
+```
 
-- [x] Project Bootstrap
-- [x] Design System (Dark/Light theme with semantic colors)
-- [x] Responsive Layout (Mobile, tablet, desktop)
-- [x] Navigation (With glass morphism navbar)
-- [x] Hero Section (animated identity experience)
-- [x] JARVIS Boot Sequence (Retro terminal with blue accents)
-- [x] Dashboard-inspired homepage sections (metrics and cloud operations)
-- [x] Infrastructure Visualization (Cloud provider status)
-- [x] Project Explorer (Interactive project showcase)
-- [x] Experience Timeline (Career history with badges)
-- [x] Certifications (Certification grid)
-- [x] Contact (Contact methods and form)
+## Project Docs
 
----
+- src/docs/PROJECT.md: Project-level implementation notes
+- src/docs/ARCHITECTURE.md: Architecture and structural guidance
 
-## 📄 License
+## License
 
-MIT License
+MIT
