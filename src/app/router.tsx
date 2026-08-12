@@ -5,6 +5,8 @@ import MainLayout from "@/layouts/MainLayout";
 import RouteFallback from "@/components/layout/RouteFallback/RouteFallback";
 import Home from "@/pages/Home/Home";
 import AwsInfrastructureBlueprint from "@/pages/CloudProvider/AwsInfrastructureBlueprint";
+import AzureInfrastructureBlueprint from "@/pages/CloudProvider/AzureInfrastructureBlueprint";
+import GcpInfrastructureBlueprint from "@/pages/CloudProvider/GcpInfrastructureBlueprint";
 
 const lazyWithRetry = <T extends ComponentType<any>>(
     importer: () => Promise<{ default: T }>,
@@ -71,6 +73,14 @@ export const router = createBrowserRouter(
                 {
                     path: "infrastructure/aws",
                     element: <AwsInfrastructureBlueprint />,
+                },
+                {
+                    path: "infrastructure/azure",
+                    element: <AzureInfrastructureBlueprint />,
+                },
+                {
+                    path: "infrastructure/gcp",
+                    element: <GcpInfrastructureBlueprint />,
                 },
                 {
                     path: "infrastructure/:provider",

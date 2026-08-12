@@ -5,6 +5,8 @@
 }
 
 .card {
+    position: relative;
+    isolation: isolate;
     border-radius: 20px;
     border: 1px solid var(--color-border);
     overflow: hidden;
@@ -12,6 +14,17 @@
     will-change: transform;
     animation: float-y 7s ease-in-out infinite;
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.15), transparent 44%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .card:nth-child(2) {
@@ -22,10 +35,21 @@
     animation-delay: 1.2s;
 }
 
-.card:hover {
+.card:hover,
+.card:focus-within {
     transform: translateY(-10px);
     border-color: var(--color-primary);
     box-shadow: var(--shadow-lg);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+    opacity: 1;
+}
+
+.link:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.82);
+    outline-offset: -2px;
 }
 
 .link {
@@ -58,30 +82,95 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.28s ease;
+}
+
+.cta::after {
+    content: "->";
     transition: transform 0.28s ease;
 }
 
-.card:hover .cta {
-    transform: translateX(6px);
+.card:hover .cta::after,
+.card:focus-within .cta::after {
+    transform: translateX(4px);
 }
 
 .aws {
     background: linear-gradient(155deg, rgba(255, 153, 0, 0.35), rgba(255, 120, 0, 0.18), rgba(12, 17, 29, 0.95));
 }
 
+.aws:hover,
+.aws:focus-within {
+    border-color: rgba(255, 153, 0, 0.72);
+    box-shadow: 0 24px 52px rgba(255, 153, 0, 0.26);
+}
+
+.aws .cta {
+    color: #ffd8a1;
+}
+
 .azure {
     background: linear-gradient(155deg, rgba(0, 120, 212, 0.34), rgba(34, 102, 202, 0.2), rgba(9, 18, 34, 0.94));
 }
 
+.azure:hover,
+.azure:focus-within {
+    border-color: rgba(47, 140, 255, 0.72);
+    box-shadow: 0 24px 52px rgba(15, 117, 255, 0.25);
+}
+
+.azure .cta {
+    color: #b7ddff;
+}
+
 .gcp {
-    background: linear-gradient(155deg, rgba(255, 255, 255, 0.6), rgba(214, 236, 255, 0.52), rgba(170, 201, 227, 0.42));
+    background:
+    radial-gradient(circle at 12% 14%, rgba(66, 133, 244, 0.36), transparent 36%),
+    radial-gradient(circle at 88% 20%, rgba(234, 67, 53, 0.32), transparent 34%),
+    radial-gradient(circle at 24% 86%, rgba(251, 188, 5, 0.3), transparent 36%),
+    radial-gradient(circle at 82% 84%, rgba(52, 168, 83, 0.3), transparent 38%),
+    linear-gradient(165deg, rgba(37, 52, 74, 0.96), rgba(29, 44, 66, 0.94), rgba(20, 34, 52, 0.95));
+}
+
+.gcp::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    box-shadow:
+        0 0 0 1px rgba(66, 133, 244, 0.5) inset,
+        0 0 0 2px rgba(251, 188, 5, 0.34) inset,
+        0 16px 30px rgba(66, 133, 244, 0.38),
+        0 22px 36px rgba(52, 168, 83, 0.3),
+        0 12px 24px rgba(234, 67, 53, 0.28);
+}
+
+.gcp:hover,
+.gcp:focus-within {
+    border-color: rgba(52, 168, 83, 0.82);
+    box-shadow: 0 28px 58px rgba(52, 168, 83, 0.28), 0 0 0 1px rgba(251, 188, 5, 0.46) inset;
+}
+
+.gcp:hover::after,
+.gcp:focus-within::after {
+    opacity: 1;
 }
 
 .gcp .subtitle,
 .gcp .description,
 .gcp .cta,
 .gcp h3 {
-    color: #1f2f3f;
+    color: #e6edf8;
+}
+
+.gcp .cta {
+    color: #8ab4ff;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -90,7 +179,9 @@
     }
 
     .card,
-    .card:hover .cta {
+    .card::before,
+    .card:hover .cta::after,
+    .card:focus-within .cta::after {
         transition: none;
     }
 }

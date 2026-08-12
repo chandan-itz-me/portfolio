@@ -17,7 +17,7 @@ import { sectionIds } from "./nodeSpecs";
 import { useActiveSection } from "./useActiveSection";
 import { useInView } from "./useInView";
 
-import styles from "./AwsBlueprintPage.module.css";
+import styles from "./AzureBlueprintPage.module.css";
 
 function RevealBlock({
     children,
@@ -33,7 +33,7 @@ function RevealBlock({
     );
 }
 
-export default function AwsBlueprintPage() {
+export default function AzureBlueprintPage() {
     const activeSection = useActiveSection(sectionIds, 0.4);
 
     useLayoutEffect(() => {
@@ -43,10 +43,10 @@ export default function AwsBlueprintPage() {
     return (
         <Page fluid>
             <Helmet>
-                <title>AWS Infrastructure Blueprint | Chandan Padal</title>
+                <title>Azure Infrastructure Blueprint | Chandan Padal</title>
                 <meta
                     name="description"
-                    content="AWS Infrastructure Blueprint: three-tier architecture, VPC topology, Terraform workflow, deployment pipeline, defense in depth, and observability patterns."
+                    content="Azure Infrastructure Blueprint: three-tier architecture, virtual network topology, IaC workflow, deployment pipeline, defense in depth, and observability patterns."
                 />
             </Helmet>
 
@@ -62,11 +62,12 @@ export default function AwsBlueprintPage() {
 
                 <header className={styles.hero} id="overview">
                     <div className={styles.container}>
-                        <div className={styles.heroTag}>AWS · REFERENCE ARCHITECTURE</div>
-                        <h1>AWS Infrastructure<br />Blueprint</h1>
-                        <p className={styles.lede}>A reference architecture for secure, resilient, and observable workloads on AWS - built around Infrastructure as Code, modular design, controlled deployments, and operational visibility.</p>
+                        <div className={styles.heroTag}>AZURE · REFERENCE ARCHITECTURE</div>
+                        <h1>Azure Infrastructure<br />Blueprint</h1>
+                        <p className={styles.lede}>A reference architecture for secure, resilient, and observable workloads on Azure - built around Infrastructure as Code, modular design, controlled deployments, and operational visibility.</p>
                         <div className={styles.heroStack}>
                             <span className={styles.chip}>Terraform</span>
+                            <span className={styles.chip}>Bicep</span>
                             <span className={styles.chip}>Networking</span>
                             <span className={styles.chip}>Compute</span>
                             <span className={styles.chip}>Security</span>
@@ -79,9 +80,9 @@ export default function AwsBlueprintPage() {
                         </div>
                         <div className={styles.heroReadout}>
                             <div><div className={styles.k}>Tiers</div><div className={styles.v}>Edge / App / Data</div></div>
-                            <div><div className={styles.k}>IaC Engine</div><div className={styles.v}>Terraform</div></div>
-                            <div><div className={styles.k}>Delivery</div><div className={styles.v}>Plan → Review → Apply</div></div>
-                            <div><div className={styles.k}>Scope</div><div className={styles.v}>Multi-environment</div></div>
+                            <div><div className={styles.k}>IaC Engine</div><div className={styles.v}>Terraform + Bicep</div></div>
+                            <div><div className={styles.k}>Delivery</div><div className={styles.v}>Validate → Plan → Deploy</div></div>
+                            <div><div className={styles.k}>Scope</div><div className={styles.v}>Subscriptions / Envs</div></div>
                         </div>
                     </div>
                 </header>
@@ -105,9 +106,9 @@ export default function AwsBlueprintPage() {
                     <div className={styles.container}>
                         <RevealBlock>
                             <div className={styles.sectionHead}>
-                                <div className={styles.eyebrow}>Fig. 01b - VPC Network Topology</div>
+                                <div className={styles.eyebrow}>Fig. 01b - Virtual Network Topology</div>
                                 <h2>Multi-AZ Network Layout</h2>
-                                <p>The same three tiers, drawn at the network level: subnets, CIDR blocks, route tables, and security-group chaining across two Availability Zones. Select a component to inspect it.</p>
+                                <p>The same three tiers, drawn at the network level: virtual network, subnets, route tables, and NSG chaining across two Availability Zones. Select a component to inspect it.</p>
                             </div>
                         </RevealBlock>
                         <RevealBlock>
@@ -121,8 +122,8 @@ export default function AwsBlueprintPage() {
                         <RevealBlock>
                             <div className={styles.sectionHead}>
                                 <div className={styles.eyebrow}>Fig. 02 - Infrastructure as Code</div>
-                                <h2>Terraform-Driven Infrastructure</h2>
-                                <p>Infrastructure is defined as version-controlled code rather than manual cloud configuration - repeatable, reviewable, and free of drift.</p>
+                                <h2>IaC-Driven Infrastructure</h2>
+                                <p>Infrastructure is defined as version-controlled code (Terraform and Bicep) rather than manual cloud configuration - repeatable, reviewable, and free of drift.</p>
                             </div>
                         </RevealBlock>
                         <RevealBlock>
@@ -181,7 +182,7 @@ export default function AwsBlueprintPage() {
                         <RevealBlock>
                             <div className={styles.sectionHead}>
                                 <div className={styles.eyebrow}>Fig. 06 - Operating the Platform</div>
-                                <h2>AWS in Production</h2>
+                                <h2>Azure in Production</h2>
                                 <p>Platform engineering extends beyond provisioning - reliable operations require resilient architecture, controlled delivery, and continuous improvement.</p>
                             </div>
                         </RevealBlock>
@@ -227,3 +228,4 @@ export default function AwsBlueprintPage() {
         </Page>
     );
 }
+

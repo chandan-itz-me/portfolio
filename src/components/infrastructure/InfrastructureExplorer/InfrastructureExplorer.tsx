@@ -48,9 +48,15 @@ export default function InfrastructureExplorer() {
                     className={`${styles.card} ${styles[card.key]}`}
                     variants={fadeUp as any}
                 >
-                    {card.key === "aws" ? (
+                    {card.key === "aws" || card.key === "azure" || card.key === "gcp" ? (
                         <Link
-                            to="/infrastructure/aws"
+                            to={
+                                card.key === "aws"
+                                    ? "/infrastructure/aws"
+                                    : card.key === "azure"
+                                        ? "/infrastructure/azure"
+                                        : "/infrastructure/gcp"
+                            }
                             className={styles.link}
                             aria-label={`${card.name} infrastructure tile`}
                         >

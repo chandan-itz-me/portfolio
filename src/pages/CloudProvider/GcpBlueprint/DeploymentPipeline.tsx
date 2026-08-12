@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AwsBlueprintPage.module.css";
+import styles from "./GcpBlueprintPage.module.css";
 
 const pipelineNodes = [
     {
@@ -124,3 +124,6 @@ export default function DeploymentPipeline() {
         </>
     );
 }
+
+
+

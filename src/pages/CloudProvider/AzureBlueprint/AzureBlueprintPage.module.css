@@ -12,21 +12,21 @@
     --text-1: #e9ecfb;
     --text-2: #909ab8;
     --text-3: #525c7a;
-    --edge-rgb: 255, 153, 0;
-    --app-rgb: 45, 212, 232;
-    --data-rgb: 45, 216, 160;
-    --security-rgb: 245, 166, 35;
-    --alert-rgb: 239, 68, 68;
-    --edge-accent: #ff9900;
-    --app-accent: #2dd4e8;
-    --data-accent: #2dd8a0;
-    --security-accent: #f5a623;
-    --alert-accent: #ef4444;
-    --btn-primary-start: #ff9900;
-    --btn-primary-end: #ffb84d;
-    --btn-primary-text: #1f1400;
-    --ghost-glow-rgb: 255, 153, 0;
-    --connector-rgb: 45, 212, 232;
+    --edge-rgb: 0, 120, 212;
+    --app-rgb: 91, 53, 173;
+    --data-rgb: 16, 124, 16;
+    --security-rgb: 255, 185, 0;
+    --alert-rgb: 209, 52, 56;
+    --edge-accent: #0078d4;
+    --app-accent: #5b35ad;
+    --data-accent: #107c10;
+    --security-accent: #ffb900;
+    --alert-accent: #d13438;
+    --btn-primary-start: #0078d4;
+    --btn-primary-end: #42a5ff;
+    --btn-primary-text: #041325;
+    --ghost-glow-rgb: 0, 120, 212;
+    --connector-rgb: 91, 53, 173;
 
     color: var(--text-1);
     background: transparent;
@@ -122,7 +122,7 @@
     font-size: clamp(2.6rem, 6vw, 4.6rem);
     line-height: 1.04;
     max-width: 920px;
-    background: linear-gradient(102deg, #fff 25%, var(--edge-accent) 58%, var(--app-accent) 100%);
+    background: linear-gradient(102deg, #fff 24%, var(--edge-accent) 56%, var(--app-accent) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -196,7 +196,7 @@
 .btnGhost:hover {
     border-color: var(--cyan);
     color: var(--cyan);
-    box-shadow: inset 0 0 0 1px rgba(var(--ghost-glow-rgb), 0.22), 0 0 18px rgba(var(--ghost-glow-rgb), 0.18);
+    box-shadow: inset 0 0 0 1px rgba(var(--ghost-glow-rgb), 0.24), 0 0 18px rgba(var(--ghost-glow-rgb), 0.2);
 }
 
 .backTopLeft {
@@ -506,7 +506,7 @@
     bottom: 0;
     left: 0;
     width: 2px;
-    background: repeating-linear-gradient(180deg, rgba(var(--connector-rgb), 0.45) 0 4px, transparent 4px 8px);
+    background: repeating-linear-gradient(180deg, rgba(var(--connector-rgb), 0.46) 0 4px, transparent 4px 8px);
 }
 
 .packet {
@@ -1206,7 +1206,7 @@
 }
 
 .ctaPanel {
-    background: linear-gradient(135deg, rgba(var(--edge-rgb), 0.11), rgba(var(--app-rgb), 0.08));
+    background: linear-gradient(135deg, rgba(var(--edge-rgb), 0.12), rgba(var(--app-rgb), 0.1));
     border: 1px solid var(--panel-border);
     border-radius: 18px;
     padding: 56px 48px;
@@ -1218,8 +1218,8 @@
 }
 
 .signalRow .signal:nth-child(1) {
-    border-color: rgba(var(--app-rgb), 0.35);
-    color: var(--app-accent);
+    border-color: rgba(var(--edge-rgb), 0.35);
+    color: var(--edge-accent);
 }
 
 .signalRow .signal:nth-child(2) {

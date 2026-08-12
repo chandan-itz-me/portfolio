@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AwsBlueprintPage.module.css";
+import styles from "./AzureBlueprintPage.module.css";
 
 const pipelineNodes = [
     {
@@ -16,7 +16,7 @@ const pipelineNodes = [
     },
     {
         title: "INFRASTRUCTURE",
-        items: ["Terraform plan", "Policy checks", "Approval"],
+        items: ["Terraform/Bicep plan", "Policy checks", "Approval"],
     },
     {
         title: "DEPLOY",
@@ -124,3 +124,4 @@ export default function DeploymentPipeline() {
         </>
     );
 }
+
