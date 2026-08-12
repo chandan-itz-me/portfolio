@@ -60,6 +60,9 @@ export default function CertificationsSection() {
                                         className={styles.logo}
                                         src={`${import.meta.env.BASE_URL}certs/${encodeURIComponent(certification.logo)}`}
                                         alt={`${certification.provider} certification logo`}
+                                        loading="eager"
+                                        decoding="async"
+                                        fetchPriority="high"
                             />
                                 </a>
 

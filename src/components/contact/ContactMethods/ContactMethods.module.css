@@ -1,55 +1,86 @@
-.grid {
+.contactLayout {
     display: grid;
+    gap: 1rem;
+}
 
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 1.5rem;
+.secondaryGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
 }
 
 .card {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 16px;
-
-    background: rgba(18, 25, 36, 0.7);
-
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 14px;
+    background: rgba(18, 25, 36, .82);
     backdrop-filter: blur(14px);
-
-    transition: all 0.25s ease;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .card:hover {
     transform: translateY(-4px);
 
-    border-color: rgba(34, 211, 238, 0.4);
-
-    box-shadow: 0 10px 30px rgba(34, 211, 238, 0.12);
+    border-color: rgba(168, 85, 247, .55);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, .14);
 }
 
 /* Light theme: warm, soft card styling */
 [data-theme="light"] .card {
-    border: 1px solid rgba(43, 36, 22, 0.12);
-    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(43, 36, 22, .12);
+    background: rgba(255, 255, 255, .78);
     backdrop-filter: blur(8px);
 }
 
 [data-theme="light"] .card:hover {
-    border-color: rgba(232, 166, 8, 0.3);
-    box-shadow: 0 10px 30px rgba(232, 166, 8, 0.1);
+    border-color: rgba(232, 166, 8, .5);
+    box-shadow: 0 10px 30px rgba(232, 166, 8, .12);
+}
+
+.primaryCard {
+    border-color: rgba(168, 85, 247, .45);
+}
+
+.primaryCard .link {
+    min-height: 8rem;
+    padding: 1.6rem 1.75rem;
+}
+
+[data-theme="light"] .primaryCard {
+    border-color: rgba(217, 119, 6, .45);
 }
 
 .link {
     display: flex;
-
-    flex-direction: column;
-
-    gap: .75rem;
-
+    align-items: center;
+    gap: 1rem;
     padding: 1.75rem 1.5rem;
 
     text-decoration: none;
 
     color: inherit;
+}
+
+.iconWrap {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    color: #c084fc;
+    background: rgba(168, 85, 247, .14);
+}
+
+.primaryCard .iconWrap {
+    width: 3.25rem;
+    height: 3.25rem;
+}
+
+.copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: .35rem;
 }
 
 .label {
@@ -72,14 +103,23 @@
     word-break: break-word;
 }
 
+[data-theme="light"] .iconWrap {
+    color: #d97706;
+    background: rgba(217, 119, 6, .13);
+}
+
 @media (max-width: 1024px) {
-    .grid {
+    .secondaryGrid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 640px) {
-    .grid {
+    .secondaryGrid {
         grid-template-columns: 1fr;
+    }
+
+    .primaryCard .link {
+        min-height: 0;
     }
 }
