@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 
 import Page from "@/components/layout/Page";
 import { fadeUp, slideInLeft, slideInRight, slideInUp, scaleUp, staggerContainer } from "@/constants/animations";
@@ -19,6 +19,8 @@ import ProfessionalTabs, { type ProfessionalTab } from "@/components/professiona
 import SkillsSection from "@/components/professional/SkillsSection";
 import CertificationsSection from "@/components/professional/CertificationsSection";
 import LearningSection from "@/components/professional/LearningSection";
+import { certifications } from "@/data/certifications";
+import ProfessionalWebStage from "@/components/professional/ProfessionalWebStage/ProfessionalWebStage";
 
 import ContactHero from "@/components/contact/ContactHero";
 import ContactMethods from "@/components/contact/ContactMethods";
@@ -34,6 +36,13 @@ export default function Home() {
     const [activeTab, setActiveTab] = useState<ProfessionalTab>("skills");
     const aboutRef = useRef<HTMLElement>(null);
     const isAboutInView = useInView(aboutRef, { amount: 0.3 });
+
+    useEffect(() => {
+        certifications.forEach((certification) => {
+            const image = new Image();
+            image.src = `${import.meta.env.BASE_URL}certs/${encodeURIComponent(certification.logo)}`;
+        });
+    }, []);
 
     return (
         <Page>
@@ -120,9 +129,36 @@ export default function Home() {
                     onChange={setActiveTab}
                 />
 
-                {activeTab === "skills" && <SkillsSection />}
-                {activeTab === "certifications" && <CertificationsSection />}
-                {activeTab === "learning" && <LearningSection />}
+                {activeTab === "learning" ? (
+                    <LearningSection />
+                ) : (
+                    <ProfessionalWebStage>
+                        <AnimatePresence mode="wait" initial={false}>
+                            {activeTab === "skills" && (
+                                <motion.div
+                                    key="skills"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.22 }}
+                                >
+                                    <SkillsSection />
+                                </motion.div>
+                            )}
+                            {activeTab === "certifications" && (
+                                <motion.div
+                                    key="certifications"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.22 }}
+                                >
+                                    <CertificationsSection />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </ProfessionalWebStage>
+                )}
             </motion.section>
 
             <motion.section

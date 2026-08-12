@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -27,25 +27,29 @@ const LEVEL_CONFIG: Record<Skill["level"], { color: string; bgColor: string }> =
 const NODE_POSITIONS: Record<string, { x: number; y: number }> = {
     "Cloud Platforms": { x: 72, y: 18 },
     "Core Azure Services": { x: 50, y: 12 },
-    "Core AWS Services": { x: 20, y: 12 },
-    "Programming & Scripting": { x: 18, y: 30 },
+    "Core AWS Services": { x: 20, y: 8 },
+    "Programming & Scripting": { x: 5, y: 30 },
     "Security & Identity": { x: 38, y: 35 },
     "Monitoring & Observability": { x: 48, y: 74 },
     "Infrastructure as Code": { x: 78, y: 48 },
     "Containers & Orchestration": { x: 70, y: 66 },
-    "CI/CD & DevOps": { x: 24, y: 48 },
+    "CI/CD & DevOps": { x: 10, y: 62 },
     "Collaboration & Design": { x: 30, y: 68 },
-    Databases: { x: 14, y: 56 },
+    Databases: { x: 8, y: 82 },
     "Operating Systems": { x: 66, y: 38 },
 };
 
-const SPIDER_HUB = { x: 21, y: 50 };
+type ThreadPoint = {
+    start: { x: number; y: number };
+    end: { x: number; y: number };
+};
 
 export default function SpiderWebSkills() {
     const [expandedNode, setExpandedNode] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const nodeRefs = useRef(new Map<string, HTMLDivElement>());
+    const [threadPoint, setThreadPoint] = useState<ThreadPoint | null>(null);
     const { theme } = useTheme();
-    const webAsset = `${import.meta.env.BASE_URL}spiderweb.png`;
 
     useEffect(() => {
         const closeOnOutsidePointer = (event: PointerEvent) => {
@@ -100,6 +104,52 @@ export default function SpiderWebSkills() {
         }
     };
 
+    useLayoutEffect(() => {
+        const updateThreadPoint = () => {
+            if (!expandedNode || !containerRef.current) {
+                setThreadPoint(null);
+                return;
+            }
+
+            const stage = containerRef.current.closest("[data-professional-stage]");
+            const svg = containerRef.current.querySelector("svg");
+            const spider = stage?.querySelector("[data-spider]");
+            const tile = nodeRefs.current.get(expandedNode);
+
+            if (!stage || !svg || !spider || !tile) {
+                setThreadPoint(null);
+                return;
+            }
+
+            const svgBounds = svg.getBoundingClientRect();
+            const getCenter = (element: Element) => {
+                const bounds = element.getBoundingClientRect();
+                return {
+                    x: bounds.left + bounds.width / 2,
+                    y: bounds.top + bounds.height / 2,
+                };
+            };
+            const start = getCenter(spider);
+            const end = getCenter(tile);
+
+            setThreadPoint({
+                start: {
+                    x: ((start.x - svgBounds.left) / svgBounds.width) * 700,
+                    y: ((start.y - svgBounds.top) / svgBounds.height) * 700,
+                },
+                end: {
+                    x: ((end.x - svgBounds.left) / svgBounds.width) * 700,
+                    y: ((end.y - svgBounds.top) / svgBounds.height) * 700,
+                },
+            });
+        };
+
+        updateThreadPoint();
+        window.addEventListener("resize", updateThreadPoint);
+
+        return () => window.removeEventListener("resize", updateThreadPoint);
+    }, [expandedNode, webNodes]);
+
     const getPositionStyle = (x: number, y: number) => {
         return {
             left: `${x}%`,
@@ -108,66 +158,39 @@ export default function SpiderWebSkills() {
     };
 
     return (
-        <div ref={containerRef} className={styles.container}>
-            <div
-                className={styles.webContainer}
-                onPointerDown={closeOnStagePointer}
-            >
-                {/* Background spiderweb image */}
-                <img
-                    className={styles.webBackground}
-                    src={webAsset}
-                    alt=""
-                    aria-hidden="true"
-                    style={{
-                        filter:
-                            theme === "dark"
-                                ? "brightness(0) invert(1) drop-shadow(0 -4px 30px rgba(168, 85, 247, 0.58)) drop-shadow(0 -7px 64px rgba(168, 85, 247, 0.22))"
-                                : "brightness(0) invert(1) drop-shadow(0 0 30px rgba(217, 119, 6, 0.9)) drop-shadow(0 0 64px rgba(217, 119, 6, 0.45))",
-                    }}
-                />
-
-                <img
-                    className={styles.spider}
-                    src={`${import.meta.env.BASE_URL}spider.png`}
-                    alt=""
-                    aria-hidden="true"
-                />
-
+        <div
+            ref={containerRef}
+            className={styles.container}
+            onPointerDown={closeOnStagePointer}
+        >
                 {/* SVG overlay for animated threads only */}
                 <svg
                     className={styles.threadsSvg}
                     viewBox="0 0 700 700"
-                    preserveAspectRatio="xMidYMid meet"
+                    preserveAspectRatio="none"
                     aria-hidden="true"
                 >
                     {/* Animated threads from expanded nodes */}
                     <AnimatePresence>
-                        {expandedNode && (() => {
-                            const node = webNodes.find((n) => n.id === expandedNode);
-                            if (!node) return null;
-
-                            const fromX = (node.position.x / 100) * 700;
-                            const fromY = (node.position.y / 100) * 700;
-                            const spiderX = (SPIDER_HUB.x / 100) * 700;
-                            const spiderY = (SPIDER_HUB.y / 100) * 700;
-                            const deltaX = fromX - spiderX;
-                            const deltaY = fromY - spiderY;
+                        {expandedNode && threadPoint && (() => {
+                            const { start, end } = threadPoint;
+                            const deltaX = end.x - start.x;
+                            const deltaY = end.y - start.y;
                             const gravityDrop = Math.min(
                                 52,
                                 24 + Math.abs(deltaX) * 0.08
                             );
-                            const controlOneX = spiderX + deltaX * 0.3;
+                            const controlOneX = start.x + deltaX * 0.3;
                             const controlOneY =
-                                spiderY + deltaY * 0.3 + gravityDrop;
-                            const controlTwoX = spiderX + deltaX * 0.72;
+                                start.y + deltaY * 0.3 + gravityDrop;
+                            const controlTwoX = start.x + deltaX * 0.72;
                             const controlTwoY =
-                                spiderY + deltaY * 0.72 + gravityDrop;
+                                start.y + deltaY * 0.72 + gravityDrop;
 
                             return (
                                 <motion.path
                                     key={`thread-${expandedNode}`}
-                                    d={`M ${spiderX} ${spiderY} C ${controlOneX} ${controlOneY}, ${controlTwoX} ${controlTwoY}, ${fromX} ${fromY}`}
+                                    d={`M ${start.x} ${start.y} C ${controlOneX} ${controlOneY}, ${controlTwoX} ${controlTwoY}, ${end.x} ${end.y}`}
                                     stroke={theme === "dark" ? "#a855f7" : "#d97706"}
                                     strokeWidth="2.5"
                                     strokeDasharray="9 7"
@@ -183,7 +206,6 @@ export default function SpiderWebSkills() {
                     </AnimatePresence>
                 </svg>
 
-                {/* Category nodes */}
                 <div className={styles.nodesContainer}>
                     {webNodes.map((node) => {
                         const category = skills.find(
@@ -196,6 +218,14 @@ export default function SpiderWebSkills() {
                                 className={`${styles.node} ${
                                     node.isExpanded ? styles.nodeExpanded : ""
                                 }`}
+                                ref={(element) => {
+                                    if (element) {
+                                        nodeRefs.current.set(node.id, element);
+                                    } else {
+                                        nodeRefs.current.delete(node.id);
+                                    }
+                                }}
+                                data-skill-node={node.id}
                                 style={getPositionStyle(
                                     node.position.x,
                                     node.position.y
@@ -295,7 +325,6 @@ export default function SpiderWebSkills() {
                         );
                     })}
                 </div>
-            </div>
         </div>
     );
 }

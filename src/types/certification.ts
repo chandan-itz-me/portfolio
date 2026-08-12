@@ -4,4 +4,6 @@ export interface Certification {
     provider: string;
     issued: string;
     validUntil?: string;
+    logo: string;
+    credentialUrl: string;
 }

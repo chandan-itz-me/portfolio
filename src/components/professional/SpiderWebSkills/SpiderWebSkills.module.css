@@ -4,6 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+        position: absolute;
+        inset: 0;
 }
 
 .webContainer {
@@ -45,9 +47,9 @@
     position: absolute;
     width: clamp(9rem, 26%, 17rem);
     aspect-ratio: 1;
-    top: 46%;
-    left: 21%;
-    transform: translate(calc(-50% - 0.5rem), -50%);
+    top: 50%;
+    left: 26%;
+    transform: translate(-50%, -50%);
     object-fit: contain;
     z-index: 3;
     pointer-events: none;
@@ -102,6 +104,15 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    animation: tileWiggle 5.5s ease-in-out infinite;
+}
+
+.node:nth-child(2n) .nodeButton {
+    animation-delay: -2.4s;
+}
+
+.node:nth-child(3n) .nodeButton {
+    animation-delay: -4.8s;
 }
 
 .nodeButton:hover {
@@ -121,6 +132,35 @@
     background: linear-gradient(120deg, var(--tile-active-background), var(--tile-active-secondary));
     box-shadow: 0 0 16px var(--tile-glow);
     color: var(--tile-color);
+}
+
+@keyframes tileWiggle {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    20% {
+        transform: translate3d(2px, -1px, 0) rotate(1.8deg);
+    }
+
+    40% {
+        transform: translate3d(-2px, 1px, 0) rotate(-1.8deg);
+    }
+
+    60% {
+        transform: translate3d(2px, 0, 0) rotate(1.2deg);
+    }
+
+    80% {
+        transform: translate3d(-1px, -1px, 0) rotate(-0.8deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nodeButton {
+        animation: none;
+    }
 }
 
 .nodeLabel {
@@ -162,7 +202,8 @@
     top: calc(100% + 0.75rem);
     left: 50%;
     transform: translateX(-50%);
-    background: var(--color-surface);
+    background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 0.75rem 0;
@@ -170,8 +211,8 @@
     z-index: 10;
     min-width: 240px;
     max-width: 280px;
-    max-height: min(50vh, 28rem);
-    overflow-y: auto;
+    max-height: none;
+    overflow: visible;
 }
 
 .largeDropdown {
