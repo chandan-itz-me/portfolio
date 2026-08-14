@@ -7,6 +7,14 @@
     white-space: pre;
 }
 
+@media (max-width: 900px) {
+    .visual {
+        display: inline;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
 .charWrap {
     position: relative;
     display: inline-block;

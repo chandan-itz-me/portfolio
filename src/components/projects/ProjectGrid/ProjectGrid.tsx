@@ -74,15 +74,9 @@ export default function ProjectGrid() {
 
     useEffect(() => {
         const updateCardsPerView = () => {
-            if (window.innerWidth <= 700) {
-                setCardsPerView(2);
-                setCardGap(10);
-                return;
-            }
-
             if (window.innerWidth <= 900) {
-                setCardsPerView(3);
-                setCardGap(14);
+                setCardsPerView(1);
+                setCardGap(10);
                 return;
             }
 

@@ -22,7 +22,7 @@ export default function ProfessionalWebStage({ children }: ProfessionalWebStageP
                 style={{
                     filter:
                         theme === "dark"
-                            ? "brightness(0) invert(1) drop-shadow(0 -4px 30px rgba(168, 85, 247, 0.58)) drop-shadow(0 -7px 64px rgba(168, 85, 247, 0.22))"
+                            ? "brightness(0) invert(1) drop-shadow(0 -4px 30px rgba(168, 85, 247, 0.68)) drop-shadow(0 -7px 64px rgba(168, 85, 247, 0.28))"
                             : "brightness(0) invert(1) drop-shadow(0 0 30px rgba(217, 119, 6, 0.9)) drop-shadow(0 0 64px rgba(217, 119, 6, 0.45))",
                 }}
             />

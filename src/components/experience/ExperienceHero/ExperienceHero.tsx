@@ -5,7 +5,7 @@ import styles from "./ExperienceHero.module.css";
 
 export default function ExperienceHero() {
     const heroRef = useRef<HTMLElement>(null);
-    const isHeroInView = useInView(heroRef, { amount: 0.35 });
+    const isHeroInView = useInView(heroRef, { amount: 0.1, once: true });
 
     return (
         <section ref={heroRef} className={styles.hero}>

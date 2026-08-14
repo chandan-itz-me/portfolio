@@ -19,7 +19,7 @@ type TimelineRowProps = {
 
 function TimelineRow({ job, index }: TimelineRowProps) {
     const rowRef = useRef<HTMLDivElement>(null);
-    const isRowInView = useInView(rowRef, { amount: 0.2 });
+    const isRowInView = useInView(rowRef, { amount: 0.1, once: true });
     const cardHiddenState = {
         opacity: 0,
         x: index % 2 === 0 ? -32 : 32,

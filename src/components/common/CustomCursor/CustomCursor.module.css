@@ -37,11 +37,11 @@
 
     left: 0;
 
-    width: 36px;
+    width: 44px;
 
-    height: 36px;
+    height: 44px;
 
-    margin: -18px 0 0 -18px;
+    margin: -22px 0 0 -22px;
 
     border-radius: 50%;
 
@@ -52,11 +52,11 @@
         transparent 75%
     );
 
-    filter: blur(6px);
+    filter: blur(8px);
 
     mix-blend-mode: screen;
 
-    opacity: .8;
+    opacity: .98;
 
     z-index: 1999;
 
@@ -73,11 +73,11 @@
 
 .orbActive {
 
-    width: 64px;
+    width: 76px;
 
-    height: 64px;
+    height: 76px;
 
-    margin: -32px 0 0 -32px;
+    margin: -38px 0 0 -38px;
 
     opacity: 1;
 }

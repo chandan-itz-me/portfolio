@@ -6,6 +6,7 @@
     min-height: 0;
     margin-left: calc(50% - 50vw);
     overflow: visible;
+    overflow-x: clip;
     isolation: isolate;
 }
 
@@ -32,9 +33,12 @@
     pointer-events: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .stage {
-        height: 420px;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        height: clamp(360px, 105vw, 460px);
         padding: 2rem 0;
     }
 }

@@ -313,7 +313,7 @@
     box-shadow: 0 12px 32px var(--color-accent-warm-glow);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .timeline {
         gap: 1.15rem;
         padding-left: 1.2rem;
@@ -331,6 +331,10 @@
 
     .row {
         grid-template-columns: 1fr;
+    }
+
+    .placeholder {
+        display: none;
     }
 
     .card,

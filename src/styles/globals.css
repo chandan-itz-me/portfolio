@@ -27,14 +27,33 @@ html[data-theme="light"] {
 
 }
 
+#root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 13.5px;
+    }
+}
+
 body {
+    width: 100%;
     min-height: 100vh;
     background: var(--color-background);
     color: var(--color-text);
     font-family: var(--font-body);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
     transition:
         background-color 0.4s ease,

@@ -206,12 +206,12 @@
     --color-text-secondary: var(--color-text-muted);
 
     /* === INTERACTIVE ACCENTS === */
-    /* Warm orange as primary interactive color (replaces cyan #00e5ff) */
+    /* Warm orange as primary interactive color */
     --color-primary: #D97706;
     --color-primary-muted: rgba(217, 119, 6, 0.12);
-    --color-primary-glow: rgba(217, 119, 6, 0.2);
+    --color-primary-glow: rgba(236, 130, 10, 0.2);
 
-    /* Warm amber as secondary color (replaces blue #38bdf8) */
+    /* Warm amber as secondary color */
     --color-secondary: #F59E0B;
     --color-secondary-muted: rgba(245, 158, 11, 0.12);
     --color-secondary-glow: rgba(245, 158, 11, 0.15);

@@ -214,7 +214,7 @@
 
 @media (max-width: 640px) {
     .hero {
-        min-height: 100vh;
+        min-height: calc(100svh - var(--header-height));
         padding: 1rem;
     }
 
@@ -227,7 +227,7 @@
     .actions {
         flex-direction: column;
         align-items: center;
-        margin-top: calc(1rem + 1cm);
+        margin-top: 1rem;
     }
 
     .primaryAction,
@@ -238,6 +238,18 @@
 
     .logoBadge {
         transform: scale(0.9);
+    }
+
+    .roleWrapper {
+        min-height: 100px;
+    }
+
+    .role {
+        max-width: 100%;
+        font-size: clamp(1rem, 7vw, 2rem);
+        line-height: 1.15;
+        white-space: normal;
+        overflow-wrap: anywhere;
     }
 
     .aws,
@@ -266,5 +278,40 @@
     .grafana,
     .ansible {
         display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero {
+        min-height: calc(100svh - var(--header-height));
+        padding: 1.5rem 1rem;
+    }
+
+    .cornerText {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        font-size: .78rem;
+        line-height: 1.35;
+    }
+
+    .roleWrapper {
+        min-height: 120px;
+    }
+
+    .role {
+        max-width: 100%;
+        font-size: clamp(1.15rem, 6vw, 2.6rem);
+        line-height: 1.2;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .actions {
+        margin-top: 1rem;
+    }
+
+    .logoBadge {
+        transform: scale(.82);
     }
 }

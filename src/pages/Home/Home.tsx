@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 
 import Page from "@/components/layout/Page";
-import { fadeUp, slideInLeft, slideInRight, slideInUp, scaleUp, staggerContainer } from "@/constants/animations";
+import { fadeUp, slideInRight, slideInUp, scaleUp, staggerContainer } from "@/constants/animations";
 
 import IdentityHero from "@/components/home/IdentityHero";
 import AboutMeHero from "@/components/home/AboutMeHero";
@@ -65,21 +65,17 @@ export default function Home() {
                 <AboutMe />
             </section>
 
-            <motion.section
+            <section
                 id="experience"
                 className={styles.section}
-                variants={staggerContainer as any}
-                initial="hidden"
-                whileInView="visible"
-                viewport={sectionViewport}
             >
-                <motion.div variants={slideInLeft as any}>
+                <div>
                     <ExperienceHero />
-                </motion.div>
-                <motion.div variants={slideInLeft as any}>
+                </div>
+                <div>
                     <CareerTimeline />
-                </motion.div>
-            </motion.section>
+                </div>
+            </section>
 
             <motion.section
                 id="projects"
